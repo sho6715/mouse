@@ -345,9 +345,6 @@ PRIVATE void MODE_exe( void )
 				TIME_wait(50);
 			}
 */
-
-//test　githubのテスト更新
-
 //			TIME_wait(200);
 			MOT_setTrgtSpeed(SEARCH_SPEED);
 			MOT_setSuraStaSpeed( (FLOAT)SEARCH_SPEED );							// スラローム開始速度設定
