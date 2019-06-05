@@ -397,10 +397,10 @@ PRIVATE void MODE_exe( void )
 			TIME_wait(500);
 			MOT_turn(MOT_L180);
 */
-			MOT_goBlock_FinSpeed( 1.0, 0 );
-//			MOT_goSla( MOT_R90S, PARAM_getSra( SLA_90 ) );
-//			PARAM_setSpeedType( PARAM_ST,   PARAM_SLOW );							// [直進] 速度普通
-//			MOT_goBlock_FinSpeed( 0.5, 0 );
+			MOT_goBlock_FinSpeed( 0.5, SEARCH_SPEED );
+			MOT_goSla( MOT_R90S, PARAM_getSra( SLA_90 ) );
+			PARAM_setSpeedType( PARAM_ST,   PARAM_SLOW );							// [直進] 速度普通
+			MOT_goBlock_FinSpeed( 0.5, 0 );
 			log_flag_off();	
 			break;
 
