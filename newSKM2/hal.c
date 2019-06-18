@@ -1836,7 +1836,7 @@ PUBLIC void CTRL_getAngleSpeedFB( FLOAT* p_err )
 	f_ErrAngleSBuf = f_err;		// 偏差をバッファリング	
 	
 	// 累積偏差クリア 
-	if( FABS( f_TrgtAngle - f_NowAngle ) < 0.1 ){
+	if( FABS( f_TrgtAngle - f_NowAngle ) < 0.05 ){
 		f_AngleSErrSum = 0;
 	}
 	
@@ -1894,7 +1894,7 @@ PUBLIC void CTRL_getAngleFB( FLOAT* p_err )
 		*p_err = f_err * f_kp + f_AngleErrSum;					// PI制御量算出
 		
 		/* 累積偏差クリア */
-		if( FABS( f_TrgtAngle - f_NowAngle ) < 0.2 ){
+		if( FABS( f_TrgtAngle - f_NowAngle ) < 0.1 ){
 			f_AngleErrSum = 0;
 		}
 	}
@@ -2056,7 +2056,8 @@ PUBLIC void CTRL_pol( void )
 	CTRL_getAngleFB( &f_angleCtrl );				// [制御] 角度
 	CTRL_getSenFB( &f_distSenCtrl );				// [制御] 壁
 	
-	templog1 = f_distCtrl;
+	templog1 = f_angleSpeedCtrl;
+	templog2 = f_angleCtrl;
 	
 	/* 直進制御 */
 	if( ( en_Type == CTRL_ACC ) || ( en_Type == CTRL_CONST ) || ( en_Type == CTRL_DEC ) ||( en_Type == CTRL_ENTRY_SURA ) || ( en_Type == CTRL_EXIT_SURA ) ||
@@ -3785,7 +3786,7 @@ PUBLIC void log_interrupt ( void )
 		f_TrgtDist, f_AccAngleS,
 		GYRO_getSpeedErr(), f_TrgtAngleS,
 		f_NowAngle, f_TrgtAngle,
-		templog1,f_Duty_L);
+		templog1,templog2);
 }
 
 // *************************************************************************
