@@ -3748,9 +3748,9 @@ PUBLIC BOOL SYS_isOutOfCtrl( void )
 PRIVATE void log_in2( 	FLOAT log1,FLOAT log2,
 			FLOAT log3,FLOAT log4,
 			FLOAT log5,FLOAT log6,
-			FLOAT log7,FLOAT log8,
-			FLOAT log9,FLOAT log10,
-			FLOAT log11,FLOAT log12)
+			FLOAT log7,FLOAT log8)
+//			FLOAT log9,FLOAT log10,
+//			FLOAT log11,FLOAT log12)
 {
 	if((b_logflag == TRUE)&&(log_count < log_num)){
 		Log_1[log_count] = log1;
@@ -3761,10 +3761,10 @@ PRIVATE void log_in2( 	FLOAT log1,FLOAT log2,
 		Log_6[log_count] = log6;
 		Log_7[log_count] = log7;
 		Log_8[log_count] = log8;
-		Log_9[log_count] = log9;
-		Log_10[log_count] = log10;
-		Log_11[log_count] = log11;
-		Log_12[log_count] = log12;
+//		Log_9[log_count] = log9;
+//		Log_10[log_count] = log10;
+//		Log_11[log_count] = log11;
+//		Log_12[log_count] = log12;
 		
 		log_count++;
 	}
@@ -3781,12 +3781,17 @@ PRIVATE void log_in2( 	FLOAT log1,FLOAT log2,
 // *************************************************************************/
 PUBLIC void log_interrupt ( void )
 {
-	log_in2(f_DistErrSum, f_NowSpeed,
+/*	log_in2(f_DistErrSum, f_NowSpeed,
 		f_TrgtSpeed, f_NowDist,
 		f_TrgtDist, f_AccAngleS,
-		GYRO_getSpeedErr(), f_TrgtAngleS,
+		GYRO_getSpeedErr(), f_TrgtAngleS,)
 		f_NowAngle, f_TrgtAngle,
 		templog1,templog2);
+*/
+	log_in2(f_NowSpeed, f_TrgtSpeed,
+		f_NowDist, f_TrgtDist,
+		GYRO_getSpeedErr(), f_TrgtAngleS,
+		f_NowAngle,f_TrgtAngle);
 }
 
 // *************************************************************************
