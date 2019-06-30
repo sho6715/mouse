@@ -399,7 +399,7 @@ PRIVATE void MODE_exe( void )
 */
 			MOT_goBlock_FinSpeed( 0.5, SEARCH_SPEED );
 			MOT_goSla( MOT_R90S, PARAM_getSra( SLA_90 ) );
-			PARAM_setSpeedType( PARAM_ST,   PARAM_SLOW );							// [直進] 速度普通
+//			PARAM_setSpeedType( PARAM_ST,   PARAM_SLOW );							// [直進] 速度普通
 			MOT_goBlock_FinSpeed( 0.5, 0 );
 			log_flag_off();	
 			break;
@@ -966,11 +966,17 @@ PRIVATE void SYS_start( void )
 	printf(" ┃ Target     : 教育用                      ┃\r\n");
 	printf(" ┃ Project By : Hosei Univ. Denken Group    ┃\r\n");
 	printf(" ┗━━━━━━━━━━━━━━━━━━━━━┛\r\n");
-	
+
 	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 200.0f, 2000.0f, SLA_45 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ200 2000	T	200 2000
-	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 300.0f, 3000.0f, SLA_90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 3500		200 4000
+	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 300.0f, 4000.0f, SLA_90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 3500		200 4000
 	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 300.0f, 4500.0f, SLA_135 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 4500		300 4000
 	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 450.0f, 5000.0f, SLA_N90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ500 5000		500 5000
+/*	
+	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 100.0f, 4000.0f, SLA_45 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ200 2000	T	200 2000
+	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 100.0f, 4500.0f, SLA_90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 3500		200 4000
+	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 100.0f, 5000.0f, SLA_135 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 4500		300 4000
+	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 200.0f, 6000.0f, SLA_N90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ500 5000		500 5000
+*/
 //	printf("600\n\r");
 //	PARAM_makeSra( (FLOAT)600, 350.0f, 4500.0f, SLA_45 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ200 2000	T	200 2000
 //	PARAM_makeSra( (FLOAT)600, 350.0f, 5000.0f, SLA_90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 3500		200 4000

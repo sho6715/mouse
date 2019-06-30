@@ -1731,7 +1731,7 @@ PUBLIC void CTRL_getSpeedFB( FLOAT* p_err )
 	f_ErrSpeedBuf = f_speedErr;		// 偏差をバッファリング	
 	
 	/* 累積偏差クリア */
-	if( FABS( f_TrgtDist - f_NowDist ) < 0.05 ){
+	if( FABS( f_speedErr ) < 0.5 ){
 		f_SpeedErrSum = 0;
 	}
 	
@@ -1823,22 +1823,22 @@ PUBLIC void CTRL_getAngleSpeedFB( FLOAT* p_err )
 	
 	f_AngleSErrSum += f_err*f_ki;
 	
-	if(f_AngleSErrSum > 40){
-		f_AngleSErrSum = 40;			//上限リミッター
+	if(f_AngleSErrSum > 100){
+		f_AngleSErrSum = 100;			//上限リミッター
 	}
-	else if(f_AngleSErrSum <-40){
-		f_AngleSErrSum = -40;
+	else if(f_AngleSErrSum <-100){
+		f_AngleSErrSum = -100;
 	}
 	
-//	templog2 = f_err;
+	templog2 = f_AngleSErrSum;
 	*p_err = f_err * f_kp + f_AngleSErrSum + ( f_err - f_ErrAngleSBuf ) * f_kd;		// PID制御
 		
 	f_ErrAngleSBuf = f_err;		// 偏差をバッファリング	
 	
 	// 累積偏差クリア 
-	if( FABS( f_TrgtAngle - f_NowAngle ) < 0.05 ){
-		f_AngleSErrSum = 0;
-	}
+//	if( FABS( f_err ) < 0.05 ){
+//		f_AngleSErrSum = 0;
+//	}
 	
 }
 
@@ -1961,12 +1961,15 @@ PRIVATE void CTRL_outMot( FLOAT f_duty10_R, FLOAT f_duty10_L )
 {
 	FLOAT	f_temp;			// 計算用
 	
+	f_Duty_R = f_duty10_R;
+	f_Duty_L = f_duty10_L;
+	
 	/* 電圧に応じてPWM出力を変更する */
 	f_duty10_R = f_duty10_R * VCC_MAX / (BAT_getLv()/1000);
 	f_duty10_L = f_duty10_L * VCC_MAX / (BAT_getLv()/1000);
 	
-	f_Duty_R = f_duty10_R;
-	f_Duty_L = f_duty10_L;
+//	f_Duty_R = f_duty10_R;
+//	f_Duty_L = f_duty10_L;
 	
 //	log_in(f_duty10_R);
 	/* 右モータ */
@@ -2056,8 +2059,8 @@ PUBLIC void CTRL_pol( void )
 	CTRL_getAngleFB( &f_angleCtrl );				// [制御] 角度
 	CTRL_getSenFB( &f_distSenCtrl );				// [制御] 壁
 	
-	templog1 = f_angleSpeedCtrl;
-	templog2 = f_angleCtrl;
+//	templog1 = f_angleSpeedCtrl;
+	templog1 = f_angleCtrl;
 	
 	/* 直進制御 */
 	if( ( en_Type == CTRL_ACC ) || ( en_Type == CTRL_CONST ) || ( en_Type == CTRL_DEC ) ||( en_Type == CTRL_ENTRY_SURA ) || ( en_Type == CTRL_EXIT_SURA ) ||
@@ -3748,9 +3751,9 @@ PUBLIC BOOL SYS_isOutOfCtrl( void )
 PRIVATE void log_in2( 	FLOAT log1,FLOAT log2,
 			FLOAT log3,FLOAT log4,
 			FLOAT log5,FLOAT log6,
-			FLOAT log7,FLOAT log8)
-//			FLOAT log9,FLOAT log10,
-//			FLOAT log11,FLOAT log12)
+			FLOAT log7,FLOAT log8,
+			FLOAT log9,FLOAT log10,
+			FLOAT log11,FLOAT log12)
 {
 	if((b_logflag == TRUE)&&(log_count < log_num)){
 		Log_1[log_count] = log1;
@@ -3761,10 +3764,10 @@ PRIVATE void log_in2( 	FLOAT log1,FLOAT log2,
 		Log_6[log_count] = log6;
 		Log_7[log_count] = log7;
 		Log_8[log_count] = log8;
-//		Log_9[log_count] = log9;
-//		Log_10[log_count] = log10;
-//		Log_11[log_count] = log11;
-//		Log_12[log_count] = log12;
+		Log_9[log_count] = log9;
+		Log_10[log_count] = log10;
+		Log_11[log_count] = log11;
+		Log_12[log_count] = log12;
 		
 		log_count++;
 	}
@@ -3791,7 +3794,9 @@ PUBLIC void log_interrupt ( void )
 	log_in2(f_NowSpeed, f_TrgtSpeed,
 		f_NowDist, f_TrgtDist,
 		GYRO_getSpeedErr(), f_TrgtAngleS,
-		f_NowAngle,f_TrgtAngle);
+		f_NowAngle,f_TrgtAngle,
+		f_AccAngleS,templog2,
+		templog1,f_Duty_R);
 }
 
 // *************************************************************************
@@ -3834,7 +3839,7 @@ PUBLIC void log_flag_off(void)
 PUBLIC void log_read2(void)
 {
 	int i=0;
-	while(i<log_num){
+	while(i<200){
 		printf("%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f\n\r",
 		Log_1[i],Log_2[i],Log_3[i],Log_4[i],Log_5[i],Log_6[i],Log_7[i],Log_8[i],Log_9[i],Log_10[i],Log_11[i],Log_12[i]);
 		i++;
