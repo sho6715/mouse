@@ -968,7 +968,7 @@ PRIVATE void SYS_start( void )
 	printf(" ┗━━━━━━━━━━━━━━━━━━━━━┛\r\n");
 
 	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 200.0f, 2000.0f, SLA_45 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ200 2000	T	200 2000
-	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 300.0f, 4000.0f, SLA_90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 3500		200 4000
+	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 250.0f, 4000.0f, SLA_90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 3500		200 4000
 	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 300.0f, 4500.0f, SLA_135 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 4500		300 4000
 	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 450.0f, 5000.0f, SLA_N90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ500 5000		500 5000
 /*	
