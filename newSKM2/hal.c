@@ -2059,8 +2059,8 @@ PUBLIC void CTRL_pol( void )
 	CTRL_getAngleFB( &f_angleCtrl );				// [êßå‰] äpìx
 	CTRL_getSenFB( &f_distSenCtrl );				// [êßå‰] ï«
 	
-//	templog1 = f_angleSpeedCtrl;
-	templog1 = f_angleCtrl;
+	templog1 = f_angleSpeedCtrl;
+//	templog1 = f_angleCtrl;
 	
 	/* íºêiêßå‰ */
 	if( ( en_Type == CTRL_ACC ) || ( en_Type == CTRL_CONST ) || ( en_Type == CTRL_DEC ) ||( en_Type == CTRL_ENTRY_SURA ) || ( en_Type == CTRL_EXIT_SURA ) ||
