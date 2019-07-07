@@ -1,6 +1,8 @@
 close all;
 clc;
 
+mouse = xlsread('logexcel.xlsx');
+
 plot(mouse(1:110,1:2),'DisplayName','mouse(:,2:3)');
 figure;
 plot(mouse(1:110,3:4),'DisplayName','mouse(:,4:5)');
