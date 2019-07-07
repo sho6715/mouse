@@ -1840,6 +1840,10 @@ PUBLIC void CTRL_getAngleSpeedFB( FLOAT* p_err )
 //		f_AngleSErrSum = 0;
 //	}
 	
+	// ó›êœïŒç∑ÉNÉäÉA 
+	if( en_Type == CTRL_DEC_SURA ){
+		f_AngleSErrSum = 0;
+	}
 }
 
 

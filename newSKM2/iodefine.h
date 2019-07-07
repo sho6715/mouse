@@ -80,6 +80,11 @@
 #define __RX63NIODEFINE_HEADER__
 #pragma bit_order left
 #pragma unpack
+
+#ifdef _VSCODE //追記部分
+#define _evenaccess
+#endif
+
 struct st_ad {
 	unsigned short ADDRA;
 	unsigned short ADDRB;

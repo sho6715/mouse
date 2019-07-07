@@ -477,7 +477,7 @@ PRIVATE void MODE_exe( void )
 //			MAP_showLog();
 //			calibration();
 
-			log_read2();
+//			log_read2();
 
 //			MOT_turn(MOT_L90);
 //			CTRL_stop();
@@ -490,7 +490,7 @@ PRIVATE void MODE_exe( void )
 //			MOT_goSla( MOT_R90S, PARAM_getSra( SLA_90 ) );
 //			PARAM_setSpeedType( PARAM_ST,   PARAM_SLOW );							// [直進] 速度普通
 //			MOT_goBlock_FinSpeed( 1.5, 0 );
-/*
+
 			MAP_setPos( 0, 0, NORTH );												// スタート位置
 			MAP_makeContourMap( GOAL_MAP_X, GOAL_MAP_Y, BEST_WAY );					// 等高線マップを作る
 			MAP_makeCmdList( 0, 0, NORTH, GOAL_MAP_X, GOAL_MAP_Y, &en_endDir );		// ドライブコマンド作成
@@ -500,7 +500,7 @@ PRIVATE void MODE_exe( void )
 			TIME_wait(500);
 			MOT_turn(MOT_R180);
 			MAP_actGoalLED();
-*/
+
 /*			mypos.x = 0;
 			mypos.y = 0;
 			mypos.dir = north;
@@ -570,7 +570,7 @@ PRIVATE void MODE_exe( void )
 		case MODE_7:
 			LED4 = LED4_ALL_ON;
 			TIME_wait(1000);
-/*
+
 			MOT_setTrgtSpeed(SEARCH_SPEED*8);
 			MOT_setSuraStaSpeed( (FLOAT)SEARCH_SPEED );							// スラローム開始速度設定
 			PARAM_setSpeedType( PARAM_ST,   PARAM_VERY_FAST );							// [直進] 速度普通
@@ -588,7 +588,7 @@ PRIVATE void MODE_exe( void )
 			TIME_wait(500);
 			MOT_turn(MOT_R180);
 			MAP_actGoalLED();
-*/
+
 /*			mypos.x = 0;
 			mypos.y = 0;
 			mypos.dir = north;
@@ -596,6 +596,7 @@ PRIVATE void MODE_exe( void )
 			TIME_wait(500);
 //			testrun();
 */
+/*
 			//システム同定用
 			DCM_setDirCw(DCM_R);	//時計回り
 			DCM_setDirCcw(DCM_L);	//反時計回り
@@ -605,6 +606,7 @@ PRIVATE void MODE_exe( void )
 			TIME_wait(1000);
 			DCM_stopMot( DCM_R );				// モータ停止
 			DCM_stopMot( DCM_L );				// モータ停止
+*/
 /*
 			log_flag_on();
 			turntable();
