@@ -9,24 +9,27 @@
             "command": "C:\\Program Files (x86)\\Renesas Electronics\\CS+\\CC\\CubeSuite+.exe",
             "args": [
                 "/bb",
-                "${workspaceRoot}\\${workspaceRootFolderName}.mtpj",    // プロジェクトファイル(.mtpj)をディレクトリから指定する
+                "${workspaceRoot}\\${workspaceRootFolderName}.mtpj"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": [
+                "$tsc-watch"
+            ],
+            "isBackground": true
         },
         {
-            "label": "Flash",//マイコンへの書き込み
+            "label": "Flash",
             "type": "shell",
             "command": "C:\\Program Files (x86)\\Renesas Electronics\\Programming Tools\\Renesas Flash Programmer V3.05\\RFPV3.exe",
-            "args":[
-                "/silent",  //GUI非表示
-                "${workspaceRoot}\\Flash Programmer\\${workspaceRootFolderName}\\${workspaceRootFolderName}.rpj", //　プロジェクトファイルが存在するディレクトリ
-                "/log", //ログを保存する
-                "Flash Programmer/Flash Programmer.log",    //ログを保存する場所
-
-            ],
+            "args": [
+                "/silent",
+                "${workspaceRoot}\\Flash Programmer\\${workspaceRootFolderName}\\${workspaceRootFolderName}.rpj",
+                "/log",
+                "Flash Programmer/Flash Programmer.log"
+            ]
         }
     ]
 }

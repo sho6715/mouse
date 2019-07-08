@@ -287,6 +287,7 @@ PRIVATE void MODE_exe( void )
 				TIME_wait(500);
 			}
 */
+			CTRL_clrData();
 			while(1){
 				printf("   [ジャイロ角度]%5.2f [SPIジャイロ]%x \r", 
 					GYRO_getNowAngle(),recv_spi_gyro()
@@ -477,20 +478,10 @@ PRIVATE void MODE_exe( void )
 //			MAP_showLog();
 //			calibration();
 
-//			log_read2();
+			log_read2();
 
-//			MOT_turn(MOT_L90);
-//			CTRL_stop();
-//			MOT_goBlock_FinSpeed( 7.0, 0 );
 			
-//			MOT_goBlock_FinSpeed( 1.0, SEARCH_SPEED );
-//			MOT_goSla( MOT_R45S_S2N, PARAM_getSra( SLA_45 ) );
-//			MOT_goSkewBlock_FinSpeed( 0.5, 0 );
-//			MOT_goBlock_FinSpeed( 0.5, SEARCH_SPEED );
-//			MOT_goSla( MOT_R90S, PARAM_getSra( SLA_90 ) );
-//			PARAM_setSpeedType( PARAM_ST,   PARAM_SLOW );							// [直進] 速度普通
-//			MOT_goBlock_FinSpeed( 1.5, 0 );
-
+/* 
 			MAP_setPos( 0, 0, NORTH );												// スタート位置
 			MAP_makeContourMap( GOAL_MAP_X, GOAL_MAP_Y, BEST_WAY );					// 等高線マップを作る
 			MAP_makeCmdList( 0, 0, NORTH, GOAL_MAP_X, GOAL_MAP_Y, &en_endDir );		// ドライブコマンド作成
@@ -500,7 +491,7 @@ PRIVATE void MODE_exe( void )
 			TIME_wait(500);
 			MOT_turn(MOT_R180);
 			MAP_actGoalLED();
-
+*/
 /*			mypos.x = 0;
 			mypos.y = 0;
 			mypos.dir = north;

@@ -673,7 +673,7 @@ PUBLIC FLOAT GYRO_getSpeedErr( void )
 	FLOAT f_res;
 	
 	/* 角速度の偏差算出 */
-	if( ( l_err < -20 * 100 ) || ( 20 * 100 < l_err ) ){
+	if( ( l_err < -10 * 100 ) || ( 10 * 100 < l_err ) ){
 		f_res = (FLOAT)l_err /32.768 / 100;		//32.768 = 2^16(16bit)/2000(+-1000度) LSB/(°/s)
 													// 100倍の精度
 	}
@@ -1836,14 +1836,14 @@ PUBLIC void CTRL_getAngleSpeedFB( FLOAT* p_err )
 	f_ErrAngleSBuf = f_err;		// 偏差をバッファリング	
 	
 	// 累積偏差クリア 
-//	if( FABS( f_err ) < 0.05 ){
-//		f_AngleSErrSum = 0;
-//	}
-	
-	// 累積偏差クリア 
-	if( en_Type == CTRL_DEC_SURA ){
+	if( FABS( f_err ) < 0.05 ){
 		f_AngleSErrSum = 0;
 	}
+
+	// 累積偏差クリア 
+//	if( en_Type == CTRL_DEC_SURA ){
+//		f_AngleSErrSum = 0;
+//	}
 }
 
 
@@ -1896,7 +1896,8 @@ PUBLIC void CTRL_getAngleFB( FLOAT* p_err )
 		
 		//*p_err = f_err * FB_ANG_KP_GAIN;					// P制御量算出
 		*p_err = f_err * f_kp + f_AngleErrSum;					// PI制御量算出
-		
+	//	templog2 = f_AngleErrSum;
+
 		/* 累積偏差クリア */
 		if( FABS( f_TrgtAngle - f_NowAngle ) < 0.1 ){
 			f_AngleErrSum = 0;
@@ -2063,8 +2064,8 @@ PUBLIC void CTRL_pol( void )
 	CTRL_getAngleFB( &f_angleCtrl );				// [制御] 角度
 	CTRL_getSenFB( &f_distSenCtrl );				// [制御] 壁
 	
-	templog1 = f_angleSpeedCtrl;
-//	templog1 = f_angleCtrl;
+//	templog1 = f_angleSpeedCtrl;
+	templog1 = f_angleCtrl;
 	
 	/* 直進制御 */
 	if( ( en_Type == CTRL_ACC ) || ( en_Type == CTRL_CONST ) || ( en_Type == CTRL_DEC ) ||( en_Type == CTRL_ENTRY_SURA ) || ( en_Type == CTRL_EXIT_SURA ) ||
