@@ -2083,9 +2083,16 @@ PUBLIC void CTRL_pol( void )
 	
 	/* スラローム制御 */
 	else if( ( en_Type == CTRL_ACC_SURA ) || (en_Type == CTRL_CONST_SURA)||( en_Type == CTRL_DEC_SURA ) ){
-		
-		f_duty10_R = f_feedFoard * FF_BALANCE_R +  f_distCtrl + f_speedCtrl + f_angleCtrl + f_angleSpeedCtrl;					// 右モータPWM-DUTY比[0.1%]
-		f_duty10_L = f_feedFoard * FF_BALANCE_L +  f_distCtrl + f_speedCtrl - f_angleCtrl - f_angleSpeedCtrl;					// 左モータPWM-DUTY比[0.1%]
+		/* 左旋回 */
+		if( f_LastAngle > 0 ){
+			f_duty10_R = f_feedFoard * FF_BALANCE_R        + f_angleCtrl + f_angleSpeedCtrl +  f_distCtrl + f_speedCtrl;		// 右モータPWM-DUTY比[0.1%]
+			f_duty10_L = f_feedFoard * FF_BALANCE_L * (-1) - f_angleCtrl - f_angleSpeedCtrl +  f_distCtrl + f_speedCtrl;		// 左モータPWM-DUTY比[0.1%]
+		}
+		/* 右旋回 */
+		else{
+			f_duty10_R = f_feedFoard * FF_BALANCE_R * (-1) + f_angleCtrl + f_angleSpeedCtrl +  f_distCtrl + f_speedCtrl;		// 右モータPWM-DUTY比[0.1%]
+			f_duty10_L = f_feedFoard * FF_BALANCE_L        - f_angleCtrl - f_angleSpeedCtrl +  f_distCtrl + f_speedCtrl;		// 左モータPWM-DUTY比[0.1%]
+		}
 	}
 		
 	
