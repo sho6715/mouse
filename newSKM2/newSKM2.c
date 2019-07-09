@@ -389,19 +389,20 @@ PRIVATE void MODE_exe( void )
 //			CTRL_stop();
 //			MOT_goBlock_FinSpeed( 7.0, 0 );
 			log_flag_on();
-/*			TIME_wait(500);
-			MOT_turn(MOT_R90);
-			TIME_wait(500);
+//			TIME_wait(500);
+/*			MOT_turn(MOT_R90);
+			TIME_wait(50);
 			MOT_turn(MOT_L90);
-			TIME_wait(500);
+			TIME_wait(50);
 			MOT_turn(MOT_R180);
-			TIME_wait(500);
+			TIME_wait(50);
 			MOT_turn(MOT_L180);
 */
+
 			MOT_goBlock_FinSpeed( 0.5, SEARCH_SPEED );
 			MOT_goSla( MOT_R90S, PARAM_getSra( SLA_90 ) );
-//			PARAM_setSpeedType( PARAM_ST,   PARAM_SLOW );							// [íºêi] ë¨ìxïÅí 
 			MOT_goBlock_FinSpeed( 0.5, 0 );
+
 			log_flag_off();	
 			break;
 

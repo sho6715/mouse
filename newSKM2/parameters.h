@@ -140,7 +140,10 @@ typedef struct{
 
 /* ゲイン */
 typedef struct{
-	FLOAT			f_FF;				// フィードフォワード
+	FLOAT			f_FF_speed_acc;				// フィードフォワード、加速度
+	FLOAT			f_FF_speed;				// フィードフォワード、速度
+	FLOAT			f_FF_angleS_acc;		// フィードフォワード、角加速度
+	FLOAT			f_FF_angleS;			// フィードフォワード、角速度
 	FLOAT 			f_FB_speed_kp;			// フィードバック、速度 比例制御
 	FLOAT 			f_FB_speed_ki;			// フィードバック、速度 積分制御
 	FLOAT 			f_FB_speed_kd;			// フィードバック、速度 微分制御
