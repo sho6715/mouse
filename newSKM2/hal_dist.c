@@ -25,8 +25,8 @@
 //**************************************************
 // 定義（define）
 //**************************************************
-#define DIST_NO_WALL_DIV_FILTER				( 50 )						// 壁なしとする差分値
-#define DIST_REF_UP					( 10 )						// 壁なしと判断する際に基準値に加算する値
+#define DIST_NO_WALL_DIV_FILTER				( 150 )						// 壁なしとする差分値
+#define DIST_REF_UP					( 5 )						// 壁なしと判断する際に基準値に加算する値
 /*
 #define R_FRONT_REF					( 350 )					// 右前壁、基準値　区画の中央において壁を見た値275
 #define L_FRONT_REF					( 280 )					// 左前壁、基準値210
@@ -37,18 +37,18 @@
 #define R_SIDE_WALL					( 115 )						// 右横壁、壁検知値100
 #define L_SIDE_WALL					( 70 )					// 左横壁、壁検知値80
 */
-#define R_FRONT_REF					( 275 )					// 右前壁、基準値　区画の中央において壁を見た値275
+#define R_FRONT_REF					( 250 )					// 右前壁、基準値　区画の中央において壁を見た値275
 #define L_FRONT_REF					( 210 )					// 左前壁、基準値210
-#define R_SIDE_REF					( 230 )						// 右横壁、基準値230
-#define L_SIDE_REF					( 180 )						// 左横壁、基準値180
-#define R_FRONT_WALL					( 53 )						// 右前壁、壁検知値　区画の中央からずらして見たときの値（壁を見るための値）45
-#define L_FRONT_WALL					( 43 )					// 左前壁、壁検知値40
-#define R_SIDE_WALL					( 100 )						// 右横壁、壁検知値100
-#define L_SIDE_WALL					( 60 )					// 左横壁、壁検知値80
+#define R_SIDE_REF					( 290 )						// 右横壁、基準値230
+#define L_SIDE_REF					( 250 )						// 左横壁、基準値180
+#define R_FRONT_WALL					( 55 )						// 右前壁、壁検知値　区画の中央からずらして見たときの値（壁を見るための値）45
+#define L_FRONT_WALL					( 55 )					// 左前壁、壁検知値40
+#define R_SIDE_WALL					( 140 )						// 右横壁、壁検知値100
+#define L_SIDE_WALL					( 90 )					// 左横壁、壁検知値80
 #define R_FRONT_SKEW_ERR1				( 80 )//仮
-#define L_FRONT_SKEW_ERR1				( 60 )
+#define L_FRONT_SKEW_ERR1				( 70 )
 #define R_FRONT_SKEW_ERR2				( 192 )
-#define L_FRONT_SKEW_ERR2				( 147 )
+#define L_FRONT_SKEW_ERR2				( 160 )
 #define R_FRONT_SKEW_ERR3				( 250 )
 #define L_FRONT_SKEW_ERR3				( 250 )
 #define R_FRONT_CTRL					( 370 )
@@ -124,7 +124,7 @@ typedef struct{
 /* 距離センサ */
 PRIVATE stDIST_SEN		st_sen[DIST_SEN_NUM];					// 距離センサ
 PRIVATE stDIST_FRONT_SEN	st_senF[DIST_SEN_L_FRONT+1];	// 距離センサ(前壁のみ)
-PRIVATE LONG  l_Lside_DistRef; 									// ジャイロセンサの基準値
+PRIVATE LONG  l_Lside_DistRef; 									// 
 PRIVATE LONG  l_Rside_DistRef; 
 PRIVATE LONG  l_Lfront_DistRef;
 PRIVATE LONG  l_Rfront_DistRef; 
@@ -264,19 +264,19 @@ PUBLIC void DIST_getErr( LONG* p_err )
 		*p_err = ( st_sen[DIST_SEN_R_SIDE].s_now - st_sen[DIST_SEN_R_SIDE].s_ref ) + 
 				 ( st_sen[DIST_SEN_L_SIDE].s_ref - st_sen[DIST_SEN_L_SIDE].s_now );
 //		printf("[Val]%6d 両壁制御 	\n\r", *p_err);
-//		LED8 = 0x08;
+		LED4 = 0x09;
 	}
 	/* 右壁あり */
 	else if( s_threshold_R < st_sen[DIST_SEN_R_SIDE].s_now ){
 		*p_err = ( st_sen[DIST_SEN_R_SIDE].s_now - st_sen[DIST_SEN_R_SIDE].s_ref ) * 2;
 //		printf("[Val]%6d 右壁制御 	\n\r", *p_err);
-//		LED8 = 0x80;
+		LED4 = 0x08;
 	}
 	/* 左壁あり */
 	else if( s_threshold_L < st_sen[DIST_SEN_L_SIDE].s_now ){
 		*p_err = ( st_sen[DIST_SEN_L_SIDE].s_ref - st_sen[DIST_SEN_L_SIDE].s_now ) * 2;
 //		printf("[Val]%6d 左壁制御 	\n\r", *p_err);
-//		LED8 = 0x01;
+		LED4 = 0x01;
 	}
 }
 

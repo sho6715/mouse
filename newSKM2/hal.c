@@ -27,7 +27,7 @@
 //**************************************************
 #define		BAT_GOOD			(2135)			// 残量減ってきた（黄色）、1セル3.7V以上： 2135 = ( 3700mV * 2セル ) / 4.3(分圧) / 3300 * 4096 - 1
 #define		BAT_LOW				(1961)			// 残量やばい！！（赤色）、1セル3.4V以上： 1961 = ( 3400mV * 2セル ) / 4.3(分圧) / 3300 * 4096 - 1
-#define		GYRO_REF_NUM		(100)		//ジャイロのリファレンス値をサンプリングする数
+#define		GYRO_REF_NUM		(200)		//ジャイロのリファレンス値をサンプリングする数
 #define		ENC_RESET_VAL		(32768)			// エンコーダの中間値
 #define		ENC_R_TSTR			(TPUA.TSTR.BIT.CST1)	// 右エンコーダパルスカウント開始
 #define		ENC_L_TSTR			(TPUA.TSTR.BIT.CST2)	// 左エンコーダパルスカウント開始
@@ -727,20 +727,20 @@ PUBLIC void GYRO_Pol( void )
 	FLOAT f_speed;
 	
 	/* バッファシフト（[7]に新しいデータを入れるため、[0]のデータを捨てて、1つずつ詰める） */
-	s_GyroValBuf[0]	= s_GyroValBuf[1];
+/*	s_GyroValBuf[0]	= s_GyroValBuf[1];
 	s_GyroValBuf[1]	= s_GyroValBuf[2];
 	s_GyroValBuf[2]	= s_GyroValBuf[3];
 	s_GyroValBuf[3]	= s_GyroValBuf[4];
 	s_GyroValBuf[4]	= s_GyroValBuf[5];
 	s_GyroValBuf[5]	= s_GyroValBuf[6];
 	s_GyroValBuf[6]	= s_GyroValBuf[7];
-	
+*/	
 	/* 最新のジャイロセンサ値を取得 */
-	s_GyroValBuf[7] = (SHORT)recv_spi_gyro();
+//	s_GyroValBuf[7] = (SHORT)recv_spi_gyro();
 	
 	/* ジャイロの値を平滑する（平滑数は8つ） */
-	s_GyroVal = ( s_GyroValBuf[0] + s_GyroValBuf[1] + s_GyroValBuf[2] + s_GyroValBuf[3] +
-				  s_GyroValBuf[4] + s_GyroValBuf[5] + s_GyroValBuf[6] + s_GyroValBuf[7] ) / 8;
+	s_GyroVal = (SHORT)recv_spi_gyro();//( s_GyroValBuf[0] + s_GyroValBuf[1] + s_GyroValBuf[2] + s_GyroValBuf[3] +
+				//  s_GyroValBuf[4] + s_GyroValBuf[5] + s_GyroValBuf[6] + s_GyroValBuf[7] ) / 8;
 	
 	/* 現在の角度を更新する */
 	f_speed = GYRO_getSpeedErr();			// 角速度取得 (0.001sec毎の角速度)
@@ -1686,7 +1686,6 @@ PUBLIC void CTRL_getFF_speed( FLOAT* p_err )
 		case CTRL_SKEW_ACC:
 		case CTRL_ACC_TRUN:
 		case CTRL_ACC_SURA:
-		case CTRL_DEC_SURA://注
 			*p_err = f_Acc * f_ff_speed_acc + f_TrgtSpeed * f_ff_speed ;
 			break;
 			
@@ -1702,6 +1701,7 @@ PUBLIC void CTRL_getFF_speed( FLOAT* p_err )
 		case CTRL_DEC:
 		case CTRL_SKEW_DEC:
 		case CTRL_DEC_TRUN:
+		case CTRL_DEC_SURA:
 			*p_err = f_Acc * f_ff_speed_acc * (-1) + f_TrgtSpeed * f_ff_speed;
 			break;
 
@@ -1900,13 +1900,13 @@ PUBLIC void CTRL_getAngleSpeedFB( FLOAT* p_err )
 		f_AngleSErrSum = -100;
 	}
 	
-	templog2 = f_AngleSErrSum;
+//	templog2 = f_AngleSErrSum;
 	*p_err = f_err * f_kp + f_AngleSErrSum + ( f_err - f_ErrAngleSBuf ) * f_kd;		// PID制御
 		
 	f_ErrAngleSBuf = f_err;		// 偏差をバッファリング	
 	
 	// 累積偏差クリア 
-	if( FABS( f_err ) < 0.05 ){
+	if( FABS( f_err ) < 1 ){
 		f_AngleSErrSum = 0;
 	}
 
@@ -2004,7 +2004,7 @@ PUBLIC void CTRL_getSenFB( FLOAT* p_err )
 		/* 偏差取得 */
 		DIST_getErr( &l_WallErr );
 		f_err = (FLOAT)l_WallErr;
-		
+		templog2 = f_err;
 		/* PD制御 */
 		*p_err = f_err * f_kp + ( f_err - f_ErrDistBuf ) * f_kd;		// PD制御
 		
@@ -2137,7 +2137,7 @@ PUBLIC void CTRL_pol( void )
 	CTRL_getSenFB( &f_distSenCtrl );				// [制御] 壁
 	
 //	templog1 = f_angleSpeedCtrl;
-	templog1 = f_feedFoard_angle;
+	templog1 = f_distSenCtrl;
 	
 	/* 直進制御 */
 	if( ( en_Type == CTRL_ACC ) || ( en_Type == CTRL_CONST ) || ( en_Type == CTRL_DEC ) ||( en_Type == CTRL_ENTRY_SURA ) || ( en_Type == CTRL_EXIT_SURA ) ||
@@ -3875,12 +3875,20 @@ PUBLIC void log_interrupt ( void )
 		f_NowAngle, f_TrgtAngle,
 		templog1,templog2);
 */
+/*
 	log_in2(f_NowSpeed, f_TrgtSpeed,
 		f_NowDist, f_TrgtDist,
 		GYRO_getSpeedErr(), f_TrgtAngleS,
 		f_NowAngle,f_TrgtAngle,
-		f_AccAngleS,templog2,
-		templog1,f_Duty_R);
+		f_AccAngleS,templog1,
+		templog2,f_Duty_R);
+*/
+	log_in2(DIST_getNowVal( DIST_SEN_R_FRONT ), DIST_getNowVal( DIST_SEN_L_FRONT ),
+		DIST_getNowVal( DIST_SEN_R_SIDE ), DIST_getNowVal( DIST_SEN_L_SIDE ),
+		GYRO_getSpeedErr(), f_TrgtAngleS,
+		f_NowAngle,f_TrgtAngle,
+		templog2,templog1,
+		f_Duty_L,f_Duty_R);
 }
 
 // *************************************************************************
@@ -3923,7 +3931,7 @@ PUBLIC void log_flag_off(void)
 PUBLIC void log_read2(void)
 {
 	int i=0;
-	while(i<200){
+	while(i<log_num){
 		printf("%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f\n\r",
 		Log_1[i],Log_2[i],Log_3[i],Log_4[i],Log_5[i],Log_6[i],Log_7[i],Log_8[i],Log_9[i],Log_10[i],Log_11[i],Log_12[i]);
 		i++;

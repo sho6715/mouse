@@ -399,9 +399,10 @@ PRIVATE void MODE_exe( void )
 			MOT_turn(MOT_L180);
 */
 
-			MOT_goBlock_FinSpeed( 0.5, SEARCH_SPEED );
-			MOT_goSla( MOT_R90S, PARAM_getSra( SLA_90 ) );
-			MOT_goBlock_FinSpeed( 0.5, 0 );
+			MOT_goBlock_FinSpeed( 7.0, 0 );
+//			MOT_goSla( MOT_R90S, PARAM_getSra( SLA_90 ) );
+//			MOT_goSla( MOT_R90S_N, PARAM_getSra( SLA_N90 ) );
+//			MOT_goBlock_FinSpeed( 0.5, 0 );
 
 			log_flag_off();	
 			break;
@@ -427,7 +428,13 @@ PRIVATE void MODE_exe( void )
 //			POS_clr();			// debug
 //			POS_sta();			// debug
 			MAP_setPos( 0, 0, NORTH );							// スタート位置
+
+			log_flag_on();
+
 			MAP_searchGoal( GOAL_MAP_X, GOAL_MAP_Y, SEARCH, SEARCH_SURA );			// ゴール設定
+
+			log_flag_off();
+
 //			POS_stop();			// debug
 			if (( SW_ON == SW_INC_PIN )||(SYS_isOutOfCtrl() == TRUE)){}
 			else{
@@ -436,7 +443,13 @@ PRIVATE void MODE_exe( void )
 			/* 帰りのスラローム探索 */
 			TIME_wait(1000);
 			LED4 = LED4_ALL_OFF;
+
+			log_flag_on();
+
 			MAP_searchGoal( 0, 0, SEARCH, SEARCH_SURA );
+
+			log_flag_off();
+
 			TIME_wait(1000);
 			if (( SW_ON == SW_INC_PIN )||(SYS_isOutOfCtrl() == TRUE)){}
 			else{
@@ -961,10 +974,10 @@ PRIVATE void SYS_start( void )
 	printf(" ┃ Project By : Hosei Univ. Denken Group    ┃\r\n");
 	printf(" ┗━━━━━━━━━━━━━━━━━━━━━┛\r\n");
 
-	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 200.0f, 2000.0f, SLA_45 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ200 2000	T	200 2000
-	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 250.0f, 4000.0f, SLA_90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 3500		200 4000
-	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 300.0f, 4500.0f, SLA_135 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 4500		300 4000
-	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 450.0f, 5000.0f, SLA_N90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ500 5000		500 5000
+	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 100.0f, 2500.0f, SLA_45 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ200 2000	T	200 2000
+	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 100.0f, 4000.0f, SLA_90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 3500		200 4000
+	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 150.0f, 6000.0f, SLA_135 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 4500		300 4000
+	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 200.0f, 7000.0f, SLA_N90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ500 5000		500 5000
 /*	
 	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 100.0f, 4000.0f, SLA_45 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ200 2000	T	200 2000
 	PARAM_makeSra( (FLOAT)SEARCH_SPEED, 100.0f, 4500.0f, SLA_90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 3500		200 4000
