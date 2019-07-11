@@ -44,7 +44,7 @@
 #define R_FRONT_WALL					( 55 )						// 右前壁、壁検知値　区画の中央からずらして見たときの値（壁を見るための値）45
 #define L_FRONT_WALL					( 55 )					// 左前壁、壁検知値40
 #define R_SIDE_WALL					( 140 )						// 右横壁、壁検知値100
-#define L_SIDE_WALL					( 90 )					// 左横壁、壁検知値80
+#define L_SIDE_WALL					( 100 )					// 左横壁、壁検知値80
 #define R_FRONT_SKEW_ERR1				( 80 )//仮
 #define L_FRONT_SKEW_ERR1				( 70 )
 #define R_FRONT_SKEW_ERR2				( 192 )
@@ -168,10 +168,10 @@ PUBLIC void DIST_init( void )
 	st_senF[DIST_SEN_L_FRONT].s_skewErr2	= L_FRONT_SKEW_ERR2;
 	st_senF[DIST_SEN_R_FRONT].s_skewErr3	= R_FRONT_SKEW_ERR3;
 	st_senF[DIST_SEN_L_FRONT].s_skewErr3	= L_FRONT_SKEW_ERR3;
-	st_sen[DIST_SEN_R_FRONT].s_noCtrl = R_FRONT_NOCTRL_GAIN;//実験値
-	st_sen[DIST_SEN_L_FRONT].s_noCtrl = L_FRONT_NOCTRL_GAIN;
-	st_sen[DIST_SEN_R_FRONT].s_ctrl = R_FRONT_CTRL_GAIN;
-	st_sen[DIST_SEN_L_FRONT].s_ctrl = L_FRONT_CTRL_GAIN;
+	st_sen[DIST_SEN_R_FRONT].s_noCtrl = R_FRONT_NOCTRL;//実験値
+	st_sen[DIST_SEN_L_FRONT].s_noCtrl = L_FRONT_NOCTRL;
+	st_sen[DIST_SEN_R_FRONT].s_ctrl = R_FRONT_CTRL;
+	st_sen[DIST_SEN_L_FRONT].s_ctrl = L_FRONT_CTRL;
 
 }
 
@@ -264,19 +264,19 @@ PUBLIC void DIST_getErr( LONG* p_err )
 		*p_err = ( st_sen[DIST_SEN_R_SIDE].s_now - st_sen[DIST_SEN_R_SIDE].s_ref ) + 
 				 ( st_sen[DIST_SEN_L_SIDE].s_ref - st_sen[DIST_SEN_L_SIDE].s_now );
 //		printf("[Val]%6d 両壁制御 	\n\r", *p_err);
-		LED4 = 0x09;
+//		LED4 = 0x09;
 	}
 	/* 右壁あり */
 	else if( s_threshold_R < st_sen[DIST_SEN_R_SIDE].s_now ){
 		*p_err = ( st_sen[DIST_SEN_R_SIDE].s_now - st_sen[DIST_SEN_R_SIDE].s_ref ) * 2;
 //		printf("[Val]%6d 右壁制御 	\n\r", *p_err);
-		LED4 = 0x08;
+//		LED4 = 0x08;
 	}
 	/* 左壁あり */
 	else if( s_threshold_L < st_sen[DIST_SEN_L_SIDE].s_now ){
 		*p_err = ( st_sen[DIST_SEN_L_SIDE].s_ref - st_sen[DIST_SEN_L_SIDE].s_now ) * 2;
 //		printf("[Val]%6d 左壁制御 	\n\r", *p_err);
-		LED4 = 0x01;
+//		LED4 = 0x01;
 	}
 }
 
