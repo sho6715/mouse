@@ -27,7 +27,7 @@
 //**************************************************
 #define		BAT_GOOD			(2135)			// 残量減ってきた（黄色）、1セル3.7V以上： 2135 = ( 3700mV * 2セル ) / 4.3(分圧) / 3300 * 4096 - 1
 #define		BAT_LOW				(1961)			// 残量やばい！！（赤色）、1セル3.4V以上： 1961 = ( 3400mV * 2セル ) / 4.3(分圧) / 3300 * 4096 - 1
-#define		GYRO_REF_NUM		(100)		//ジャイロのリファレンス値をサンプリングする数
+#define		GYRO_REF_NUM		(200)		//ジャイロのリファレンス値をサンプリングする数
 #define		ENC_RESET_VAL		(32768)			// エンコーダの中間値
 #define		ENC_R_TSTR			(TPUA.TSTR.BIT.CST1)	// 右エンコーダパルスカウント開始
 #define		ENC_L_TSTR			(TPUA.TSTR.BIT.CST2)	// 左エンコーダパルスカウント開始
@@ -673,7 +673,7 @@ PUBLIC FLOAT GYRO_getSpeedErr( void )
 	FLOAT f_res;
 	
 	/* 角速度の偏差算出 */
-	if( ( l_err < -10 * 100 ) || ( 10 * 100 < l_err ) ){
+	if( ( l_err < -20 * 100 ) || ( 20 * 100 < l_err ) ){
 		f_res = (FLOAT)l_err /32.768 / 100;		//32.768 = 2^16(16bit)/2000(+-1000度) LSB/(°/s)
 													// 100倍の精度
 	}
@@ -727,20 +727,20 @@ PUBLIC void GYRO_Pol( void )
 	FLOAT f_speed;
 	
 	/* バッファシフト（[7]に新しいデータを入れるため、[0]のデータを捨てて、1つずつ詰める） */
-	s_GyroValBuf[0]	= s_GyroValBuf[1];
+/*	s_GyroValBuf[0]	= s_GyroValBuf[1];
 	s_GyroValBuf[1]	= s_GyroValBuf[2];
 	s_GyroValBuf[2]	= s_GyroValBuf[3];
 	s_GyroValBuf[3]	= s_GyroValBuf[4];
 	s_GyroValBuf[4]	= s_GyroValBuf[5];
 	s_GyroValBuf[5]	= s_GyroValBuf[6];
 	s_GyroValBuf[6]	= s_GyroValBuf[7];
-	
+*/	
 	/* 最新のジャイロセンサ値を取得 */
-	s_GyroValBuf[7] = (SHORT)recv_spi_gyro();
+//	s_GyroValBuf[7] = (SHORT)recv_spi_gyro();
 	
 	/* ジャイロの値を平滑する（平滑数は8つ） */
-	s_GyroVal = ( s_GyroValBuf[0] + s_GyroValBuf[1] + s_GyroValBuf[2] + s_GyroValBuf[3] +
-				  s_GyroValBuf[4] + s_GyroValBuf[5] + s_GyroValBuf[6] + s_GyroValBuf[7] ) / 8;
+	s_GyroVal = (SHORT)recv_spi_gyro();//( s_GyroValBuf[0] + s_GyroValBuf[1] + s_GyroValBuf[2] + s_GyroValBuf[3] +
+				//  s_GyroValBuf[4] + s_GyroValBuf[5] + s_GyroValBuf[6] + s_GyroValBuf[7] ) / 8;
 	
 	/* 現在の角度を更新する */
 	f_speed = GYRO_getSpeedErr();			// 角速度取得 (0.001sec毎の角速度)
@@ -1669,33 +1669,103 @@ PRIVATE enPARAM_MODE Chg_ParamID( enCTRL_TYPE en_type )
 // **************************    履    歴    *******************************
 // 		v1.0		2013.12.14			外川			新規
 // *************************************************************************/
-PUBLIC void CTRL_getFF( FLOAT* p_err )
+PUBLIC void CTRL_getFF_speed( FLOAT* p_err )
 {
-	FLOAT f_ff = 0.0f;
+	FLOAT f_ff_speed_acc = 0.0f;
+	FLOAT f_ff_speed = 0.0f;
+
+	f_ff_speed_acc	= PARAM_getGain( Chg_ParamID(en_Type) )->f_FF_speed_acc;
+	f_ff_speed		= PARAM_getGain( Chg_ParamID(en_Type) )->f_FF_speed;
+
 	/* 動作モードに応じる */
 	switch( en_Type ){
 	
-		/* 加速 */
+		// 加速 
 		case CTRL_ACC:
 		case CTRL_HIT_WALL:
 		case CTRL_SKEW_ACC:
-			f_ff = PARAM_getGain( Chg_ParamID(en_Type) )->f_FF;
-			*p_err = f_Acc * f_ff;			// 加速度に応じた必要電流（機体の重量などを加味）からDuty比を算出
-			break;
-			
 		case CTRL_ACC_TRUN:
 		case CTRL_ACC_SURA:
-			f_ff = PARAM_getGain( Chg_ParamID(en_Type) )->f_FF;
-			*p_err = f_AccAngleS * f_ff;			// 加速度に応じた必要電流（機体の重量などを加味）からDuty比を算出
+			*p_err = f_Acc * f_ff_speed_acc + f_TrgtSpeed * f_ff_speed ;
+			break;
+			
+		case CTRL_CONST:
+		case CTRL_SKEW_CONST:
+		case CTRL_CONST_TRUN:
+		case CTRL_ENTRY_SURA:
+		case CTRL_EXIT_SURA:
+		case CTRL_CONST_SURA:
+			*p_err = f_TrgtSpeed * f_ff_speed ;
 			break;
 		
-		/* 加速以外 */
+		case CTRL_DEC:
+		case CTRL_SKEW_DEC:
+		case CTRL_DEC_TRUN:
+		case CTRL_DEC_SURA:
+			*p_err = f_Acc * f_ff_speed_acc * (-1) + f_TrgtSpeed * f_ff_speed;
+			break;
+
+		// 加速以外 
 		default:
 			*p_err = 0;
 			break;										// 何もしない
 	}
+	
 }
 
+// *************************************************************************
+//   機能		： フィードフォアード量を取得する。
+//   注意		： CTRL_polからのみ実行可能。
+//   メモ		： 1msec毎に実行される。
+//   			   機体の質量と加速度から必要なOnDutyのオフセットを演算できるようにする。
+//   引数		： [出力] フィードフォアード制御量
+//   返り値		： なし
+// **************************    履    歴    *******************************
+// 		v1.0		2013.12.14			外川			新規
+// *************************************************************************/
+PUBLIC void CTRL_getFF_angle( FLOAT* p_err )
+{
+	FLOAT f_ff_angleS_acc = 0.0f;
+	FLOAT f_ff_angleS = 0.0f;
+
+	f_ff_angleS_acc = PARAM_getGain( Chg_ParamID(en_Type) )->f_FF_angleS_acc;
+	f_ff_angleS 	= PARAM_getGain( Chg_ParamID(en_Type) )->f_FF_angleS;
+
+	/* 動作モードに応じる */
+	switch( en_Type ){
+	
+		// 加速 
+		case CTRL_ACC:
+		case CTRL_HIT_WALL:
+		case CTRL_SKEW_ACC:
+		case CTRL_ACC_TRUN:
+		case CTRL_ACC_SURA:
+			*p_err =FABS(f_AccAngleS) * f_ff_angleS_acc + FABS(f_TrgtAngleS) * f_ff_angleS;
+			break;
+			
+		case CTRL_CONST:
+		case CTRL_SKEW_CONST:
+		case CTRL_CONST_TRUN:
+		case CTRL_ENTRY_SURA:
+		case CTRL_EXIT_SURA:
+		case CTRL_CONST_SURA:
+			*p_err = FABS(f_TrgtAngleS) * f_ff_angleS;
+			break;
+		
+		case CTRL_DEC:
+		case CTRL_SKEW_DEC:
+		case CTRL_DEC_TRUN:
+		case CTRL_DEC_SURA:
+			*p_err = FABS(f_AccAngleS) * f_ff_angleS_acc *(-1) + FABS(f_TrgtAngleS) * f_ff_angleS;
+			break;
+
+		// 加速以外 
+		default:
+			*p_err = 0;
+			break;										// 何もしない
+	}
+	
+}
 
 // *************************************************************************
 //   機能		： 速度フィードバック量を取得する。
@@ -1830,13 +1900,13 @@ PUBLIC void CTRL_getAngleSpeedFB( FLOAT* p_err )
 		f_AngleSErrSum = -100;
 	}
 	
-	templog2 = f_AngleSErrSum;
+//	templog2 = f_AngleSErrSum;
 	*p_err = f_err * f_kp + f_AngleSErrSum + ( f_err - f_ErrAngleSBuf ) * f_kd;		// PID制御
 		
 	f_ErrAngleSBuf = f_err;		// 偏差をバッファリング	
 	
 	// 累積偏差クリア 
-	if( FABS( f_err ) < 0.05 ){
+	if( FABS( f_err ) < 1 ){
 		f_AngleSErrSum = 0;
 	}
 
@@ -1934,7 +2004,7 @@ PUBLIC void CTRL_getSenFB( FLOAT* p_err )
 		/* 偏差取得 */
 		DIST_getErr( &l_WallErr );
 		f_err = (FLOAT)l_WallErr;
-		
+		templog2 = f_err;
 		/* PD制御 */
 		*p_err = f_err * f_kp + ( f_err - f_ErrDistBuf ) * f_kd;		// PD制御
 		
@@ -2020,7 +2090,8 @@ PRIVATE void CTRL_outMot( FLOAT f_duty10_R, FLOAT f_duty10_L )
 // *************************************************************************/
 PUBLIC void CTRL_pol( void )
 {
-	FLOAT f_feedFoard			= 0;		// [制御] フィードフォワード制御
+	FLOAT f_feedFoard_speed		= 0;		// [制御] フィードフォワード制御
+	FLOAT f_feedFoard_angle		= 0;
 	FLOAT f_speedCtrl			= 0;		// [制御] 速度制御量
 	FLOAT f_distCtrl			= 0;		// [制御] 距離制御量
 	FLOAT f_angleSpeedCtrl			= 0;		// [制御] 角速度制御量
@@ -2057,7 +2128,8 @@ PUBLIC void CTRL_pol( void )
 	CTRL_refTarget();								// 制御に使用する値を目標値に更新
 
 	/* 制御値取得 */
-	CTRL_getFF( &f_feedFoard );					// [制御] フィードフォワード
+	CTRL_getFF_speed( &f_feedFoard_speed );					// [制御] フィードフォワード
+	CTRL_getFF_angle( &f_feedFoard_angle );					// [制御] フィードフォワード
 	CTRL_getSpeedFB( &f_speedCtrl );				// [制御] 速度
 	CTRL_getDistFB( &f_distCtrl );					// [制御] 距離
 	CTRL_getAngleSpeedFB( &f_angleSpeedCtrl );			// [制御] 角速度
@@ -2065,27 +2137,34 @@ PUBLIC void CTRL_pol( void )
 	CTRL_getSenFB( &f_distSenCtrl );				// [制御] 壁
 	
 //	templog1 = f_angleSpeedCtrl;
-	templog1 = f_angleCtrl;
+	templog1 = f_distSenCtrl;
 	
 	/* 直進制御 */
 	if( ( en_Type == CTRL_ACC ) || ( en_Type == CTRL_CONST ) || ( en_Type == CTRL_DEC ) ||( en_Type == CTRL_ENTRY_SURA ) || ( en_Type == CTRL_EXIT_SURA ) ||
 		( en_Type == CTRL_SKEW_ACC ) || ( en_Type == CTRL_SKEW_CONST ) || ( en_Type == CTRL_SKEW_DEC )
 	){
-		f_duty10_R = f_feedFoard * FF_BALANCE_R +  f_distCtrl + f_speedCtrl + f_angleCtrl + f_angleSpeedCtrl + f_distSenCtrl;	// 右モータPWM-DUTY比[0.1%]
-		f_duty10_L = f_feedFoard * FF_BALANCE_L +  f_distCtrl + f_speedCtrl - f_angleCtrl - f_angleSpeedCtrl - f_distSenCtrl;	// 左モータPWM-DUTY比[0.1%]
+		f_duty10_R = f_feedFoard_speed * FF_BALANCE_R +  f_distCtrl + f_speedCtrl + f_angleCtrl + f_angleSpeedCtrl + f_distSenCtrl;	// 右モータPWM-DUTY比[0.1%]
+		f_duty10_L = f_feedFoard_speed * FF_BALANCE_L +  f_distCtrl + f_speedCtrl - f_angleCtrl - f_angleSpeedCtrl - f_distSenCtrl;	// 左モータPWM-DUTY比[0.1%]
 	}
 	
 	/* 壁あて制御 */
 	else if( en_Type == CTRL_HIT_WALL ){
-		f_duty10_R = f_feedFoard * FF_HIT_BALANCE_R * (-1);																		// 右モータPWM-DUTY比[0.1%]
-		f_duty10_L = f_feedFoard * FF_HIT_BALANCE_L * (-1);
+		f_duty10_R = f_feedFoard_speed * FF_HIT_BALANCE_R * (-1);																		// 右モータPWM-DUTY比[0.1%]
+		f_duty10_L = f_feedFoard_speed * FF_HIT_BALANCE_L * (-1);
 	}
 	
 	/* スラローム制御 */
 	else if( ( en_Type == CTRL_ACC_SURA ) || (en_Type == CTRL_CONST_SURA)||( en_Type == CTRL_DEC_SURA ) ){
-		
-		f_duty10_R = f_feedFoard * FF_BALANCE_R +  f_distCtrl + f_speedCtrl + f_angleCtrl + f_angleSpeedCtrl;					// 右モータPWM-DUTY比[0.1%]
-		f_duty10_L = f_feedFoard * FF_BALANCE_L +  f_distCtrl + f_speedCtrl - f_angleCtrl - f_angleSpeedCtrl;					// 左モータPWM-DUTY比[0.1%]
+		/* 左旋回 */
+		if( f_LastAngle > 0 ){
+			f_duty10_R = f_feedFoard_speed * FF_BALANCE_R + f_feedFoard_angle * FF_BALANCE_R + f_angleCtrl + f_angleSpeedCtrl +  f_distCtrl + f_speedCtrl;		// 右モータPWM-DUTY比[0.1%]
+			f_duty10_L = f_feedFoard_speed * FF_BALANCE_L + f_feedFoard_angle * FF_BALANCE_L * (-1) - f_angleCtrl - f_angleSpeedCtrl +  f_distCtrl + f_speedCtrl;		// 左モータPWM-DUTY比[0.1%]
+		}
+		/*右旋回 */
+		else{
+			f_duty10_R = f_feedFoard_speed * FF_BALANCE_R + f_feedFoard_angle * FF_BALANCE_R * (-1) + f_angleCtrl + f_angleSpeedCtrl +  f_distCtrl + f_speedCtrl;		// 右モータPWM-DUTY比[0.1%]
+			f_duty10_L = f_feedFoard_speed * FF_BALANCE_L + f_feedFoard_angle * FF_BALANCE_L - f_angleCtrl - f_angleSpeedCtrl +  f_distCtrl + f_speedCtrl;		// 左モータPWM-DUTY比[0.1%]
+		}
 	}
 		
 	
@@ -2095,15 +2174,15 @@ PUBLIC void CTRL_pol( void )
 		if( f_LastAngle > 0 ){
 //			f_duty10_R = f_feedFoard * FF_BALANCE_R        + f_angleCtrl + f_angleSpeedCtrl;									// 右モータPWM-DUTY比[0.1%]
 //			f_duty10_L = f_feedFoard * FF_BALANCE_L * (-1) - f_angleCtrl - f_angleSpeedCtrl;									// 左モータPWM-DUTY比[0.1%]
-			f_duty10_R = f_feedFoard * FF_BALANCE_R        + f_angleCtrl + f_angleSpeedCtrl +  f_distCtrl + f_speedCtrl;		// 右モータPWM-DUTY比[0.1%]
-			f_duty10_L = f_feedFoard * FF_BALANCE_L * (-1) - f_angleCtrl - f_angleSpeedCtrl +  f_distCtrl + f_speedCtrl;		// 左モータPWM-DUTY比[0.1%]
+			f_duty10_R = f_feedFoard_angle * FF_BALANCE_R        + f_angleCtrl + f_angleSpeedCtrl +  f_distCtrl + f_speedCtrl;		// 右モータPWM-DUTY比[0.1%]
+			f_duty10_L = f_feedFoard_angle * FF_BALANCE_L * (-1) - f_angleCtrl - f_angleSpeedCtrl +  f_distCtrl + f_speedCtrl;		// 左モータPWM-DUTY比[0.1%]
 		}
 		/* 右旋回 */
 		else{
 //			f_duty10_R = f_feedFoard * FF_BALANCE_R * (-1) + f_angleCtrl + f_angleSpeedCtrl;									// 右モータPWM-DUTY比[0.1%]
 //			f_duty10_L = f_feedFoard * FF_BALANCE_L        - f_angleCtrl - f_angleSpeedCtrl;									// 左モータPWM-DUTY比[0.1%]
-			f_duty10_R = f_feedFoard * FF_BALANCE_R * (-1) + f_angleCtrl + f_angleSpeedCtrl +  f_distCtrl + f_speedCtrl;		// 右モータPWM-DUTY比[0.1%]
-			f_duty10_L = f_feedFoard * FF_BALANCE_L        - f_angleCtrl - f_angleSpeedCtrl +  f_distCtrl + f_speedCtrl;		// 左モータPWM-DUTY比[0.1%]
+			f_duty10_R = f_feedFoard_angle * FF_BALANCE_R * (-1) + f_angleCtrl + f_angleSpeedCtrl +  f_distCtrl + f_speedCtrl;		// 右モータPWM-DUTY比[0.1%]
+			f_duty10_L = f_feedFoard_angle * FF_BALANCE_L        - f_angleCtrl - f_angleSpeedCtrl +  f_distCtrl + f_speedCtrl;		// 左モータPWM-DUTY比[0.1%]
 		}
 	}
 	
@@ -3796,12 +3875,20 @@ PUBLIC void log_interrupt ( void )
 		f_NowAngle, f_TrgtAngle,
 		templog1,templog2);
 */
+/*
 	log_in2(f_NowSpeed, f_TrgtSpeed,
 		f_NowDist, f_TrgtDist,
 		GYRO_getSpeedErr(), f_TrgtAngleS,
 		f_NowAngle,f_TrgtAngle,
-		f_AccAngleS,templog2,
-		templog1,f_Duty_R);
+		f_AccAngleS,templog1,
+		templog2,f_Duty_R);
+*/
+	log_in2(DIST_getNowVal( DIST_SEN_R_FRONT ), DIST_getNowVal( DIST_SEN_L_FRONT ),
+		DIST_getNowVal( DIST_SEN_R_SIDE ), DIST_getNowVal( DIST_SEN_L_SIDE ),
+		GYRO_getSpeedErr(), f_TrgtAngleS,
+		f_NowAngle,f_TrgtAngle,
+		templog2,templog1,
+		f_Duty_L,f_Duty_R);
 }
 
 // *************************************************************************
@@ -3844,7 +3931,7 @@ PUBLIC void log_flag_off(void)
 PUBLIC void log_read2(void)
 {
 	int i=0;
-	while(i<200){
+	while(i<log_num){
 		printf("%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f\n\r",
 		Log_1[i],Log_2[i],Log_3[i],Log_4[i],Log_5[i],Log_6[i],Log_7[i],Log_8[i],Log_9[i],Log_10[i],Log_11[i],Log_12[i]);
 		i++;

@@ -22,9 +22,9 @@
 //**************************************************
 #define		SW_CHATTERING_WAIT		(200) 		//スイッチのチャタリング対策
 
-#define	FF_BALANCE_R				( 1.00f )					// [FF] 右のバランス係数
+#define	FF_BALANCE_R				( 1.01f )					// [FF] 右のバランス係数
 #define	FF_BALANCE_L				( 1.00f )					// [FF] 左のバランス係数 
-#define FF_HIT_BALANCE_R			(1.00f)						//バック時のバランス係数
+#define FF_HIT_BALANCE_R			(1.01f)						//バック時のバランス係数
 #define FF_HIT_BALANCE_L			(1.00f)
 
 #define SEARCH_SPEED				(500)
@@ -140,7 +140,10 @@ typedef struct{
 
 /* ゲイン */
 typedef struct{
-	FLOAT			f_FF;				// フィードフォワード
+	FLOAT			f_FF_speed_acc;				// フィードフォワード、加速度
+	FLOAT			f_FF_speed;				// フィードフォワード、速度
+	FLOAT			f_FF_angleS_acc;		// フィードフォワード、角加速度
+	FLOAT			f_FF_angleS;			// フィードフォワード、角速度
 	FLOAT 			f_FB_speed_kp;			// フィードバック、速度 比例制御
 	FLOAT 			f_FB_speed_ki;			// フィードバック、速度 積分制御
 	FLOAT 			f_FB_speed_kd;			// フィードバック、速度 微分制御

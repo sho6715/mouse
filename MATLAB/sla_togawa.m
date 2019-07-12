@@ -3,9 +3,9 @@ close all
 DEG_TO_RAD = pi()/180;
 %ˆø”
 f_speed = 500;
-f_angAcc = 300.0;
-f_g =4000;
-enSLA_TYPE = 'SLA_90';
+f_angAcc = 100.0;
+f_g =6000;
+enSLA_TYPE = 'SLA_135';
 %Šp“x‚É‰‚¶‚Ä•ÏX
 f_start_x = 0;
 f_start_y = 0;
