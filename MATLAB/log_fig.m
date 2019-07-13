@@ -3,11 +3,14 @@ clc;
 
 mouse = xlsread('logexcel.xlsx');
 
-plot(mouse(:,1:2),'DisplayName','mouse(:,2:3)');
-figure;
-plot(mouse(:,3:4),'DisplayName','mouse(:,4:5)');
-figure;
-plot(mouse(:,9),'DisplayName','mouse(:,7:8)');
-figure;
-plot(mouse(:,10),'DisplayName','mouse(:,9:10)');
+ax(1) = subplot(4,1,1);
+plot(mouse(1:110,1:2));
+ax(2) = subplot(4,1,2);
+plot(mouse(1:110,3:4));
+ax(3) = subplot(4,1,3);
+plot(mouse(1:110,5:6));
+ax(4) = subplot(4,1,4);
+plot(mouse(1:110,7:8));
+
+linkaxes(ax,'x');
 
