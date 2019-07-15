@@ -434,11 +434,11 @@ PRIVATE void MODE_exe( void )
 //			POS_sta();			// debug
 			MAP_setPos( 0, 0, NORTH );							// スタート位置
 
-			log_flag_on();
+//			log_flag_on();
 
 			MAP_searchGoal( GOAL_MAP_X, GOAL_MAP_Y, SEARCH, SEARCH_SURA );			// ゴール設定
 
-			log_flag_off();
+//			log_flag_off();
 
 //			POS_stop();			// debug
 			if (( SW_ON == SW_INC_PIN )||(SYS_isOutOfCtrl() == TRUE)){}
@@ -449,11 +449,11 @@ PRIVATE void MODE_exe( void )
 			TIME_wait(1000);
 			LED4 = LED4_ALL_OFF;
 
-			log_flag_on();
+//			log_flag_on();
 
 			MAP_searchGoal( 0, 0, SEARCH, SEARCH_SURA );
 
-			log_flag_off();
+//			log_flag_off();
 
 			TIME_wait(1000);
 			if (( SW_ON == SW_INC_PIN )||(SYS_isOutOfCtrl() == TRUE)){}
