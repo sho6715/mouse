@@ -339,7 +339,7 @@ PRIVATE void MODE_exe( void )
 			
 			break;
 
-		case MODE_3:
+		case MODE_3:	//速度700でのスラロームチェクプログラム
 			LED4 = LED4_ALL_ON;
 /*			while(1){
 				printf("エンコーダ [R]=%d [L]=%d \r",ENC_R_TCNT,ENC_L_TCNT);
