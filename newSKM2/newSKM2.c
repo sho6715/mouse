@@ -529,7 +529,6 @@ PRIVATE void MODE_exe( void )
 
 		case MODE_6:
 			LED4 = LED4_ALL_ON;
-//			RUN_SPEED = 600;
 			
 			TIME_wait(1000);
 			MOT_setTrgtSpeed(SEARCH_SPEED*6);
@@ -541,7 +540,10 @@ PRIVATE void MODE_exe( void )
 //			PARAM_makeSra( RUN_SPEED, 450.0f, 5000.0f, SLA_90 );
 			
 			LED4 = LED4_ALL_OFF;
-			Failsafe_flag_off();
+			MAP_Goal_change_x();
+			TIME_wait(500);
+			MAP_Goal_change_y();
+/*			Failsafe_flag_off();
 			
 			MAP_setPos( 0, 0, NORTH );												// スタート位置
 			MAP_makeContourMap( GOAL_MAP_X, GOAL_MAP_Y, BEST_WAY );					// 等高線マップを作る
@@ -552,7 +554,7 @@ PRIVATE void MODE_exe( void )
 			TIME_wait(500);
 			MOT_turn(MOT_R180);
 			MAP_actGoalLED();
-
+*/
 //			PARAM_makeSra( (FLOAT)SEARCH_SPEED, 300.0f, 3500.0f, SLA_90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ
 /*			mypos.x = 0;
 			mypos.y = 0;

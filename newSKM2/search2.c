@@ -138,14 +138,19 @@ PUBLIC void MAP_Goal_init( void )
 // *************************************************************************/
 PUBLIC void MAP_Goal_change_x( void )
 {
+	LED4 = GOAL_MAP_X;
 	while(1){
 		if ( SW_ON == SW_INC_PIN ){
 			GOAL_MAP_X = GOAL_MAP_X ++;
 			if (GOAL_MAP_X == 16){
 				GOAL_MAP_X = 0;
 			}
+			LED4 = GOAL_MAP_X;
+			TIME_wait(SW_CHATTERING_WAIT);			// SW‚ª—£‚³‚ê‚é‚Ü‚Å‘Ò‚Â
+			printf("GOAL_x %d\r\n",GOAL_MAP_X);
 		} 
 		else if (( SW_ON == SW_EXE_PIN )||(TRUE == MODE_CheckExe())){
+			LED4 = LED4_ALL_OFF;
 			break;
 		}
 	}
@@ -162,14 +167,19 @@ PUBLIC void MAP_Goal_change_x( void )
 // *************************************************************************/
 PUBLIC void MAP_Goal_change_y( void )
 {
+	LED4 = GOAL_MAP_Y;
 	while(1){
 		if ( SW_ON == SW_INC_PIN ){
 			GOAL_MAP_Y = GOAL_MAP_Y ++;
 			if (GOAL_MAP_Y == 16){
 				GOAL_MAP_Y = 0;
 			}
+			LED4 = GOAL_MAP_Y;
+			TIME_wait(SW_CHATTERING_WAIT);			// SW‚ª—£‚³‚ê‚é‚Ü‚Å‘Ò‚Â
+			printf("GOAL_y %d\r\n",GOAL_MAP_Y);
 		} 
 		else if (( SW_ON == SW_EXE_PIN )||(TRUE == MODE_CheckExe())){
+			LED4 = LED4_ALL_OFF;
 			break;
 		}
 	}

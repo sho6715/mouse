@@ -85,6 +85,8 @@ extern PUBLIC UCHAR		GOAL_MAP_Y;					//ゴール座標変更プログラム用ｙ
 //**************************************************
 PUBLIC void MAP_init( void );
 PUBLIC void MAP_Goal_init( void );
+PUBLIC void MAP_Goal_change_x( void );
+PUBLIC void MAP_Goal_change_y( void );
 PUBLIC void MAP_showLog( void );
 PUBLIC void MAP_clearMap( void );
 PUBLIC void MAP_setPos( UCHAR uc_x, UCHAR uc_y, enMAP_HEAD_DIR en_dir );
