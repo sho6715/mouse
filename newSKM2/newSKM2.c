@@ -876,6 +876,7 @@ void main(void)
 	TIME_init();						// [SYS] タイマー
 	HAL_init();						// [HAL] ハードウエアドライバ
 	DIST_init();
+	MAP_Goal_init();
 	RX631_staTimer();					// [CPU] タイマスタート
 //	printf("set1\n\r");
 	SYS_start();						// [SYS] 動作開始
