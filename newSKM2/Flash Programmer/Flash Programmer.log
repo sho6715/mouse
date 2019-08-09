@@ -6066,7 +6066,6 @@ Renesas Flash Programmer V3.05.00 [1 July 2018]  (無償版)
 ツールから切断します。
 操作が成功しました。
 
-======================================================================
 [2019/08/02 22:27:53.367] Log Start
 Renesas Flash Programmer V3.05.00 [1 July 2018]  (無償版)
 プロジェクトをロードします。(D:\電気研究会\github\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
@@ -6079,6 +6078,82 @@ Renesas Flash Programmer V3.05.00 [1 July 2018]  (無償版)
 Renesas Flash Programmer V3.05.00 [1 July 2018]  (無償版)
 プロジェクトをロードします。(D:\電気研究会\github\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(D:\電気研究会\github\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 486BE7C6
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A5FF     サイズ : 41.5 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+=======
+======================================================================
+[2019/08/09 21:33:00.216] Log Start
+Renesas Flash Programmer V3.05.00 [1 July 2018]  (無償版)
+プロジェクトをロードします。(D:\電気研究会\github\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(D:\電気研究会\github\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 486BE7C6
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A5FF     サイズ : 41.5 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/09 21:37:06.735] Log Start
+Renesas Flash Programmer V3.05.00 [1 July 2018]  (無償版)
+プロジェクトをロードします。(D:\電気研究会\github\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(D:\電気研究会\github\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 28F60650
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A4FF     サイズ : 41.3 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/09 21:45:13.501] Log Start
+Renesas Flash Programmer V3.05.00 [1 July 2018]  (無償版)
+プロジェクトをロードします。(D:\電気研究会\github\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(D:\電気研究会\github\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : CDA0CC95
 
 接続デバイス : RX600 Series 
 
