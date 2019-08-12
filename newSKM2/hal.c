@@ -1966,7 +1966,7 @@ PUBLIC void CTRL_getAngleFB( FLOAT* p_err )
 		
 		//*p_err = f_err * FB_ANG_KP_GAIN;					// P制御量算出
 		*p_err = f_err * f_kp + f_AngleErrSum;					// PI制御量算出
-	//	templog2 = f_AngleErrSum;
+		templog2 = f_AngleErrSum;
 
 		/* 累積偏差クリア */
 		if( FABS( f_TrgtAngle - f_NowAngle ) < 0.1 ){
@@ -2004,7 +2004,7 @@ PUBLIC void CTRL_getSenFB( FLOAT* p_err )
 		/* 偏差取得 */
 		DIST_getErr( &l_WallErr );
 		f_err = (FLOAT)l_WallErr;
-		templog2 = f_err;
+//		templog2 = f_err;
 		/* PD制御 */
 		*p_err = f_err * f_kp + ( f_err - f_ErrDistBuf ) * f_kd;		// PD制御
 		
@@ -2136,8 +2136,8 @@ PUBLIC void CTRL_pol( void )
 	CTRL_getAngleFB( &f_angleCtrl );				// [制御] 角度
 	CTRL_getSenFB( &f_distSenCtrl );				// [制御] 壁
 	
-//	templog1 = f_angleSpeedCtrl;
-	templog1 = f_distSenCtrl;
+	templog1 = f_angleSpeedCtrl;
+//	templog1 = f_distSenCtrl;
 	
 	/* 直進制御 */
 	if( ( en_Type == CTRL_ACC ) || ( en_Type == CTRL_CONST ) || ( en_Type == CTRL_DEC ) ||( en_Type == CTRL_ENTRY_SURA ) || ( en_Type == CTRL_EXIT_SURA ) ||
@@ -3875,20 +3875,21 @@ PUBLIC void log_interrupt ( void )
 		f_NowAngle, f_TrgtAngle,
 		templog1,templog2);
 */
-/*
+
 	log_in2(f_NowSpeed, f_TrgtSpeed,
 		f_NowDist, f_TrgtDist,
 		GYRO_getSpeedErr(), f_TrgtAngleS,
 		f_NowAngle,f_TrgtAngle,
 		f_AccAngleS,templog1,
 		templog2,f_Duty_R);
-*/
-	log_in2(DIST_getNowVal( DIST_SEN_R_FRONT ), DIST_getNowVal( DIST_SEN_L_FRONT ),
+
+/*	log_in2(DIST_getNowVal( DIST_SEN_R_FRONT ), DIST_getNowVal( DIST_SEN_L_FRONT ),
 		DIST_getNowVal( DIST_SEN_R_SIDE ), DIST_getNowVal( DIST_SEN_L_SIDE ),
 		GYRO_getSpeedErr(), f_TrgtAngleS,
 		f_NowAngle,f_TrgtAngle,
 		templog2,templog1,
 		f_Duty_L,f_Duty_R);
+*/
 }
 
 // *************************************************************************
@@ -3931,7 +3932,7 @@ PUBLIC void log_flag_off(void)
 PUBLIC void log_read2(void)
 {
 	int i=0;
-	while(i<log_num){
+	while(i<200){
 		printf("%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f\n\r",
 		Log_1[i],Log_2[i],Log_3[i],Log_4[i],Log_5[i],Log_6[i],Log_7[i],Log_8[i],Log_9[i],Log_10[i],Log_11[i],Log_12[i]);
 		i++;
