@@ -404,10 +404,10 @@ PRIVATE void MODE_exe( void )
 			MOT_turn(MOT_L180);
 */
 
-			MOT_goBlock_FinSpeed( 0.5, 700 );
-			MOT_goSla( MOT_R90S, PARAM_getSra( SLA_90 ) );
+			MOT_goBlock_FinSpeed( 4.0, 0 );
+//			MOT_goSla( MOT_R90S, PARAM_getSra( SLA_90 ) );
 //			MOT_goSla( MOT_L90S_N, PARAM_getSra( SLA_N90 ) );
-			MOT_goBlock_FinSpeed( 0.5, 0 );
+//			MOT_goBlock_FinSpeed( 0.5, 0 );
 
 			log_flag_off();	
 			break;

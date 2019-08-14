@@ -56,7 +56,7 @@
 #define VCC_MAX						( 8.4f )									// バッテリ最大電圧[V]、4.2[V]×2[セル]
 #define TIRE_R						( 22.2f )									// タイヤ直径 [mm]
 #define GEAR_RATIO					( 36 / 8 )									// ギア比(スパー/ピニオン)
-#define ROTATE_PULSE					( 2048 )									// 1周のタイヤパルス数
+#define ROTATE_PULSE					( 1024 )									// 1周のタイヤパルス数
 #define DIST_1STEP					( PI * TIRE_R / GEAR_RATIO / ROTATE_PULSE )				// 1パルスで進む距離 [mm]
 #define F_CNT2MM(cnt)					( (FLOAT)cnt * DIST_1STEP )				// [カウント値]から[mm]へ換算
 #define MOT_MOVE_ST_THRESHOLD				( 25 )							// 直進移動距離の閾値[mm]
