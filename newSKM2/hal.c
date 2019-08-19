@@ -54,7 +54,7 @@
 
 /* 調整パラメータ */
 #define VCC_MAX						( 8.4f )									// バッテリ最大電圧[V]、4.2[V]×2[セル]
-#define TIRE_R						( 22.2f )									// タイヤ直径 [mm]
+#define TIRE_R						( 22.3f )									// タイヤ直径 [mm]
 #define GEAR_RATIO					( 36 / 8 )									// ギア比(スパー/ピニオン)
 #define ROTATE_PULSE					( 1024 )									// 1周のタイヤパルス数
 #define DIST_1STEP					( PI * TIRE_R / GEAR_RATIO / ROTATE_PULSE )				// 1パルスで進む距離 [mm]
@@ -3871,25 +3871,25 @@ PUBLIC void log_interrupt ( void )
 /*	log_in2(f_DistErrSum, f_NowSpeed,
 		f_TrgtSpeed, f_NowDist,
 		f_TrgtDist, f_AccAngleS,
-		GYRO_getSpeedErr(), f_TrgtAngleS,)
+		GYRO_getSpeedErr(), f_TrgtAngleS,
 		f_NowAngle, f_TrgtAngle,
 		templog1,templog2);
 */
 
-	log_in2(f_NowSpeed, f_TrgtSpeed,
+/*	log_in2(f_NowSpeed, f_TrgtSpeed,
 		f_NowDist, f_TrgtDist,
 		GYRO_getSpeedErr(), f_TrgtAngleS,
 		f_NowAngle,f_TrgtAngle,
 		f_AccAngleS,templog1,
 		templog2,f_Duty_R);
-
-/*	log_in2(DIST_getNowVal( DIST_SEN_R_FRONT ), DIST_getNowVal( DIST_SEN_L_FRONT ),
+*/
+	log_in2(DIST_getNowVal( DIST_SEN_R_FRONT ), DIST_getNowVal( DIST_SEN_L_FRONT ),
 		DIST_getNowVal( DIST_SEN_R_SIDE ), DIST_getNowVal( DIST_SEN_L_SIDE ),
 		GYRO_getSpeedErr(), f_TrgtAngleS,
 		f_NowAngle,f_TrgtAngle,
 		templog2,templog1,
 		f_Duty_L,f_Duty_R);
-*/
+
 }
 
 // *************************************************************************
@@ -3932,7 +3932,7 @@ PUBLIC void log_flag_off(void)
 PUBLIC void log_read2(void)
 {
 	int i=0;
-	while(i<200){
+	while(i<log_num){
 		printf("%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f\n\r",
 		Log_1[i],Log_2[i],Log_3[i],Log_4[i],Log_5[i],Log_6[i],Log_7[i],Log_8[i],Log_9[i],Log_10[i],Log_11[i],Log_12[i]);
 		i++;
