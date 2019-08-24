@@ -29,7 +29,7 @@
 #define MAP_SMAP_MAX_VAL	( MAP_X_SIZE * MAP_Y_SIZE ) 			///< 等高線mapの最大値
 #define MAP_SMAP_MAX_PRI_VAL	( MAP_SMAP_MAX_VAL * 4 )				///< 等高線mapの優先度最大値
 
-#define MOVE_BACK_DIST		(0.15f)
+#define MOVE_BACK_DIST		(0.155f)
 
 //**************************************************
 // 列挙体（enum）
@@ -935,7 +935,7 @@ PUBLIC void MAP_searchGoal(
 	f_MoveBackDist = 0;
 	uc_SlaCnt = 0;
 	if(uc_trgX == GOAL_MAP_X && uc_trgY == GOAL_MAP_Y){
-		f_MoveBackDist = 0.15;
+		f_MoveBackDist = 0.155;
 	}
 	
 	log_flag_on();	//ログ関数スタート（大会時削除）
