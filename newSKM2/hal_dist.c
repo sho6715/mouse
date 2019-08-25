@@ -51,10 +51,10 @@
 #define L_FRONT_SKEW_ERR2				( 160 )
 #define R_FRONT_SKEW_ERR3				( 250 )
 #define L_FRONT_SKEW_ERR3				( 250 )
-#define R_FRONT_CTRL					( 370 )
-#define L_FRONT_CTRL					( 300 )
-#define R_FRONT_NOCTRL					( 530 )
-#define L_FRONT_NOCTRL					( 450 )
+#define R_FRONT_CTRL					( 800 )
+#define L_FRONT_CTRL					( 680 )
+#define R_FRONT_NOCTRL					( 850 )
+#define L_FRONT_NOCTRL					( 770 )
 
 
 #define		SEN_WAIT_CNT		(175)		//ƒZƒ“ƒT‚Ì”­ŒõˆÀ’è‘Ò‚¿(ŽÀŒ±’l)
