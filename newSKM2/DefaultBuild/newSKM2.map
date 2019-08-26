@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W2.08.00 )             24-Aug-2019 17:55:20
+Renesas Optimizing Linker (W2.08.00 )             26-Aug-2019 13:55:23
 
 *** Options ***
 
@@ -43,13 +43,13 @@ B_2
 R_2
                                   000033e0  000033ff        20   2
 B
-                                  00003400  0000f4fb      c0fc   4
+                                  00003400  0000f4f3      c0f4   4
 R
-                                  0000f4fc  0000f833       338   4
+                                  0000f4f4  0000f82f       33c   4
 SU
-                                  0000f834  0000f933       100   4
+                                  0000f830  0000f92f       100   4
 SI
-                                  0000f934  0000fc33       300   4
+                                  0000f930  0000fc2f       300   4
 PResetPRG
                                   fff80000  fff80038        39   1
 C_1
@@ -73,19 +73,19 @@ D_1
 D_2
                                   fff82390  fff823af        20   2
 D
-                                  fff823b0  fff826e7       338   4
+                                  fff823b0  fff826eb       33c   4
 P
-                                  fff826e8  fff89ec0      77d9   1
+                                  fff826ec  fff89ef3      7808   1
 PIntPRG
-                                  fff89ec1  fff8a089       1c9   1
+                                  fff89ef4  fff8a0bc       1c9   1
 W_1
-                                  fff8a08a  fff8a0c6        3d   1
+                                  fff8a0bd  fff8a0f9        3d   1
 W_2
-                                  fff8a0c8  fff8a105        3e   2
+                                  fff8a0fa  fff8a137        3e   2
 W
-                                  fff8a108  fff8a108         0   4
+                                  fff8a138  fff8a138         0   4
 L
-                                  fff8a108  fff8a5c4       4bd   4
+                                  fff8a138  fff8a5f4       4bd   4
 $ADDR_C_FFFFFF80
                                   ffffff80  ffffff83         4   1
 $ADDR_C_FFFFFFA0

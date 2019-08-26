@@ -269,8 +269,8 @@ PRIVATE FLOAT	Log_12[log_num];
 PRIVATE	USHORT	log_count = 0;
 PUBLIC	BOOL	b_logflag = FALSE;
 
-PRIVATE FLOAT	templog1;
-PRIVATE FLOAT	templog2;
+PRIVATE FLOAT	templog1	= 0;
+PRIVATE FLOAT	templog2	= 0;
 
 //ログ用デューティー
 PRIVATE	FLOAT	f_Duty_R;
@@ -1508,7 +1508,7 @@ PUBLIC void CTRL_refTarget( void )
 			/* 反時計回り */
 			if( f_LastAngle > 0 ){ 
 				/* 反時計回り */
-				if( f_TrgtAngleS < f_LastAngleS-1 ){
+				if( f_TrgtAngleS < f_LastAngleS ){
 					f_TrgtAngleS = f_BaseAngleS + f_AccAngleS * f_Time;							// 目標角速度
 					f_TrgtAngle  = f_BaseAngle + ( f_BaseAngleS + f_TrgtAngleS ) * f_Time / 2;	// 目標角度
 				}
@@ -1518,7 +1518,7 @@ PUBLIC void CTRL_refTarget( void )
 			}
 			else{
 				/* 時計回り */
-				if( f_TrgtAngleS > f_LastAngleS+1 ){
+				if( f_TrgtAngleS > f_LastAngleS ){
 					f_TrgtAngleS = f_BaseAngleS + f_AccAngleS * f_Time;							// 目標角速度
 					f_TrgtAngle  = f_BaseAngle + ( f_BaseAngleS + f_TrgtAngleS ) * f_Time / 2;	// 目標角度
 //					printf("%5.2f %5.2f %5.4f %5.2f\n\r",f_TrgtAngleS,f_AccAngleS,f_Time,f_TrgtAngle);
@@ -1529,7 +1529,7 @@ PUBLIC void CTRL_refTarget( void )
 			}
 
 			/* 位置制御 */
-			if( f_LastDist > f_TrgtDist-1 ){													// 目標更新区間
+			if( f_LastDist > f_TrgtDist ){													// 目標更新区間
 				f_TrgtDist  = f_BaseDist + f_TrgtSpeed * f_Time;							// 目標位置
 			}
 			else{
@@ -1563,7 +1563,7 @@ PUBLIC void CTRL_refTarget( void )
 			}
 
 			/* 位置制御 */
-			if( f_LastDist > f_TrgtDist-1 ){													// 目標更新区間
+			if( f_LastDist > f_TrgtDist ){													// 目標更新区間
 				f_TrgtDist  = f_BaseDist + f_TrgtSpeed * f_Time;							// 目標位置
 			}
 			else{
@@ -1578,7 +1578,7 @@ PUBLIC void CTRL_refTarget( void )
 			/* 反時計回り */
 			if( f_LastAngle > 0 ){ 
 				/* 反時計回り */
-				if( f_TrgtAngleS > f_LastAngleS-1 ){
+				if( f_TrgtAngleS > f_LastAngleS ){
 					f_TrgtAngleS = f_BaseAngleS + f_AccAngleS * f_Time;							// 目標角速度
 					f_TrgtAngle  = f_BaseAngle + ( f_BaseAngleS + f_TrgtAngleS ) * f_Time / 2;	// 目標角度
 				}
@@ -1588,7 +1588,7 @@ PUBLIC void CTRL_refTarget( void )
 			}
 			else{
 				/* 時計回り */
-				if( f_TrgtAngleS < f_LastAngleS+1 ){
+				if( f_TrgtAngleS < f_LastAngleS ){
 					f_TrgtAngleS = f_BaseAngleS + f_AccAngleS * f_Time;							// 目標角速度
 					f_TrgtAngle  = f_BaseAngle + ( f_BaseAngleS + f_TrgtAngleS ) * f_Time / 2;	// 目標角度
 				}
@@ -1598,7 +1598,7 @@ PUBLIC void CTRL_refTarget( void )
 			}
 			
 			/* 速度制御 ＋ 位置制御 */
-			if( f_LastDist > f_TrgtDist-1 ){													// 目標更新区間
+			if( f_LastDist > f_TrgtDist ){													// 目標更新区間
 				f_TrgtDist  = f_BaseDist + f_TrgtSpeed * f_Time;							// 目標位置
 			}
 			else{
@@ -1966,7 +1966,7 @@ PUBLIC void CTRL_getAngleFB( FLOAT* p_err )
 		
 		//*p_err = f_err * FB_ANG_KP_GAIN;					// P制御量算出
 		*p_err = f_err * f_kp + f_AngleErrSum;					// PI制御量算出
-		templog2 = f_AngleErrSum;
+//		templog2 = f_AngleErrSum;
 
 		/* 累積偏差クリア */
 		if( FABS( f_TrgtAngle - f_NowAngle ) < 0.1 ){
@@ -2136,7 +2136,7 @@ PUBLIC void CTRL_pol( void )
 	CTRL_getAngleFB( &f_angleCtrl );				// [制御] 角度
 	CTRL_getSenFB( &f_distSenCtrl );				// [制御] 壁
 	
-	templog1 = f_angleSpeedCtrl;
+//	templog1 = f_angleSpeedCtrl;
 //	templog1 = f_distSenCtrl;
 	
 	/* 直進制御 */
@@ -3539,25 +3539,28 @@ PUBLIC void MOT_goSla( enMOT_SURA_CMD en_type, stSLA* p_sla )
 	CTRL_setData( &st_data );							// データセット
 //	log_in(st_data.f_angle);
 	if( IS_R_SLA( en_type ) == TRUE ) {		// -方向
-		while( ( f_NowAngle > st_info.f_angle ) || ( f_NowDist < st_data.f_dist ) ){			// 指定角度＋距離到達待ち
+		while( ( f_NowAngle > st_info.f_angle + 0.2 ) || ( f_NowDist < st_data.f_dist ) ){			// 指定角度＋距離到達待ち
 			if( SYS_isOutOfCtrl() == TRUE ){
 				CTRL_stop(); 
 				DCM_brakeMot( DCM_R );		// ブレーキ
 				DCM_brakeMot( DCM_L );		// ブレーキ
 				break;
 			}				// 途中で制御不能になった
+		LED4 = LED4_ALL_ON;
 		}
 	}
 	else{
-		while( ( f_NowAngle < st_info.f_angle) || ( f_NowDist < st_data.f_dist ) ){			// 指定角度＋距離到達待ち
+		while( ( f_NowAngle < st_info.f_angle - 0.2) || ( f_NowDist < st_data.f_dist ) ){			// 指定角度＋距離到達待ち
 			if( SYS_isOutOfCtrl() == TRUE ){
 				CTRL_stop(); 
 				DCM_brakeMot( DCM_R );		// ブレーキ
 				DCM_brakeMot( DCM_L );		// ブレーキ
 				break;
 			}				// 途中で制御不能になった
+		LED4 = LED4_ALL_ON;
 		}
 	}
+	LED4 = LED4_ALL_OFF;
 //	log_in(0);
 //	LED_on(LED1);
 	/* ------------------------ */
@@ -3880,7 +3883,7 @@ PUBLIC void log_interrupt ( void )
 		f_NowDist, f_TrgtDist,
 		GYRO_getSpeedErr(), f_TrgtAngleS,
 		f_NowAngle,f_TrgtAngle,
-		f_AccAngleS,templog1,
+		f_AccAngleS,f_Acc,
 		templog2,f_Duty_R);
 
 /*	log_in2(DIST_getNowVal( DIST_SEN_R_FRONT ), DIST_getNowVal( DIST_SEN_L_FRONT ),
@@ -3932,7 +3935,7 @@ PUBLIC void log_flag_off(void)
 PUBLIC void log_read2(void)
 {
 	int i=0;
-	while(i<200){
+	while(i<log_num){
 		printf("%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f\n\r",
 		Log_1[i],Log_2[i],Log_3[i],Log_4[i],Log_5[i],Log_6[i],Log_7[i],Log_8[i],Log_9[i],Log_10[i],Log_11[i],Log_12[i]);
 		i++;
