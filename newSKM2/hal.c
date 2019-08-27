@@ -1900,7 +1900,7 @@ PUBLIC void CTRL_getAngleSpeedFB( FLOAT* p_err )
 		f_AngleSErrSum = -100;
 	}
 	
-//	templog2 = f_AngleSErrSum;
+	templog2 = f_AngleSErrSum;
 	*p_err = f_err * f_kp + f_AngleSErrSum + ( f_err - f_ErrAngleSBuf ) * f_kd;		// PID制御
 		
 	f_ErrAngleSBuf = f_err;		// 偏差をバッファリング	
@@ -2136,7 +2136,7 @@ PUBLIC void CTRL_pol( void )
 	CTRL_getAngleFB( &f_angleCtrl );				// [制御] 角度
 	CTRL_getSenFB( &f_distSenCtrl );				// [制御] 壁
 	
-//	templog1 = f_angleSpeedCtrl;
+	templog1 = f_angleSpeedCtrl;
 //	templog1 = f_distSenCtrl;
 	
 	/* 直進制御 */
@@ -3883,7 +3883,7 @@ PUBLIC void log_interrupt ( void )
 		f_NowDist, f_TrgtDist,
 		GYRO_getSpeedErr(), f_TrgtAngleS,
 		f_NowAngle,f_TrgtAngle,
-		f_AccAngleS,f_Acc,
+		f_AccAngleS,templog1,
 		templog2,f_Duty_R);
 
 /*	log_in2(DIST_getNowVal( DIST_SEN_R_FRONT ), DIST_getNowVal( DIST_SEN_L_FRONT ),

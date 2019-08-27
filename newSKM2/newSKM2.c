@@ -347,11 +347,11 @@ PRIVATE void MODE_exe( void )
 			}
 */
 //			TIME_wait(200);
-			MOT_setTrgtSpeed(SEARCH_SPEED*6);
-			MOT_setSuraStaSpeed( (FLOAT)700 );							// スラローム開始速度設定
-			PARAM_setSpeedType( PARAM_ST,   PARAM_NORMAL );							// [直進] 速度普通
+			MOT_setTrgtSpeed(SEARCH_SPEED*10);
+			MOT_setSuraStaSpeed( (FLOAT)600 );							// スラローム開始速度設定
+			PARAM_setSpeedType( PARAM_ST,   PARAM_VERY_FAST );							// [直進] 速度普通
 			PARAM_setSpeedType( PARAM_TRUN, PARAM_NORMAL );							// [旋回] 速度普通
-			PARAM_setSpeedType( PARAM_SLA,  PARAM_NORMAL );							// [スラ] 速度普通
+			PARAM_setSpeedType( PARAM_SLA,  PARAM_VERY_FAST );							// [スラ] 速度普通
 			LED4 = LED4_ALL_OFF;
 
 //			PARAM_makeSra( (FLOAT)600, 150.0f, 5000.0f, SLA_45 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ200 2000	T	200 2000
@@ -361,8 +361,9 @@ PRIVATE void MODE_exe( void )
 			
 			PARAM_makeSra( (FLOAT)700, 250.0f, 6000.0f, SLA_45 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ200 2000	T	200 2000
 			PARAM_makeSra( (FLOAT)700, 250.0f, 7000.0f, SLA_90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 3500		200 4000
-			PARAM_makeSra( (FLOAT)700, 250.0f, 8000.0f, SLA_135 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 4500		300 4000
+			PARAM_makeSra( (FLOAT)700, 450.0f, 8000.0f, SLA_135 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 4500		300 4000
 			PARAM_makeSra( (FLOAT)700, 500.0f, 9500.0f, SLA_N90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ500 5000		500 5000
+
 /*
 			Dist_autocalibration();
 			Failsafe_flag_off();
@@ -409,13 +410,13 @@ PRIVATE void MODE_exe( void )
 			MOT_turn(MOT_L180);
 */
 
-			MOT_goBlock_FinSpeed( 7.0, 0 );
-//			MOT_goSla( MOT_L90S, PARAM_getSra( SLA_45 ) );
+//			MOT_goBlock_FinSpeed( 0.5, 700 );
+//			MOT_goSla( MOT_L90S, PARAM_getSra( SLA_90 ) );
 //			MOT_goBlock_FinSpeed( 0.5, 0 );
 
-//			MOT_goSkewBlock_FinSpeed(0.5,500);
-//			MOT_goSla( MOT_L90S_N, PARAM_getSra( SLA_N90 ) );
-//			MOT_goSkewBlock_FinSpeed(0.5,0);
+			MOT_goSkewBlock_FinSpeed(0.5,700);
+			MOT_goSla( MOT_L90S_N, PARAM_getSra( SLA_N90 ) );
+			MOT_goSkewBlock_FinSpeed(0.5,0);
 
 			log_flag_off();	
 			break;
@@ -662,7 +663,13 @@ PRIVATE void MODE_exe( void )
 			MAP_makeCmdList( 0, 0, NORTH, GOAL_MAP_X, GOAL_MAP_Y, &en_endDir );		// ドライブコマンド作成
 			MAP_makeSuraCmdList();													// スラロームコマンド作成
 			MAP_makeSkewCmdList();													// 斜めコマンド作成
+			
+			log_flag_on();
+
 			MAP_drive( MAP_DRIVE_SKEW );
+			
+			log_flag_off();
+
 			TIME_wait(500);
 			MOT_turn(MOT_R180);
 			MAP_actGoalLED();
