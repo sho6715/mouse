@@ -54,7 +54,11 @@
 
 /* 調整パラメータ */
 #define VCC_MAX						( 8.4f )									// バッテリ最大電圧[V]、4.2[V]×2[セル]
+<<<<<<< HEAD
 #define TIRE_R						( 22.3f )									// タイヤ直径 [mm]
+=======
+#define TIRE_R						( 22.25f )									// タイヤ直径 [mm]
+>>>>>>> develop
 #define GEAR_RATIO					( 36 / 8 )									// ギア比(スパー/ピニオン)
 #define ROTATE_PULSE					( 1024 )									// 1周のタイヤパルス数
 #define DIST_1STEP					( PI * TIRE_R / GEAR_RATIO / ROTATE_PULSE )				// 1パルスで進む距離 [mm]
@@ -269,8 +273,8 @@ PRIVATE FLOAT	Log_12[log_num];
 PRIVATE	USHORT	log_count = 0;
 PUBLIC	BOOL	b_logflag = FALSE;
 
-PRIVATE FLOAT	templog1;
-PRIVATE FLOAT	templog2;
+PRIVATE FLOAT	templog1	= 0;
+PRIVATE FLOAT	templog2	= 0;
 
 //ログ用デューティー
 PRIVATE	FLOAT	f_Duty_R;
@@ -1508,7 +1512,7 @@ PUBLIC void CTRL_refTarget( void )
 			/* 反時計回り */
 			if( f_LastAngle > 0 ){ 
 				/* 反時計回り */
-				if( f_TrgtAngleS < f_LastAngleS-1 ){
+				if( f_TrgtAngleS < f_LastAngleS ){
 					f_TrgtAngleS = f_BaseAngleS + f_AccAngleS * f_Time;							// 目標角速度
 					f_TrgtAngle  = f_BaseAngle + ( f_BaseAngleS + f_TrgtAngleS ) * f_Time / 2;	// 目標角度
 				}
@@ -1518,7 +1522,7 @@ PUBLIC void CTRL_refTarget( void )
 			}
 			else{
 				/* 時計回り */
-				if( f_TrgtAngleS > f_LastAngleS+1 ){
+				if( f_TrgtAngleS > f_LastAngleS ){
 					f_TrgtAngleS = f_BaseAngleS + f_AccAngleS * f_Time;							// 目標角速度
 					f_TrgtAngle  = f_BaseAngle + ( f_BaseAngleS + f_TrgtAngleS ) * f_Time / 2;	// 目標角度
 //					printf("%5.2f %5.2f %5.4f %5.2f\n\r",f_TrgtAngleS,f_AccAngleS,f_Time,f_TrgtAngle);
@@ -1529,7 +1533,7 @@ PUBLIC void CTRL_refTarget( void )
 			}
 
 			/* 位置制御 */
-			if( f_LastDist > f_TrgtDist-1 ){													// 目標更新区間
+			if( f_LastDist > f_TrgtDist ){													// 目標更新区間
 				f_TrgtDist  = f_BaseDist + f_TrgtSpeed * f_Time;							// 目標位置
 			}
 			else{
@@ -1563,7 +1567,7 @@ PUBLIC void CTRL_refTarget( void )
 			}
 
 			/* 位置制御 */
-			if( f_LastDist > f_TrgtDist-1 ){													// 目標更新区間
+			if( f_LastDist > f_TrgtDist ){													// 目標更新区間
 				f_TrgtDist  = f_BaseDist + f_TrgtSpeed * f_Time;							// 目標位置
 			}
 			else{
@@ -1578,7 +1582,7 @@ PUBLIC void CTRL_refTarget( void )
 			/* 反時計回り */
 			if( f_LastAngle > 0 ){ 
 				/* 反時計回り */
-				if( f_TrgtAngleS > f_LastAngleS-1 ){
+				if( f_TrgtAngleS > f_LastAngleS ){
 					f_TrgtAngleS = f_BaseAngleS + f_AccAngleS * f_Time;							// 目標角速度
 					f_TrgtAngle  = f_BaseAngle + ( f_BaseAngleS + f_TrgtAngleS ) * f_Time / 2;	// 目標角度
 				}
@@ -1588,7 +1592,7 @@ PUBLIC void CTRL_refTarget( void )
 			}
 			else{
 				/* 時計回り */
-				if( f_TrgtAngleS < f_LastAngleS+1 ){
+				if( f_TrgtAngleS < f_LastAngleS ){
 					f_TrgtAngleS = f_BaseAngleS + f_AccAngleS * f_Time;							// 目標角速度
 					f_TrgtAngle  = f_BaseAngle + ( f_BaseAngleS + f_TrgtAngleS ) * f_Time / 2;	// 目標角度
 				}
@@ -1598,7 +1602,7 @@ PUBLIC void CTRL_refTarget( void )
 			}
 			
 			/* 速度制御 ＋ 位置制御 */
-			if( f_LastDist > f_TrgtDist-1 ){													// 目標更新区間
+			if( f_LastDist > f_TrgtDist ){													// 目標更新区間
 				f_TrgtDist  = f_BaseDist + f_TrgtSpeed * f_Time;							// 目標位置
 			}
 			else{
@@ -1900,7 +1904,7 @@ PUBLIC void CTRL_getAngleSpeedFB( FLOAT* p_err )
 		f_AngleSErrSum = -100;
 	}
 	
-//	templog2 = f_AngleSErrSum;
+	templog2 = f_AngleSErrSum;
 	*p_err = f_err * f_kp + f_AngleSErrSum + ( f_err - f_ErrAngleSBuf ) * f_kd;		// PID制御
 		
 	f_ErrAngleSBuf = f_err;		// 偏差をバッファリング	
@@ -1945,7 +1949,24 @@ PUBLIC void CTRL_getAngleFB( FLOAT* p_err )
 		( en_Type == CTRL_SKEW_ACC ) || ( en_Type == CTRL_SKEW_CONST ) || ( en_Type == CTRL_SKEW_DEC )
 	){
 		f_kp = PARAM_getGain( Chg_ParamID(en_Type) )->f_FB_angle_kp;
-		*p_err = f_err * f_kp;					// P制御量算出
+		f_ki = PARAM_getGain( Chg_ParamID(en_Type) )->f_FB_angle_ki;
+		
+		f_AngleErrSum += f_err*f_ki;	//I成分更新
+		if(f_AngleErrSum > 200){
+			f_AngleErrSum = 200;			//上限リミッター
+		}
+		else if(f_AngleErrSum <-200){
+			f_AngleErrSum = -200;
+		}
+		
+		//*p_err = f_err * FB_ANG_KP_GAIN;					// P制御量算出
+		*p_err = f_err * f_kp + f_AngleErrSum;					// PI制御量算出
+//		templog2 = f_AngleErrSum;
+
+		/* 累積偏差クリア */
+		if( FABS( f_TrgtAngle - f_NowAngle ) < 0.3 ){
+			f_AngleErrSum = 0;
+		}
 		
 	}
 	
@@ -1966,10 +1987,10 @@ PUBLIC void CTRL_getAngleFB( FLOAT* p_err )
 		
 		//*p_err = f_err * FB_ANG_KP_GAIN;					// P制御量算出
 		*p_err = f_err * f_kp + f_AngleErrSum;					// PI制御量算出
-		templog2 = f_AngleErrSum;
+//		templog2 = f_AngleErrSum;
 
 		/* 累積偏差クリア */
-		if( FABS( f_TrgtAngle - f_NowAngle ) < 0.1 ){
+		if( FABS( f_TrgtAngle - f_NowAngle ) < 0.3 ){
 			f_AngleErrSum = 0;
 		}
 	}
@@ -3539,25 +3560,28 @@ PUBLIC void MOT_goSla( enMOT_SURA_CMD en_type, stSLA* p_sla )
 	CTRL_setData( &st_data );							// データセット
 //	log_in(st_data.f_angle);
 	if( IS_R_SLA( en_type ) == TRUE ) {		// -方向
-		while( ( f_NowAngle > st_info.f_angle ) || ( f_NowDist < st_data.f_dist ) ){			// 指定角度＋距離到達待ち
+		while( ( f_NowAngle > st_info.f_angle + 0.2 ) || ( f_NowDist < st_data.f_dist ) ){			// 指定角度＋距離到達待ち
 			if( SYS_isOutOfCtrl() == TRUE ){
 				CTRL_stop(); 
 				DCM_brakeMot( DCM_R );		// ブレーキ
 				DCM_brakeMot( DCM_L );		// ブレーキ
 				break;
 			}				// 途中で制御不能になった
+//		LED4 = LED4_ALL_ON;
 		}
 	}
 	else{
-		while( ( f_NowAngle < st_info.f_angle) || ( f_NowDist < st_data.f_dist ) ){			// 指定角度＋距離到達待ち
+		while( ( f_NowAngle < st_info.f_angle - 0.2) || ( f_NowDist < st_data.f_dist ) ){			// 指定角度＋距離到達待ち
 			if( SYS_isOutOfCtrl() == TRUE ){
 				CTRL_stop(); 
 				DCM_brakeMot( DCM_R );		// ブレーキ
 				DCM_brakeMot( DCM_L );		// ブレーキ
 				break;
 			}				// 途中で制御不能になった
+//		LED4 = LED4_ALL_ON;
 		}
 	}
+//	LED4 = LED4_ALL_OFF;
 //	log_in(0);
 //	LED_on(LED1);
 	/* ------------------------ */

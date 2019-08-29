@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Renesas Optimizing Linker (W2.08.00 )             25-Aug-2019 13:54:32
+=======
+Renesas Optimizing Linker (W2.08.00 )             29-Aug-2019 15:48:17
+>>>>>>> develop
 
 *** Options ***
 
@@ -43,9 +47,15 @@ B_2
 R_2
                                   000033e0  000033ff        20   2
 B
+<<<<<<< HEAD
                                   00003400  0000f4ff      c100   4
 R
                                   0000f500  0000f837       338   4
+=======
+                                  00003400  0000f4f3      c0f4   4
+R
+                                  0000f4f4  0000f833       340   4
+>>>>>>> develop
 SU
                                   0000f838  0000f937       100   4
 SI
@@ -73,8 +83,9 @@ D_1
 D_2
                                   fff82390  fff823af        20   2
 D
-                                  fff823b0  fff826e7       338   4
+                                  fff823b0  fff826ef       340   4
 P
+<<<<<<< HEAD
                                   fff826e8  fff89e25      773e   1
 PIntPRG
                                   fff89e26  fff89fee       1c9   1
@@ -86,6 +97,19 @@ W
                                   fff8a06c  fff8a06c         0   4
 L
                                   fff8a06c  fff8a528       4bd   4
+=======
+                                  fff826f0  fff89fb8      78c9   1
+PIntPRG
+                                  fff89fb9  fff8a181       1c9   1
+W_1
+                                  fff8a182  fff8a1be        3d   1
+W_2
+                                  fff8a1c0  fff8a21d        5e   2
+W
+                                  fff8a220  fff8a220         0   4
+L
+                                  fff8a220  fff8a718       4f9   4
+>>>>>>> develop
 $ADDR_C_FFFFFF80
                                   ffffff80  ffffff83         4   1
 $ADDR_C_FFFFFFA0
