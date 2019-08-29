@@ -54,7 +54,7 @@
 
 /* 調整パラメータ */
 #define VCC_MAX						( 8.4f )									// バッテリ最大電圧[V]、4.2[V]×2[セル]
-#define TIRE_R						( 22.3f )									// タイヤ直径 [mm]
+#define TIRE_R						( 22.25f )									// タイヤ直径 [mm]
 #define GEAR_RATIO					( 36 / 8 )									// ギア比(スパー/ピニオン)
 #define ROTATE_PULSE					( 2048 )									// 1周のタイヤパルス数
 #define DIST_1STEP					( PI * TIRE_R / GEAR_RATIO / ROTATE_PULSE )				// 1パルスで進む距離 [mm]
@@ -1945,7 +1945,24 @@ PUBLIC void CTRL_getAngleFB( FLOAT* p_err )
 		( en_Type == CTRL_SKEW_ACC ) || ( en_Type == CTRL_SKEW_CONST ) || ( en_Type == CTRL_SKEW_DEC )
 	){
 		f_kp = PARAM_getGain( Chg_ParamID(en_Type) )->f_FB_angle_kp;
-		*p_err = f_err * f_kp;					// P制御量算出
+		f_ki = PARAM_getGain( Chg_ParamID(en_Type) )->f_FB_angle_ki;
+		
+		f_AngleErrSum += f_err*f_ki;	//I成分更新
+		if(f_AngleErrSum > 200){
+			f_AngleErrSum = 200;			//上限リミッター
+		}
+		else if(f_AngleErrSum <-200){
+			f_AngleErrSum = -200;
+		}
+		
+		//*p_err = f_err * FB_ANG_KP_GAIN;					// P制御量算出
+		*p_err = f_err * f_kp + f_AngleErrSum;					// PI制御量算出
+//		templog2 = f_AngleErrSum;
+
+		/* 累積偏差クリア */
+		if( FABS( f_TrgtAngle - f_NowAngle ) < 0.3 ){
+			f_AngleErrSum = 0;
+		}
 		
 	}
 	
@@ -1969,7 +1986,7 @@ PUBLIC void CTRL_getAngleFB( FLOAT* p_err )
 //		templog2 = f_AngleErrSum;
 
 		/* 累積偏差クリア */
-		if( FABS( f_TrgtAngle - f_NowAngle ) < 0.1 ){
+		if( FABS( f_TrgtAngle - f_NowAngle ) < 0.3 ){
 			f_AngleErrSum = 0;
 		}
 	}
@@ -3546,7 +3563,7 @@ PUBLIC void MOT_goSla( enMOT_SURA_CMD en_type, stSLA* p_sla )
 				DCM_brakeMot( DCM_L );		// ブレーキ
 				break;
 			}				// 途中で制御不能になった
-		LED4 = LED4_ALL_ON;
+//		LED4 = LED4_ALL_ON;
 		}
 	}
 	else{
@@ -3557,10 +3574,10 @@ PUBLIC void MOT_goSla( enMOT_SURA_CMD en_type, stSLA* p_sla )
 				DCM_brakeMot( DCM_L );		// ブレーキ
 				break;
 			}				// 途中で制御不能になった
-		LED4 = LED4_ALL_ON;
+//		LED4 = LED4_ALL_ON;
 		}
 	}
-	LED4 = LED4_ALL_OFF;
+//	LED4 = LED4_ALL_OFF;
 //	log_in(0);
 //	LED_on(LED1);
 	/* ------------------------ */

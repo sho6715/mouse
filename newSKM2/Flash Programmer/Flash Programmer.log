@@ -7088,3 +7088,728 @@ Renesas Flash Programmer V3.05.00 [1 July 2018]  (無償版)
 エラー(E3000002): ファイルが見つかりません。
 操作は失敗しました。
 
+======================================================================
+[2019/08/29 12:14:03.408] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+エラー(E3000002): ファイルが見つかりません。
+エラー(E3000002): ファイルが見つかりません。
+操作は失敗しました。
+
+======================================================================
+[2019/08/29 12:24:28.552] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 746E1934
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+Address : 0xFFF84500
+
+ツールから切断します。
+エラー(E300010D): 不明なデータを受信しました。（0x00）
+操作は失敗しました。
+
+======================================================================
+[2019/08/29 12:24:43.849] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 746E1934
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+[W0000009] : IDコードプロテクトが無効です。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 12:30:32.864] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 67F2F542
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 12:37:38.145] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 7ECF0D17
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 12:39:54.119] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : AF82C4DD
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 12:42:47.113] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : AD8336F8
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 12:46:29.756] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : DD10FFF6
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 12:51:27.478] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : B710A3E3
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 12:54:51.353] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : D29F1AD5
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 12:57:45.529] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 4195EFB3
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 13:06:00.343] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : FF03989A
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 13:09:24.948] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : D8A144C5
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+エラー(E3000203): ツールとの接続に失敗しました。
+操作は失敗しました。
+
+======================================================================
+[2019/08/29 13:09:40.997] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : D8A144C5
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 13:13:34.901] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 070574D8
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 13:16:40.141] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 365C8556
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 13:34:54.976] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 74F96DEB
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 13:37:45.745] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 3C9E3636
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 14:37:14.009] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : BCA4D353
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 14:38:19.769] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 7CF58F8C
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 14:43:28.043] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 276AFE51
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 14:46:16.581] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 30101819
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 14:48:38.137] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 34CE3679
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 14:57:30.812] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 4B7F7788
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 15:15:08.031] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 6D511F1E
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+エラー(E3000203): ツールとの接続に失敗しました。
+操作は失敗しました。
+
+======================================================================
+[2019/08/29 15:16:31.407] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 3A92322A
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 15:18:27.898] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 7D59F1E8
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+
+ツールから切断します。
+エラー(E3000105): デバイスから応答がありません。
+操作は失敗しました。
+
+======================================================================
+[2019/08/29 15:18:36.208] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 7D59F1E8
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 15:22:08.819] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 84E5A90C
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 15:27:08.630] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 2C090DF3
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 15:48:35.538] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : E10421D9
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+

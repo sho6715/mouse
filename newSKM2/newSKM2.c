@@ -469,13 +469,13 @@ PRIVATE void MODE_exe( void )
 			
 			log_flag_on();
 
-//			MOT_goBlock_FinSpeed( 0.5, 700 );
+			MOT_goBlock_FinSpeed( 7.0, 0 );
 //			MOT_goSla( MOT_L90S, PARAM_getSra( SLA_90 ) );
 //			MOT_goBlock_FinSpeed( 0.5, 0 );
 
-			MOT_goSkewBlock_FinSpeed(0.5,700);
-			MOT_goSla( MOT_L90S_N, PARAM_getSra( SLA_N90 ) );
-			MOT_goSkewBlock_FinSpeed(0.5,0);
+//			MOT_goSkewBlock_FinSpeed(0.5,700);
+//			MOT_goSla( MOT_L90S_N, PARAM_getSra( SLA_N90 ) );
+//			MOT_goSkewBlock_FinSpeed(0.5,0);
 
 			log_flag_off();	
 			break;
@@ -497,11 +497,11 @@ PRIVATE void MODE_exe( void )
 //			POS_sta();			// debug
 			MAP_setPos( 0, 0, NORTH );							// スタート位置
 
-//			log_flag_on();
+			log_flag_on();
 
 			MAP_searchGoal( GOAL_MAP_X, GOAL_MAP_Y, SEARCH, SEARCH_SURA );			// ゴール設定
 
-//			log_flag_off();
+			log_flag_off();
 
 //			POS_stop();			// debug
 			if (( SW_ON == SW_INC_PIN )||(SYS_isOutOfCtrl() == TRUE)){}

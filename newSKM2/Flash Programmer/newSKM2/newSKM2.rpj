@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <RfpProject>
   <FileVersion>V1.04.00</FileVersion>
-  <ProductVersion>V3.05.00</ProductVersion>
+  <ProductVersion>V3.05.03</ProductVersion>
   <ParameterFile>RX600 Series.fcf</ParameterFile>
   <Device>RX630</Device>
   <OperationTab>
     <Endian>RFLG_ENDIAN_LITTLE</Endian>
-    <ProgramFile>D:\電気研究会\github\mouse\newSKM2\DefaultBuild\newSKM2.mot</ProgramFile>
+    <ProgramFile>C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot</ProgramFile>
   </OperationTab>
   <OperationSettingTab>
     <FillCode>False</FillCode>
