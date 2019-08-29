@@ -6175,11 +6175,7 @@ Renesas Flash Programmer V3.05.00 [1 July 2018]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/14 14:07:34.582] Log Start
-=======
 [2019/08/14 17:21:49.552] Log Start
->>>>>>> develop
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 エラー(E3000002): ファイルが見つかりません。
@@ -6187,17 +6183,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作は失敗しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/14 14:09:54.032] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 1367DCDE
-=======
 [2019/08/26 13:30:25.014] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 509E9B49
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6219,17 +6208,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/14 16:12:12.671] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : AD17856D
-=======
 [2019/08/26 13:34:01.993] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 8F599334
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6251,17 +6233,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/14 16:22:05.375] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 99E41E31
-=======
 [2019/08/26 13:49:46.748] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 90E6B625
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6283,17 +6258,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/14 16:26:45.845] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 8241A668
-=======
 [2019/08/26 13:55:28.287] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 39B86D77
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6302,17 +6270,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作は失敗しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/14 16:26:56.744] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 8241A668
-=======
 [2019/08/26 13:55:40.557] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 39B86D77
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6321,17 +6282,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作は失敗しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/14 16:27:09.409] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 8241A668
-=======
 [2019/08/26 13:55:50.933] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 39B86D77
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6340,17 +6294,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作は失敗しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/14 16:27:29.840] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 8241A668
-=======
 [2019/08/26 13:56:01.968] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 39B86D77
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6372,17 +6319,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/14 16:36:30.810] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 1AAAF37A
-=======
 [2019/08/26 17:29:49.735] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : E97379EF
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6404,17 +6344,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 13:26:05.965] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 1AAAF37A
-=======
 [2019/08/26 17:33:24.268] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 77A4DE9A
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6436,17 +6369,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 13:28:18.451] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 3987896C
-=======
 [2019/08/26 17:35:07.786] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : F17CA6E2
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6461,28 +6387,17 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
   [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
 
 書き込みを実行します。
-<<<<<<< HEAD
-  [Code Flash 1] 0xFFF80000 - 0xFFF8A5FF     サイズ : 41.5 K
-=======
   [Code Flash 1] 0xFFF80000 - 0xFFF8A4FF     サイズ : 41.3 K
->>>>>>> develop
   [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
 
 ツールから切断します。
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 13:29:20.070] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : C0FAB4E5
-=======
 [2019/08/26 17:38:11.756] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 4B2C8510
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6497,18 +6412,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
   [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
 
 書き込みを実行します。
-<<<<<<< HEAD
-  [Code Flash 1] 0xFFF80000 - 0xFFF8A5FF     サイズ : 41.5 K
-=======
   [Code Flash 1] 0xFFF80000 - 0xFFF8A4FF     サイズ : 41.3 K
->>>>>>> develop
   [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
 
-ツールから切断します。
-操作が成功しました。
-
 ======================================================================
-<<<<<<< HEAD
 [2019/08/19 13:36:54.386] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
@@ -6540,17 +6447,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 13:38:40.584] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : A570AFA5
-=======
 [2019/08/26 17:42:57.843] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : DDC64CA1
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6572,17 +6472,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 13:40:23.856] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : EF907379
-=======
 [2019/08/26 17:46:17.864] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : A72C9129
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6604,17 +6497,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 14:17:27.348] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : A9B2579D
-=======
 [2019/08/26 17:50:34.780] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 6B16A5E6
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6636,17 +6522,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 14:19:44.261] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : B0F07060
-=======
 [2019/08/26 17:53:59.848] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 4D2D8C5D
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6668,17 +6547,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 14:29:50.207] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 2DF30722
-=======
 [2019/08/26 17:56:38.053] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : EFE06E31
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6700,17 +6572,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
 [2019/08/19 14:33:18.134] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 5E7E6E3B
-=======
-[2019/08/26 18:01:40.195] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 003C99E1
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6732,17 +6597,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 14:36:37.403] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 6FBD7DE9
-=======
 [2019/08/26 18:02:59.425] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : BFDF01BF
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6764,17 +6622,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 14:38:54.800] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 7D8CDFDF
-=======
 [2019/08/26 18:10:27.687] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 8C7FF3C2
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6796,17 +6647,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 14:40:08.299] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 4C4FCC0D
-=======
 [2019/08/26 18:24:14.017] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 9260EF92
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6828,17 +6672,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 14:42:21.587] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 51192385
-=======
 [2019/08/26 18:28:28.455] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : F55275A1
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6860,17 +6697,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 14:45:19.658] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 821A70B3
-=======
 [2019/08/26 18:31:32.275] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : AE284D87
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6892,17 +6722,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 14:48:50.493] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : C0A7B204
-=======
 [2019/08/26 18:34:12.612] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 1D6E269F
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6924,17 +6747,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 14:59:48.888] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : ECF3D2D5
-=======
 [2019/08/26 18:36:29.997] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : F1E27558
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6956,17 +6772,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 15:02:54.659] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : D9307D09
-=======
 [2019/08/27 15:04:06.489] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 10C51521
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -6988,17 +6797,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 15:05:08.796] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : B28C344B
-=======
 [2019/08/27 15:08:35.288] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : FE8B1BFB
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -7020,17 +6822,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 15:14:01.620] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 36AC66CF
-=======
 [2019/08/27 15:15:10.813] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 7DA82802
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -7052,17 +6847,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 15:15:09.685] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : D19B2D28
-=======
 [2019/08/27 15:17:49.548] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : EBD0A085
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -7084,17 +6872,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 15:21:23.952] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 00A7EEEE
-=======
 [2019/08/27 15:23:00.387] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 8392187F
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -7116,17 +6897,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 15:30:03.956] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 39B457C4
-=======
 [2019/08/27 15:27:42.986] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : E3CD7878
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -7148,17 +6922,10 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 16:07:41.325] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 676A01C5
-=======
 [2019/08/27 15:37:18.239] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : E542313A
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -7173,23 +6940,13 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
   [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
 
 書き込みを実行します。
-<<<<<<< HEAD
-  [Code Flash 1] 0xFFF80000 - 0xFFF8A5FF     サイズ : 41.5 K
-=======
   [Code Flash 1] 0xFFF80000 - 0xFFF8A6FF     サイズ : 41.8 K
->>>>>>> develop
   [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
 
 ツールから切断します。
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 16:12:14.130] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : C04ADDB9
-=======
 [2019/08/27 15:40:16.524] Log Start
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
@@ -7206,7 +6963,6 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : A421AF60
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
@@ -7221,9 +6977,6 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
   [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
 
 書き込みを実行します。
-<<<<<<< HEAD
-  [Code Flash 1] 0xFFF80000 - 0xFFF8A5FF     サイズ : 41.5 K
-=======
   [Code Flash 1] 0xFFF80000 - 0xFFF8A6FF     サイズ : 41.8 K
   [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
 
@@ -7325,19 +7078,12 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 
 書き込みを実行します。
   [Code Flash 1] 0xFFF80000 - 0xFFF8A6FF     サイズ : 41.8 K
->>>>>>> develop
   [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
 
 ツールから切断します。
 操作が成功しました。
 
 ======================================================================
-<<<<<<< HEAD
-[2019/08/19 17:01:09.049] Log Start
-Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
-プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
-ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : C95BBE0E
-=======
 [2019/08/28 21:32:05.452] Log Start
 Renesas Flash Programmer V3.05.00 [1 July 2018]  (無償版)
 プロジェクトをロードします。(D:\電気研究会\github\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
@@ -7358,20 +7104,12 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
 ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 746E1934
->>>>>>> develop
 
 接続デバイス : RX600 Series 
 
 ツールに接続します。
 使用ツール : COM (COM3), インタフェース : 2 wire UART
 ターゲットデバイスに接続します。
-<<<<<<< HEAD
-
-ツールから切断します。
-エラー(E3000204): ツールとの通信に失敗しました。
-操作は失敗しました。
-
-=======
 メインクロック : 12.000000MHz
 通信速度 : 57600bps
 ターゲットデバイスを設定します。
@@ -8078,4 +7816,103 @@ Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
 ツールから切断します。
 操作が成功しました。
 
->>>>>>> develop
+======================================================================
+[2019/08/29 16:02:08.499] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 696FA497
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 16:13:45.374] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 625F45DD
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 16:36:12.736] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 120F3D66
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+
+======================================================================
+[2019/08/29 16:46:44.480] Log Start
+Renesas Flash Programmer V3.05.03 [1 Mar 2019]  (無償版)
+プロジェクトをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\Flash Programmer\newSKM2\newSKM2.rpj)
+ファイルをロードします。(C:\Users\HOSEIDenken\Desktop\halfmouse\mouse\newSKM2\DefaultBuild\newSKM2.mot) CRC-32 : 7D929BC5
+
+接続デバイス : RX600 Series 
+
+ツールに接続します。
+使用ツール : COM (COM3), インタフェース : 2 wire UART
+ターゲットデバイスに接続します。
+メインクロック : 12.000000MHz
+通信速度 : 57600bps
+ターゲットデバイスを設定します。
+
+選択されたブロックを消去します。
+  [Code Flash 1] 0xFFF80000 - 0xFFFFFFFF     サイズ : 512 K
+
+書き込みを実行します。
+  [Code Flash 1] 0xFFF80000 - 0xFFF8A7FF     サイズ : 42 K
+  [Code Flash 1] 0xFFFFFF00 - 0xFFFFFFFF     サイズ : 256
+
+ツールから切断します。
+操作が成功しました。
+

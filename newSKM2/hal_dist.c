@@ -254,6 +254,7 @@ PUBLIC void DIST_getErr( LONG* p_err )
 	else if( ( st_sen[DIST_SEN_R_FRONT].s_now > st_sen[DIST_SEN_R_FRONT].s_ctrl ) &&
 		( st_sen[DIST_SEN_L_FRONT].s_now > st_sen[DIST_SEN_L_FRONT].s_ctrl )
 	){
+		LED4 = LED4_ALL_ON;
 		*p_err = ( st_sen[DIST_SEN_L_FRONT].s_now - st_sen[DIST_SEN_L_FRONT].s_ref ) -
 				 ( st_sen[DIST_SEN_R_FRONT].s_now - st_sen[DIST_SEN_R_FRONT].s_ref );
 //		printf("[Val]%6d ëOï«êßå‰ 	\n\r", *p_err);
