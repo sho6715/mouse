@@ -398,7 +398,7 @@ PRIVATE void MODE_exe( void )
 				else if (( SW_ON == SW_EXE_PIN )||(TRUE == MODE_CheckExe())){
 					MODE_exe0();								// ÉÇÅ[Éhé¿çs
 					TIME_wait(SW_CHATTERING_WAIT);			// SWÇ™ó£Ç≥ÇÍÇÈÇ‹Ç≈ë“Ç¬
-					if (en_Mode = MODE_15)break;
+					if (en_Mode == MODE_15)break;
 				}
 
 			}
