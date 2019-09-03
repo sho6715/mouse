@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W2.08.00 )             01-Sep-2019 18:24:46
+Renesas Optimizing Linker (W2.08.00 )             03-Sep-2019 18:17:02
 
 *** Options ***
 
@@ -75,17 +75,17 @@ D_2
 D
                                   fff823b0  fff826ef       340   4
 P
-                                  fff826f0  fff89f94      78a5   1
+                                  fff826f0  fff8a02f      7940   1
 PIntPRG
-                                  fff89f95  fff8a15d       1c9   1
+                                  fff8a030  fff8a1f8       1c9   1
 W_1
-                                  fff8a15e  fff8a19a        3d   1
+                                  fff8a1f9  fff8a235        3d   1
 W_2
-                                  fff8a19c  fff8a1f9        5e   2
+                                  fff8a236  fff8a293        5e   2
 W
-                                  fff8a1fc  fff8a1fc         0   4
+                                  fff8a294  fff8a294         0   4
 L
-                                  fff8a1fc  fff8a6f4       4f9   4
+                                  fff8a294  fff8a78c       4f9   4
 $ADDR_C_FFFFFF80
                                   ffffff80  ffffff83         4   1
 $ADDR_C_FFFFFFA0

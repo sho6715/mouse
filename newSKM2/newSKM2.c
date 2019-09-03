@@ -262,6 +262,8 @@ PRIVATE void MODE_inc( void )
 // *************************************************************************/
 PRIVATE void MODE_exe0( void )
 {
+	enMAP_HEAD_DIR		en_endDir2;	//MAPcmdチェック用
+
 	/* モード表示 */
 	switch( en_Mode ){
 	
@@ -322,6 +324,12 @@ PRIVATE void MODE_exe0( void )
 
 		case MODE_6:
 			LED4 = LED4_ALL_ON;
+			MAP_setPos( 0, 0, NORTH );								// スタート位置
+			MAP_makeContourMap( GOAL_MAP_X, GOAL_MAP_Y, BEST_WAY );					// 等高線マップを作る
+			MAP_makeCmdList( 0, 0, NORTH, GOAL_MAP_X, GOAL_MAP_Y, &en_endDir2 );		// ドライブコマンド作成
+			MAP_makeSuraCmdList();													// スラロームコマンド作成
+			MAP_makeSkewCmdList();
+			MAP_showCmdLog();
 			break;
 
 		case MODE_7:
