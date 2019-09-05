@@ -593,7 +593,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 	USHORT	c1, c2, c3, c4;				// 計算用
 	USHORT	x;
 	USHORT	ct_n=0, ct_st=0;
-	USHORT	flag = 0;					//	斜め走行用バッファ  0:複合コマンド　1:斜め  2:S135N → N135S  3:直進
+	USHORT	flag = 3;					//	斜め走行用バッファ  0:複合コマンド　1:斜め  2:S135N → N135S  3:直進
 	
 	/* 超地信旋回コマンドをコピー */
 	for( i=0; i<us_totalCmd; i++ )
@@ -612,7 +612,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 		c4 = scom_temp[ct_st+3];
 
 		//	直進 → 右45度 → 斜め
-		if( (c1<=GO32) && (c2==R90S) && (c3==L90S) )
+		if( (c1<=GO32) && (c2==R90S) && (c3==L90S) && (ct_st != 0) )
 		{
 			if( c1-1 != 0 ) tcom[ ct_n++ ] = c1 - 1;		//	前の複合コマンドによって直線区間が消えない場合
 			tcom[ ct_n++ ] = RS45N;
@@ -622,7 +622,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 			flag = 0;
 		}
 		//	直進 → 左45度 → 斜め
-		else if( (c1<=GO32) && (c2==L90S) && (c3==R90S) )
+		else if( (c1<=GO32) && (c2==L90S) && (c3==R90S) && (ct_st != 0) )
 		{
 			if( c1-1 != 0 ) tcom[ ct_n++ ] = c1 - 1;		//	前の複合コマンドによって直線区間が消えない場合
 			tcom[ ct_n++ ] = LS45N;
@@ -689,7 +689,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 		}
 
 		//	斜め → 右45度 → 直進
-		else if( (c1==R90S) && (c2<=GO32) )
+		else if( (c1==R90S) && (c2<=GO32)  && (flag != 3 ) )
 		{
 			if( flag==1 ) tcom[ ct_n++ ] = x;
 			tcom[ ct_n++ ] = RN45S;
@@ -698,7 +698,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 			flag = 3;		//	直進
 		}
 		//	斜め → 左45度 → 直進
-		else if( (c1==L90S) && (c2<=GO32) )
+		else if( (c1==L90S) && (c2<=GO32)  && (flag != 3 ) )
 		{
 			if( flag==1 ) tcom[ ct_n++ ] = x;
 			tcom[ ct_n++ ] = LN45S;
@@ -707,7 +707,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 			flag = 3;		//	直進
 		}
 		//	斜め → 右90度 → 斜め
-		else if( (c1==L90S) && (c2==R90S) && (c3==R90S) && (c4==L90S) )
+		else if( (c1==L90S) && (c2==R90S) && (c3==R90S) && (c4==L90S)  && (flag != 3 ) )
 		{
 			if( flag==0 ) tcom[ ct_n++ ] = NGO1;		//	45NからRN90N
 			else if( flag==1 ) tcom[ ct_n++ ] = x+1;
@@ -719,7 +719,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 			flag = 1;
 		}
 		//	斜め → 左90度 → 斜め
-		else if( (c1==R90S) && (c2==L90S) && (c3==L90S) && (c4==R90S) )
+		else if( (c1==R90S) && (c2==L90S) && (c3==L90S) && (c4==R90S)  && (flag != 3 ) )
 		{
 			if( flag==0 ) tcom[ ct_n++ ] = NGO1;		//	45NからLN90N
 			else if( flag==1 ) tcom[ ct_n++ ] = x+1;
@@ -731,7 +731,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 			flag = 1;
 		}
 		//	斜め → 右135度 → 直進
-		else if( (c1==L90S) && (c2==R90S) && (c3==R90S) && (c4<=GO32) )
+		else if( (c1==L90S) && (c2==R90S) && (c3==R90S) && (c4<=GO32)  && (flag != 3 ) )
 		{
 			if( flag==0 ) tcom[ ct_n++ ] = NGO1;		//	45NからLN90N
 			else if( flag==1 ) tcom[ ct_n++ ] = x+1;
@@ -741,7 +741,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 			flag = 3;		//	直進
 		}
 		//	斜め → 左135度 → 直進
-		else if( (c1==R90S) && (c2==L90S) && (c3==L90S) && (c4<=GO32) )
+		else if( (c1==R90S) && (c2==L90S) && (c3==L90S) && (c4<=GO32)  && (flag != 3 ) )
 		{
 			if( flag==0 ) tcom[ ct_n++ ] = NGO1;		//	45NからLN90N
 			else if( flag==1 ) tcom[ ct_n++ ] = x+1;
@@ -751,14 +751,14 @@ PUBLIC void MAP_makeSkewCmdList( void )
 			flag = 3;		//	直進
 		}
 		//	斜め → 斜め
-		else if( (c1==R90S) && (c2==L90S) && ( (c3==R90S) || (c3==L90S) || ( c3<=GO32 ) ) )
+		else if( (c1==R90S) && (c2==L90S) && ( (c3==R90S) || (c3==L90S) || ( c3<=GO32 ) ) && (flag != 3 ) )
 		{
 			x++;
 			ct_st ++;
 
 			flag = 1;		//	斜め走行バッファあり
 		}
-		else if( (c1==L90S) && (c2==R90S) && ( (c3==L90S) || (c3==R90S) || ( c3<=GO32 ) ) )
+		else if( (c1==L90S) && (c2==R90S) && ( (c3==L90S) || (c3==R90S) || ( c3<=GO32 ) ) && (flag != 3 ) )
 		{
 			//	コマンド出力
 			x++;
@@ -783,6 +783,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 #endif
 
 }
+
 
 // *************************************************************************
 //   機能		： コマンド走行モジュール

@@ -29,7 +29,7 @@
 #define MAP_SMAP_MAX_VAL	( MAP_X_SIZE * MAP_Y_SIZE ) 			///< “™‚ümap‚ÌÅ‘å’l
 #define MAP_SMAP_MAX_PRI_VAL	( MAP_SMAP_MAX_VAL * 4 )				///< “™‚ümap‚Ì—Dæ“xÅ‘å’l
 
-#define MOVE_BACK_DIST		(0.155f)
+#define MOVE_BACK_DIST		(0.2f)
 #define MOVE_HARD_DIST		(-0.066)
 
 //**************************************************

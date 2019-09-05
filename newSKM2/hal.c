@@ -54,7 +54,7 @@
 
 /* 調整パラメータ */
 #define VCC_MAX						( 8.4f )									// バッテリ最大電圧[V]、4.2[V]×2[セル]
-#define TIRE_R						( 22.25f )									// タイヤ直径 [mm]
+#define TIRE_R						( 22.2f )									// タイヤ直径 [mm]
 #define GEAR_RATIO					( 36 / 8 )									// ギア比(スパー/ピニオン)
 #define ROTATE_PULSE					( 1024 )									// 1周のタイヤパルス数
 #define DIST_1STEP					( PI * TIRE_R / GEAR_RATIO / ROTATE_PULSE )				// 1パルスで進む距離 [mm]
@@ -275,6 +275,9 @@ PRIVATE FLOAT	templog2	= 0;
 //ログ用デューティー
 PRIVATE	FLOAT	f_Duty_R;
 PRIVATE	FLOAT	f_Duty_L;
+
+//抜け出し用タイム
+PRIVATE FLOAT	straight_wait;
 
 //**************************************************
 // プロトタイプ宣言（ファイル内で必要なものだけ記述）
@@ -1348,6 +1351,8 @@ PUBLIC void CTRL_setData( stCTRL_DATA* p_data )
 	f_Time 					= 0;
 	f_TrgtTime				= p_data->f_time;
 
+	straight_wait			= 0;
+
 	CTRL_sta();				// 制御開始
 	
 #if 0
@@ -2160,6 +2165,7 @@ PUBLIC void CTRL_pol( void )
 	if( ( en_Type == CTRL_ACC ) || ( en_Type == CTRL_CONST ) || ( en_Type == CTRL_DEC ) ||( en_Type == CTRL_ENTRY_SURA ) || ( en_Type == CTRL_EXIT_SURA ) ||
 		( en_Type == CTRL_SKEW_ACC ) || ( en_Type == CTRL_SKEW_CONST ) || ( en_Type == CTRL_SKEW_DEC )
 	){
+		straight_wait = straight_wait+0.001;
 		f_duty10_R = f_feedFoard_speed * FF_BALANCE_R +  f_distCtrl + f_speedCtrl + f_angleCtrl + f_angleSpeedCtrl + f_distSenCtrl;	// 右モータPWM-DUTY比[0.1%]
 		f_duty10_L = f_feedFoard_speed * FF_BALANCE_L +  f_distCtrl + f_speedCtrl - f_angleCtrl - f_angleSpeedCtrl - f_distSenCtrl;	// 左モータPWM-DUTY比[0.1%]
 	}
@@ -2386,6 +2392,7 @@ PRIVATE void MOT_goBlock_AccConstDec( FLOAT f_fin, enMOT_ST_TYPE en_type, enMOT_
 				break;
 			}				// 途中で制御不能になった
 			MOT_setWallEdgeDist();
+			if(straight_wait>2.0)break;
 		}
 //		printf("現在位置 %f \r\n",f_NowDist);
 //		LED4 = 0x04;
@@ -3896,20 +3903,20 @@ PUBLIC void log_interrupt ( void )
 		templog1,templog2);
 */
 
-/*	log_in2(f_NowSpeed, f_TrgtSpeed,
+	log_in2(f_NowSpeed, f_TrgtSpeed,
 		f_NowDist, f_TrgtDist,
 		GYRO_getSpeedErr(), f_TrgtAngleS,
 		f_NowAngle,f_TrgtAngle,
 		f_AccAngleS,templog1,
 		templog2,f_Duty_R);
-*/
+/*
 	log_in2(DIST_getNowVal( DIST_SEN_R_FRONT ), DIST_getNowVal( DIST_SEN_L_FRONT ),
 		DIST_getNowVal( DIST_SEN_R_SIDE ), DIST_getNowVal( DIST_SEN_L_SIDE ),
 		GYRO_getSpeedErr(), f_TrgtAngleS,
 		f_NowAngle,f_TrgtAngle,
 		templog2,templog1,
 		f_Duty_L,f_Duty_R);
-
+*/
 }
 
 // *************************************************************************
