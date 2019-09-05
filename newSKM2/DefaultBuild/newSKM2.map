@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W2.08.00 )             05-Sep-2019 18:51:19
+Renesas Optimizing Linker (W2.08.00 )             05-Sep-2019 22:24:05
 
 *** Options ***
 
@@ -35,9 +35,9 @@ Renesas Optimizing Linker (W2.08.00 )             05-Sep-2019 18:51:19
 
 SECTION                            START      END         SIZE   ALIGN
 B_1
-                                  00000004  00003131      312e   1
+                                  00000004  00003132      312f   1
 R_1
-                                  00003132  00003188        57   1
+                                  00003133  00003189        57   1
 B_2
                                   0000318a  000033df       256   2
 R_2
@@ -75,17 +75,17 @@ D_2
 D
                                   fff823b0  fff826ef       340   4
 P
-                                  fff826f0  fff8a022      7933   1
+                                  fff826f0  fff8a046      7957   1
 PIntPRG
-                                  fff8a023  fff8a1eb       1c9   1
+                                  fff8a047  fff8a20f       1c9   1
 W_1
-                                  fff8a1ec  fff8a228        3d   1
+                                  fff8a210  fff8a24c        3d   1
 W_2
-                                  fff8a22a  fff8a287        5e   2
+                                  fff8a24e  fff8a2ab        5e   2
 W
-                                  fff8a288  fff8a288         0   4
+                                  fff8a2ac  fff8a2ac         0   4
 L
-                                  fff8a288  fff8a780       4f9   4
+                                  fff8a2ac  fff8a7a4       4f9   4
 $ADDR_C_FFFFFF80
                                   ffffff80  ffffff83         4   1
 $ADDR_C_FFFFFFA0

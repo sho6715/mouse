@@ -20,6 +20,7 @@
 #include <init.h>
 #include <parameters.h>
 #include <hal_dist.h>
+#include <search2.h>
 //#include <search.h>
 
 //**************************************************
@@ -2392,7 +2393,7 @@ PRIVATE void MOT_goBlock_AccConstDec( FLOAT f_fin, enMOT_ST_TYPE en_type, enMOT_
 				break;
 			}				// ìríÜÇ≈êßå‰ïsî\Ç…Ç»Ç¡ÇΩ
 			MOT_setWallEdgeDist();
-			if(straight_wait>2.0)break;
+			if((straight_wait>2.0)&&(search_flag == TRUE))break;
 		}
 //		printf("åªç›à íu %f \r\n",f_NowDist);
 //		LED4 = 0x04;

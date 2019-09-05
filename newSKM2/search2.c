@@ -58,6 +58,7 @@ PRIVATE UCHAR		uc_back[ MAP_Y_SIZE ][ MAP_X_SIZE ];			// 迷路データ
 PUBLIC UCHAR		GOAL_MAP_X;					//ゴール座標変更プログラム用ｘ
 PUBLIC UCHAR		GOAL_MAP_Y;					//ゴール座標変更プログラム用ｙ
 
+PUBLIC BOOL			search_flag;
 //**************************************************
 // プロトタイプ宣言（ファイル内で必要なものだけ記述）
 //**************************************************
@@ -940,6 +941,8 @@ PUBLIC void MAP_searchGoal(
 	
 //	SYS_setDisable( SYS_MODE );				// モード変更禁止
 
+	search_flag = TRUE;
+
 	MOT_setTrgtSpeed(SEARCH_SPEED);		// 目標速度
 	MOT_setNowSpeed( 0.0f );
 	f_MoveBackDist = 0;
@@ -1009,7 +1012,7 @@ PUBLIC void MAP_searchGoal(
 			break;
 		}
 	}
-
+	search_flag = FALSE;
 	TIME_wait(1000);
 //	SYS_setEnable( SYS_MODE );				// モード変更有効
 
