@@ -262,6 +262,8 @@ PRIVATE void MODE_inc( void )
 // *************************************************************************/
 PRIVATE void MODE_exe0( void )
 {
+	enMAP_HEAD_DIR		en_endDir2;	//MAPcmdチェック用
+	
 	/* モード表示 */
 	switch( en_Mode ){
 	
