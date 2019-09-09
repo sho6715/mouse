@@ -14,3 +14,7 @@ plot(mouse(1:1000,7:8));
 
 linkaxes(ax,'x');
 
+figure;
+plot(mouse(1:1000,5:6));
+figure;
+plot(mouse(1:1000,7:8));

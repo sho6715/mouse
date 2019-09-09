@@ -428,9 +428,9 @@ PRIVATE void MODE_exe( void )
 //			TIME_wait(200);
 			MOT_setTrgtSpeed(SEARCH_SPEED);
 			MOT_setSuraStaSpeed( (FLOAT)500 );							// スラローム開始速度設定
-			PARAM_setSpeedType( PARAM_ST,   PARAM_VERY_FAST );							// [直進] 速度普通
+			PARAM_setSpeedType( PARAM_ST,   PARAM_NORMAL );							// [直進] 速度普通
 			PARAM_setSpeedType( PARAM_TRUN, PARAM_NORMAL );							// [旋回] 速度普通
-			PARAM_setSpeedType( PARAM_SLA,  PARAM_VERY_FAST );							// [スラ] 速度普通
+			PARAM_setSpeedType( PARAM_SLA,  PARAM_NORMAL );							// [スラ] 速度普通
 			LED4 = LED4_ALL_OFF;
 
 			PARAM_makeSra( (FLOAT)SEARCH_SPEED, 200.0f, 5000.0f, SLA_45 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ200 2000	T	200 2000
@@ -482,9 +482,9 @@ PRIVATE void MODE_exe( void )
 			
 			log_flag_on();
 
-			MOT_goBlock_FinSpeed( 1.0, 500 );
-			MOT_goSla( MOT_R45S_S2N, PARAM_getSra( SLA_45 ) );
-			MOT_goBlock_FinSpeed( 2.0, 0 );
+			MOT_goBlock_FinSpeed( 0.5, 500 );
+			MOT_goSla( MOT_R135S_S2N, PARAM_getSra( SLA_135 ) );
+			MOT_goBlock_FinSpeed( 0.5, 0 );
 
 //			MOT_goSkewBlock_FinSpeed(0.5,700);
 //			MOT_goSla( MOT_L90S_N, PARAM_getSra( SLA_N90 ) );
