@@ -486,7 +486,7 @@ PRIVATE void MODE_exe( void )
 			MOT_goSla( MOT_R135S_S2N, PARAM_getSra( SLA_135 ) );
 			MOT_goBlock_FinSpeed( 0.5, 0 );
 
-//			MOT_goSkewBlock_FinSpeed(0.5,700);
+//			MOT_goSkewBlock_FinSpeed(0.5,500);
 //			MOT_goSla( MOT_L90S_N, PARAM_getSra( SLA_N90 ) );
 //			MOT_goSkewBlock_FinSpeed(0.5,0);
 
@@ -547,7 +547,7 @@ PRIVATE void MODE_exe( void )
 		case MODE_5:
 			LED4 = LED4_ALL_ON;
 			TIME_wait(1000);
-			MOT_setTrgtSpeed(SEARCH_SPEED*4);
+			MOT_setTrgtSpeed(SEARCH_SPEED*2);
 			MOT_setSuraStaSpeed( (FLOAT)SEARCH_SPEED );							// スラローム開始速度設定
 			PARAM_setSpeedType( PARAM_ST,   PARAM_NORMAL );							// [直進] 速度普通
 			PARAM_setSpeedType( PARAM_TRUN, PARAM_NORMAL );							// [旋回] 速度普通
@@ -582,7 +582,7 @@ PRIVATE void MODE_exe( void )
 			LED4 = LED4_ALL_ON;
 			TIME_wait(1000);
 
-			MOT_setTrgtSpeed(SEARCH_SPEED*6);
+			MOT_setTrgtSpeed(SEARCH_SPEED*2);
 			MOT_setSuraStaSpeed( (FLOAT)SEARCH_SPEED );							// スラローム開始速度設定
 			PARAM_setSpeedType( PARAM_ST,   PARAM_NORMAL );							// [直進] 速度普通
 			PARAM_setSpeedType( PARAM_TRUN, PARAM_NORMAL );							// [旋回] 速度普通

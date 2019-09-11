@@ -4,8 +4,8 @@ DEG_TO_RAD = pi()/180;
 %ˆø”
 f_speed = 500;
 f_angAcc = 200.0;
-f_g =5000;
-enSLA_TYPE = 'SLA_45';
+f_g =7000;
+enSLA_TYPE = 'SLA_N90';
 %Šp“x‚É‰‚¶‚Ä•ÏX
 f_start_x = 0;
 f_start_y = 0;

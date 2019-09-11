@@ -45,12 +45,12 @@
 #define L_FRONT_WALL					( 200 )					// 左前壁、壁検知値55
 #define R_SIDE_WALL					( 480 )						// 右横壁、壁検知値140
 #define L_SIDE_WALL					( 330 )					// 左横壁、壁検知値100
-#define R_FRONT_SKEW_ERR1				( 80 )//仮
+#define R_FRONT_SKEW_ERR1				( 90 )//仮
 #define L_FRONT_SKEW_ERR1				( 70 )
-#define R_FRONT_SKEW_ERR2				( 192 )
-#define L_FRONT_SKEW_ERR2				( 160 )
-#define R_FRONT_SKEW_ERR3				( 250 )
-#define L_FRONT_SKEW_ERR3				( 250 )
+#define R_FRONT_SKEW_ERR2				( 150 )
+#define L_FRONT_SKEW_ERR2				( 120 )
+#define R_FRONT_SKEW_ERR3				( 200 )
+#define L_FRONT_SKEW_ERR3				( 180 )
 #define R_FRONT_CTRL					( 800 )
 #define L_FRONT_CTRL					( 680 )
 #define R_FRONT_NOCTRL					( 850 )
@@ -296,38 +296,38 @@ PUBLIC void DIST_getErrSkew( LONG* p_err )
 	
 	/* 進行方向に壁が存在する場合によける動作を行う */
 	if( st_sen[DIST_SEN_R_FRONT].s_now > st_senF[DIST_SEN_R_FRONT].s_skewErr3 ){
-		*p_err = 150;
+		*p_err = 300;
 //		LED_on(LED0);
 //		LED_off(LED1);
 		
 //		printf("右前が超近い  [NOW]%d > [ERR3]%d", st_sen[DIST_SEN_R_FRONT].s_now, st_senF[DIST_SEN_R_FRONT].s_skewErr3 );
 	}
 	else if( st_sen[DIST_SEN_L_FRONT].s_now > st_senF[DIST_SEN_L_FRONT].s_skewErr3 ){
-		*p_err = -150;
+		*p_err = -300;
 //		LED_on(LED1);
 //		LED_off(LED0);
 //		printf("左前が超近い  [NOW]%d > [ERR3]%d", st_sen[DIST_SEN_L_FRONT].s_now, st_senF[DIST_SEN_L_FRONT].s_skewErr3 );
 	}
 	else if( st_sen[DIST_SEN_R_FRONT].s_now > st_senF[DIST_SEN_R_FRONT].s_skewErr2 ){
-		*p_err = 100;
+		*p_err = 200;
 //		LED_on(LED0);
 //		LED_off(LED1);
 //		printf("右前が多少近い  [NOW]%d > [ERR2]%d", st_sen[DIST_SEN_R_FRONT].s_now, st_senF[DIST_SEN_R_FRONT].s_skewErr2 );
 	}
 	else if( st_sen[DIST_SEN_L_FRONT].s_now > st_senF[DIST_SEN_L_FRONT].s_skewErr2 ){
-		*p_err = -100;
+		*p_err = -200;
 //		LED_on(LED1);
 //		LED_off(LED0);
 //		printf("左前が多少近い  [NOW]%d > [ERR2]%d", st_sen[DIST_SEN_L_FRONT].s_now, st_senF[DIST_SEN_L_FRONT].s_skewErr2 );
 	}
 	else if( st_sen[DIST_SEN_R_FRONT].s_now > st_senF[DIST_SEN_R_FRONT].s_skewErr1 ){
-		*p_err = 50;
+		*p_err = 100;
 //		LED_on(LED0);
 //		LED_off(LED1);
 //		printf("右前が近い  [NOW]%d > [ERR1]%d", st_sen[DIST_SEN_R_FRONT].s_now, st_senF[DIST_SEN_R_FRONT].s_skewErr1 );
 	}
 	else if( st_sen[DIST_SEN_L_FRONT].s_now > st_senF[DIST_SEN_L_FRONT].s_skewErr1 ){
-		*p_err = -50;
+		*p_err = -100;
 //		LED_on(LED1);
 //		LED_off(LED0);
 //		printf("左前が近い  [NOW]%d > [ERR1]%d", st_sen[DIST_SEN_L_FRONT].s_now, st_senF[DIST_SEN_L_FRONT].s_skewErr1 );

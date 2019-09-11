@@ -1912,7 +1912,7 @@ PUBLIC void CTRL_getAngleSpeedFB( FLOAT* p_err )
 	f_ErrAngleSBuf = f_err;		// 偏差をバッファリング	
 	
 	// 累積偏差クリア 
-	if( FABS( f_err ) < 1 ){
+	if( FABS( f_err ) < 10 ){
 		f_AngleSErrSum = 0;
 	}
 
