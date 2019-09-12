@@ -482,13 +482,13 @@ PRIVATE void MODE_exe( void )
 			
 			log_flag_on();
 
-			MOT_goBlock_FinSpeed( 0.5, 500 );
-			MOT_goSla( MOT_R135S_S2N, PARAM_getSra( SLA_135 ) );
-			MOT_goBlock_FinSpeed( 0.5, 0 );
+//			MOT_goBlock_FinSpeed( 0.5, 500 );
+//			MOT_goSla( MOT_R135S_S2N, PARAM_getSra( SLA_135 ) );
+//			MOT_goBlock_FinSpeed( 0.5, 0 );
 
-//			MOT_goSkewBlock_FinSpeed(0.5,500);
-//			MOT_goSla( MOT_L90S_N, PARAM_getSra( SLA_N90 ) );
-//			MOT_goSkewBlock_FinSpeed(0.5,0);
+			MOT_goSkewBlock_FinSpeed(0.5,500);
+			MOT_goSla( MOT_L90S_N, PARAM_getSra( SLA_N90 ) );
+			MOT_goSkewBlock_FinSpeed(0.5,0);
 
 			log_flag_off();	
 			break;

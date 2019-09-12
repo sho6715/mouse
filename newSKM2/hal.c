@@ -1992,7 +1992,7 @@ PUBLIC void CTRL_getAngleFB( FLOAT* p_err )
 //		templog2 = f_AngleErrSum;
 
 		/* —İÏ•Î·ƒNƒŠƒA */
-		if( FABS( f_TrgtAngle - f_NowAngle ) < 0.3 ){
+		if( FABS( f_TrgtAngle - f_NowAngle ) < 0.1 ){
 			f_AngleErrSum = 0;
 		}
 	}
