@@ -622,6 +622,13 @@ PUBLIC void MAP_makeSkewCmdList( void )
 				x = (USHORT)(NGO1 - 1);		//	斜めモード
 				flag = 0;
 			}
+			else if(ct_st != 0){
+				tcom[ ct_n++ ] = RS45N;
+				ct_st ++;
+
+				x = (USHORT)(NGO1 - 1);		//	斜めモード
+				flag = 0;
+			}
 			else{
 				tcom[ ct_n ] = scom_temp[ct_st];
 				ct_st ++;
@@ -634,6 +641,13 @@ PUBLIC void MAP_makeSkewCmdList( void )
 			if( c1-1 != 0 ){ 
 				tcom[ ct_n++ ] = c1 - 1;		//	前の複合コマンドによって直線区間が消えない場合
 				tcom[ ct_n++ ] = LS45N;
+				ct_st ++;
+
+				x = (USHORT)(NGO1 - 1);		//	斜めモード
+				flag = 0;
+			}
+			else if(ct_st != 0){
+				tcom[ ct_n++ ] = RS45N;
 				ct_st ++;
 
 				x = (USHORT)(NGO1 - 1);		//	斜めモード
