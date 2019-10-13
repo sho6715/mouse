@@ -191,9 +191,13 @@ PRIVATE USHORT	us_BatLvAve = 4095;							// バッテリ平均値（AD変換の最大値で初期
 
 /*ジャイロセンサ*/
 PRIVATE SHORT s_GyroVal; 					  				// ジャイロセンサの現在値
-PRIVATE SHORT s_GyroValBuf[8];								// ジャイロセンサのバッファ値
+//PRIVATE SHORT s_GyroValBuf[8];								// ジャイロセンサのバッファ値
 PUBLIC FLOAT  f_GyroNowAngle;		 						// ジャイロセンサの現在角度
 PRIVATE LONG  l_GyroRef; 									// ジャイロセンサの基準値
+
+/*角速度取得*/
+PRIVATE SHORT s_AccelVal; 					  				// 加速度の取得値
+PRIVATE FLOAT f_NowAccel;										// 加速度の現在地
 
 /* 制御  */
 PRIVATE enCTRL_TYPE		en_Type;						// 制御方式
@@ -760,6 +764,54 @@ PUBLIC void GYRO_Pol( void )
 }
 
 // *************************************************************************
+//   機能		： 加速度の値を取得する
+//   注意		： なし
+//   メモ		： なし
+//   引数		： なし
+//   返り値		： なし
+//
+// **************************    履    歴    *******************************
+// 		v1.0		2019.10.13		sato			新規
+// *************************************************************************/
+PUBLIC FLOAT Accel_getSpeedErr( void )
+{
+	return (s_AccelVal/2048*9800);
+}
+
+// *************************************************************************
+//   機能		： ジャイロセンサ用ポーリング関数
+//   注意		： なし
+//   メモ		： 割り込みから実行される
+//   引数		： なし
+//   返り値		： なし
+// **************************    履    歴    *******************************
+// 		v1.0		2013.11.26			外川			新規
+//		v2.0		2018.08.16			sato		SPIによるジャイロ取得設定
+// *************************************************************************/
+PUBLIC void ACCEL_Pol( void )
+{	
+	/* 加速度の値を取得する */
+	s_AccelVal = (SHORT)recv_spi_accel();
+	
+	/* 現在の加速度を更新する */
+	f_NowAccel = Accel_getSpeedErr();			// 角速度取得 (0.001sec毎の加速度)
+
+	/* エラーチェック */
+/*	if( bl_ErrChk == TRUE ){
+		
+		f_ErrChkAngle += f_speed/1000;		// 角度設定   (0.001sec毎に加算するため)
+		
+		if( ( f_ErrChkAngle < -500 ) || ( 500 < f_ErrChkAngle )||(f_speed <-1000)||(1000<f_speed) ){
+			
+			Failsafe_flag();
+//			printf("fail\n\r");
+		}
+
+	}
+*/
+}
+
+// *************************************************************************
 //   機能		： エラー検出用を開始する
 //   注意		： なし
 //   メモ		： 
@@ -842,6 +894,7 @@ PUBLIC USHORT recv_spi_who(void)
 //   返り値		： なし
 // **************************    履    歴    *******************************
 // 		v1.0		2018.08.05			sato		新規
+//		v1.1		2019.10.13			sato		acc追加
 // *************************************************************************/
 PUBLIC void recv_spi_init(void)
 {
@@ -850,6 +903,7 @@ PUBLIC void recv_spi_init(void)
 	USHORT register106 = (0x6A|0x00);
 	USHORT register112 = (0x70|0x00);
 	USHORT register27 = (0x1B|0x00);
+	USHORT register28 = (0x1C|0x00);
 	
 	PORTC.PODR.BIT.B4 = 0;
 	recv = recv_spi(register107);
@@ -872,6 +926,12 @@ PUBLIC void recv_spi_init(void)
 	PORTC.PODR.BIT.B4 = 0;
 	recv = recv_spi(register27);
 	recv = recv_spi(0x30);
+	PORTC.PODR.BIT.B4 = 1;
+	TIME_wait(1);
+
+	PORTC.PODR.BIT.B4 = 0;
+	recv = recv_spi(register28);
+	recv = recv_spi(0x18);
 	PORTC.PODR.BIT.B4 = 1;
 	TIME_wait(1);
 	
@@ -918,6 +978,43 @@ PUBLIC USHORT recv_spi_gyro(void)
 	PORTC.PODR.BIT.B4 = 0;
 	TIME_waitFree(50);
 	recv2 = recv_spi(gyro_L);
+	recv2 = recv_spi(0x00);
+	PORTC.PODR.BIT.B4 = 1;
+	
+	RSPI0.SPSR.BYTE = 0xA0;
+	
+	recv = (recv1<<8)+(recv2&0xFF);
+	
+	return(recv);
+		
+}
+
+// *************************************************************************
+//   機能		： SPI_accelerometer_read
+//   注意		： なし
+//   メモ		： 初回実行
+//   引数		： なし
+//   返り値		： なし
+// **************************    履    歴    *******************************
+// 		v1.0		2019.10.13			sato		新規
+// *************************************************************************/
+PUBLIC USHORT recv_spi_accel(void)
+{
+	USHORT recv = 0;
+	USHORT recv1;
+	USHORT recv2;
+	USHORT accel_H = (0x3B|0x80);	//register71
+	USHORT accel_L = (0x3C|0x80);	//register72
+	
+	PORTC.PODR.BIT.B4 = 0;
+	TIME_waitFree(50);
+	recv1 = recv_spi(accel_H);
+	recv1 = recv_spi(0x00);
+	PORTC.PODR.BIT.B4 = 1;
+	
+	PORTC.PODR.BIT.B4 = 0;
+	TIME_waitFree(50);
+	recv2 = recv_spi(accel_L);
 	recv2 = recv_spi(0x00);
 	PORTC.PODR.BIT.B4 = 1;
 	

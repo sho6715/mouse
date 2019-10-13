@@ -1588,6 +1588,7 @@ PUBLIC void INTC_sen( void )
 			break;
 		
 		case 3:		// 斜め壁センサ
+			ACCEL_Pol();
 			// 斜めセンサは使用しない
 			break;
 		
