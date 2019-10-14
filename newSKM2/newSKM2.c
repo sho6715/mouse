@@ -334,6 +334,13 @@ PRIVATE void MODE_exe0( void )
 
 		case MODE_7:
 			LED4 = LED4_ALL_ON;
+			CTRL_clrData();
+			while(1){
+				printf("   [加速度]%5.2f [SPI加速度]%x \r", 
+					Accel_getSpeedErr(),recv_spi_accel()
+				);
+				TIME_wait( 500 );
+			}
 			break;
 
 		case MODE_8:
@@ -997,6 +1004,7 @@ PRIVATE void MODE_exe( void )
 //	USHORT *read;
 	enMAP_HEAD_DIR		en_endDir;
 	GYRO_SetRef();
+	ACCEL_SetRef();
 //	log_flag_on();	//ログ関数実行用フラグ　大会時には削除
 	/* モード表示 */
 	switch( en_Mode ){
@@ -1449,6 +1457,7 @@ void main(void)
 	recv_spi_init();					//SPIイニシャライズ
 	TIME_wait(100);
 	GYRO_SetRef();						// [GYRO] ジャイロの基準値の取得
+	ACCEL_SetRef();
 //	TIME_wait(20);
 
 	/* big roop */

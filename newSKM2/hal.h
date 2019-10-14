@@ -120,6 +120,7 @@ PUBLIC FLOAT GYRO_getRef( void );
 PUBLIC void GYRO_staErrChkAngle( void );
 PUBLIC void GYRO_endErrChkAngle( void );
 
+PUBLIC void ACCEL_SetRef( void );
 PUBLIC FLOAT Accel_getSpeedErr( void );
 PUBLIC void ACCEL_Pol( void );
 

@@ -28,6 +28,7 @@
 #define		BAT_GOOD			(2135)			// 残量減ってきた（黄色）、1セル3.7V以上： 2135 = ( 3700mV * 2セル ) / 4.3(分圧) / 3300 * 4096 - 1
 #define		BAT_LOW				(1961)			// 残量やばい！！（赤色）、1セル3.4V以上： 1961 = ( 3400mV * 2セル ) / 4.3(分圧) / 3300 * 4096 - 1
 #define		GYRO_REF_NUM		(200)		//ジャイロのリファレンス値をサンプリングする数
+#define		ACCEL_REF_NUM		(50)		//加速度のリファレンス値をサンプリングする数
 #define		ENC_RESET_VAL		(32768)			// エンコーダの中間値
 #define		ENC_R_TSTR			(TPUA.TSTR.BIT.CST1)	// 右エンコーダパルスカウント開始
 #define		ENC_L_TSTR			(TPUA.TSTR.BIT.CST2)	// 左エンコーダパルスカウント開始
@@ -198,6 +199,7 @@ PRIVATE LONG  l_GyroRef; 									// ジャイロセンサの基準値
 /*角速度取得*/
 PRIVATE SHORT s_AccelVal; 					  				// 加速度の取得値
 PRIVATE FLOAT f_NowAccel;										// 加速度の現在地
+PRIVATE LONG  l_AccelRef; 									// 加速度の基準値
 
 /* 制御  */
 PRIVATE enCTRL_TYPE		en_Type;						// 制御方式
@@ -764,6 +766,32 @@ PUBLIC void GYRO_Pol( void )
 }
 
 // *************************************************************************
+//   機能		： 加速度のリファレンス値（基準の値）を設定する
+//   注意		： なし
+//   メモ		： なし
+//   引数		： なし
+//   返り値		： なし
+//   その他　　：　起動時に動作
+// **************************    履    歴    *******************************
+// 		v1.0		2019.10.14			sato			新規
+// *************************************************************************/
+PUBLIC void ACCEL_SetRef( void )
+{
+	USHORT i;
+	LONG ul_ref = 0;
+	
+	/* データサンプリング */
+	for( i=0; i<ACCEL_REF_NUM; i++){			// 100回サンプリングした平均値を基準の値とする。
+		ul_ref += (LONG)s_AccelVal;
+		TIME_wait(1);
+	}
+	
+	/* 基準値算出（平均値） */
+	l_AccelRef = ul_ref / ACCEL_REF_NUM ;		
+//	l_GyroRef = 0x1304*100;
+}
+
+// *************************************************************************
 //   機能		： 加速度の値を取得する
 //   注意		： なし
 //   メモ		： なし
@@ -775,7 +803,12 @@ PUBLIC void GYRO_Pol( void )
 // *************************************************************************/
 PUBLIC FLOAT Accel_getSpeedErr( void )
 {
-	return (s_AccelVal/2048*9800);
+	LONG  l_val = (LONG)s_AccelVal ;				// 100倍の精度にする
+	LONG  l_err = l_val - l_AccelRef ;
+	FLOAT f_res;
+
+	f_res= (FLOAT)l_err/2048*9800;
+	return f_res;
 }
 
 // *************************************************************************
@@ -1003,8 +1036,8 @@ PUBLIC USHORT recv_spi_accel(void)
 	USHORT recv = 0;
 	USHORT recv1;
 	USHORT recv2;
-	USHORT accel_H = (0x3B|0x80);	//register71
-	USHORT accel_L = (0x3C|0x80);	//register72
+	USHORT accel_H = (0x3D|0x80);	//register71
+	USHORT accel_L = (0x3E|0x80);	//register72
 	
 	PORTC.PODR.BIT.B4 = 0;
 	TIME_waitFree(50);
