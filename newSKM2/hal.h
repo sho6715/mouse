@@ -120,6 +120,9 @@ PUBLIC FLOAT GYRO_getRef( void );
 PUBLIC void GYRO_staErrChkAngle( void );
 PUBLIC void GYRO_endErrChkAngle( void );
 
+PUBLIC FLOAT Accel_getSpeedErr( void );
+PUBLIC void ACCEL_Pol( void );
+
 
 /*SPI*/
 PUBLIC USHORT recv_spi(USHORT spi_ad);
@@ -127,6 +130,7 @@ PUBLIC USHORT recv_spi_who(void);
 PUBLIC void recv_spi_init(void);
 PUBLIC USHORT recv_spi_gyro(void);
 PUBLIC USHORT recv_spi_gyrooffset(void);
+PUBLIC USHORT recv_spi_accel(void);
 
 /* エンコーダ */
 PUBLIC void ENC_Sta( void );
