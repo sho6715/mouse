@@ -679,7 +679,7 @@ PUBLIC FLOAT GYRO_getSpeedErr( void )
 	FLOAT f_res;
 	
 	/* 角速度の偏差算出 */
-	if( ( l_err < -20 * 100 ) || ( 20 * 100 < l_err ) ){
+	if( ( l_err < -8 * 100 ) || ( 8 * 100 < l_err ) ){
 		f_res = (FLOAT)l_err /32.768 / 100;		//32.768 = 2^16(16bit)/2000(+-1000度) LSB/(°/s)
 													// 100倍の精度
 	}

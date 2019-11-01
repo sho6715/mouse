@@ -95,6 +95,10 @@ void map_copy(void)
 	short i;
 	unsigned short *map_add;
 	map_add = (unsigned short*)&g_sysMap;
+	printf("g_sysMap%x\n\r",g_sysMap);
+	printf("g_sysMap%x\n\r",&g_sysMap);
+	printf("map_add%x\n\r",map_add);
+	printf("map_add%x\n\r",*map_add);
 
 	//マップデータをRAMにコピー
 	for(i=0;i<128;i++){
