@@ -1100,8 +1100,8 @@ PRIVATE void MODE_exe( void )
 //			Dist_autocalibration();
 			
 			log_flag_on();
-
-			MOT_goBlock_FinSpeed( 9.0, 0 );
+			MOT_turn(MOT_L90);
+//			MOT_goBlock_FinSpeed( 9.0, 0 );
 //			MOT_goSla( MOT_L90S, PARAM_getSra( SLA_90 ) );
 //			MOT_goBlock_FinSpeed( 0.5, 0 );
 

@@ -757,7 +757,7 @@ PUBLIC void GYRO_Pol( void )
 		
 		f_ErrChkAngle += f_speed/1000;		// äpìxê›íË   (0.001secñàÇ…â¡éZÇ∑ÇÈÇΩÇﬂ)
 		
-		if( ( f_ErrChkAngle < -500 ) || ( 500 < f_ErrChkAngle )||(f_speed <-1000)||(1000<f_speed) ){
+		if( ( f_ErrChkAngle < -500 ) || ( 500 < f_ErrChkAngle )||(f_speed <-1500)||(1500<f_speed) ){
 			
 			Failsafe_flag();
 //			printf("fail\n\r");
