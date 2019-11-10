@@ -707,7 +707,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 			flag = 3;		//	直進
 		}
 		//	直進 → 左180度 → 直進
-		else if( (c1<=GO32) && (c2==L90S) && (c2==L90S) && (c4<=GO32) )
+		else if( (c1<=GO32) && (c2==L90S) && (c3==L90S) && (c4<=GO32) )
 		{
 			tcom[ ct_n++ ] = c1;
 			tcom[ ct_n++ ] = L90S;
