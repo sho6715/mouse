@@ -1121,17 +1121,14 @@ PRIVATE void MODE_exe( void )
 			PARAM_setSpeedType( PARAM_TRUN, PARAM_SLOW );							// [旋回] 速度普通
 			PARAM_setSpeedType( PARAM_SLA,  PARAM_SLOW );							// [スラ] 速度普通
 			LED4 = LED4_ALL_OFF;
-//			Dist_autocalibration();
-			Failsafe_flag_off();
-			
-			/* 迷路探索 */
-//			POS_clr();			// debug
-//			POS_sta();			// debug
+			TIME_wait(100);
+//			MAP_Goalsize(Goalsize);
+			MAP_Goalsize(1);
 			MAP_setPos( 0, 0, NORTH );							// スタート位置
 
 			log_flag_on();
 
-			MAP_searchGoal( GOAL_MAP_X, GOAL_MAP_Y, SEARCH, SEARCH_SURA );			// ゴール設定
+			MAP_searchGoalKnown( GOAL_MAP_X, GOAL_MAP_Y, SEARCH, SEARCH_SURA );			// ゴール設定
 
 			log_flag_off();
 
@@ -1141,16 +1138,16 @@ PRIVATE void MODE_exe( void )
 			map_write();
 			}
 			/* 帰りのスラローム探索 */
-			TIME_wait(1000);
+//			TIME_wait(1000);
 			LED4 = LED4_ALL_OFF;
 
 //			log_flag_on();
-
-			MAP_searchGoal( 0, 0, SEARCH, SEARCH_SURA );
+			MAP_Goalsize(1);
+			MAP_searchGoalKnown( 0, 0, SEARCH, SEARCH_RETURN );
 
 //			log_flag_off();
 
-			TIME_wait(1000);
+//			TIME_wait(1000);
 			if (( SW_ON == SW_INC_PIN )||(SYS_isOutOfCtrl() == TRUE)){}
 			else{
 			map_write();
@@ -1160,6 +1157,7 @@ PRIVATE void MODE_exe( void )
 			MAP_makeCmdList( 0, 0, NORTH, GOAL_MAP_X, GOAL_MAP_Y, &en_endDir );		// ドライブコマンド作成
 			MAP_makeSuraCmdList();													// スラロームコマンド作成
 			MAP_makeSkewCmdList();
+			LED4 = LED4_ALL_OFF;
 			}
 			break;
 

@@ -224,7 +224,8 @@ typedef enum{
 //**************************************************
 // ÉOÉçÅ[ÉoÉãïœêî
 //**************************************************
-
+extern PUBLIC UCHAR	Return_X;
+extern PUBLIC UCHAR	Return_Y;
 
 
 
@@ -238,6 +239,6 @@ PUBLIC void MAP_makeSkewCmdList( void );
 PROTECTED void MAP_setCmdPos( UCHAR uc_x, UCHAR uc_y, enMAP_HEAD_DIR en_dir );
 
 PUBLIC void MAP_showCmdLog( void );
-
+PUBLIC void MAP_searchCmdList(UCHAR uc_staX,UCHAR uc_staY,enMAP_HEAD_DIR en_staDir,UCHAR uc_endX,UCHAR uc_endY,enMAP_HEAD_DIR* en_endDir);
 
 #endif

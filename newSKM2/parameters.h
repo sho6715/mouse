@@ -28,6 +28,7 @@
 #define FF_HIT_BALANCE_L			(1.00f)
 
 #define SEARCH_SPEED				(500)
+#define MAP_KNOWN_ACC_SPEED			(800)
 
 #define DEG_TO_RAD  (3.1416f/180.0f)
 #define RAD_TO_DEG  (180.0f/3.1416f)
