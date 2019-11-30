@@ -404,7 +404,7 @@ PRIVATE void MODE_exe1( void )
 	/* モード表示 */
 	switch( en_Mode ){
 	
-		case MODE_0:	//スラローム探索(往復)
+		case MODE_0:	//スラローム探索(往復)帰還＆既知区間
 			LED4 = LED4_ALL_ON;
 			MOT_setTrgtSpeed(SEARCH_SPEED);
 			MOT_setSuraStaSpeed( (FLOAT)SEARCH_SPEED );							// スラローム開始速度設定
@@ -412,40 +412,47 @@ PRIVATE void MODE_exe1( void )
 			PARAM_setSpeedType( PARAM_TRUN, PARAM_SLOW );							// [旋回] 速度普通
 			PARAM_setSpeedType( PARAM_SLA,  PARAM_SLOW );							// [スラ] 速度普通
 			LED4 = LED4_ALL_OFF;
-			Failsafe_flag_off();
-			
-			/* 迷路探索 */
+			TIME_wait(100);
+//			MAP_Goalsize(Goalsize);
+			MAP_Goalsize(1);
 			MAP_setPos( 0, 0, NORTH );							// スタート位置
 
-			log_flag_on();
+//			log_flag_on();
 
-			MAP_searchGoal( GOAL_MAP_X, GOAL_MAP_Y, SEARCH, SEARCH_SURA );			// ゴール設定
+			MAP_searchGoalKnown( GOAL_MAP_X, GOAL_MAP_Y, SEARCH, SEARCH_SURA );			// ゴール設定
 
-			log_flag_off();
+//			log_flag_off();
 
+//			POS_stop();			// debug
 			if (( SW_ON == SW_INC_PIN )||(SYS_isOutOfCtrl() == TRUE)){}
 			else{
 			map_write();
 			}
 			/* 帰りのスラローム探索 */
-			TIME_wait(1000);
+//			TIME_wait(1000);
 			LED4 = LED4_ALL_OFF;
 
-			MAP_searchGoal( 0, 0, SEARCH, SEARCH_SURA );
+//			log_flag_on();
+			MAP_Goalsize(1);
+			MAP_searchGoalKnown( 0, 0, SEARCH, SEARCH_RETURN );
 
-			TIME_wait(1000);
+//			log_flag_off();
+
+//			TIME_wait(1000);
 			if (( SW_ON == SW_INC_PIN )||(SYS_isOutOfCtrl() == TRUE)){}
 			else{
 			map_write();
+//			PARAM_setCntType( TRUE );								// 最短走行
 			MAP_setPos( 0, 0, NORTH );								// スタート位置
 			MAP_makeContourMap( GOAL_MAP_X, GOAL_MAP_Y, BEST_WAY );					// 等高線マップを作る
 			MAP_makeCmdList( 0, 0, NORTH, GOAL_MAP_X, GOAL_MAP_Y, &en_endDir );		// ドライブコマンド作成
 			MAP_makeSuraCmdList();													// スラロームコマンド作成
 			MAP_makeSkewCmdList();
+			LED4 = LED4_ALL_OFF;
 			}
 			break;
 
-		case MODE_1:	//スラローム探索(片道)
+		case MODE_1:	//スラローム探索(往復)デフォルト
 			LED4 = LED4_ALL_ON;
 			MOT_setTrgtSpeed(SEARCH_SPEED);
 			MOT_setSuraStaSpeed( (FLOAT)SEARCH_SPEED );							// スラローム開始速度設定
@@ -453,33 +460,95 @@ PRIVATE void MODE_exe1( void )
 			PARAM_setSpeedType( PARAM_TRUN, PARAM_SLOW );							// [旋回] 速度普通
 			PARAM_setSpeedType( PARAM_SLA,  PARAM_SLOW );							// [スラ] 速度普通
 			LED4 = LED4_ALL_OFF;
-			Failsafe_flag_off();
-			
-			/* 迷路探索 */
+			TIME_wait(100);
+//			MAP_Goalsize(Goalsize);
+			MAP_Goalsize(1);
 			MAP_setPos( 0, 0, NORTH );							// スタート位置
 
-			log_flag_on();
+//			log_flag_on();
 
 			MAP_searchGoal( GOAL_MAP_X, GOAL_MAP_Y, SEARCH, SEARCH_SURA );			// ゴール設定
 
-			log_flag_off();
+//			log_flag_off();
 
+//			POS_stop();			// debug
 			if (( SW_ON == SW_INC_PIN )||(SYS_isOutOfCtrl() == TRUE)){}
 			else{
 			map_write();
 			}
-			TIME_wait(1000);
+			/* 帰りのスラローム探索 */
+//			TIME_wait(1000);
 			LED4 = LED4_ALL_OFF;
 
+//			log_flag_on();
+			MAP_Goalsize(1);
+			MAP_searchGoal( 0, 0, SEARCH, SEARCH_SURA );
+
+//			log_flag_off();
+
+//			TIME_wait(1000);
+			if (( SW_ON == SW_INC_PIN )||(SYS_isOutOfCtrl() == TRUE)){}
+			else{
+			map_write();
+//			PARAM_setCntType( TRUE );								// 最短走行
 			MAP_setPos( 0, 0, NORTH );								// スタート位置
 			MAP_makeContourMap( GOAL_MAP_X, GOAL_MAP_Y, BEST_WAY );					// 等高線マップを作る
 			MAP_makeCmdList( 0, 0, NORTH, GOAL_MAP_X, GOAL_MAP_Y, &en_endDir );		// ドライブコマンド作成
 			MAP_makeSuraCmdList();													// スラロームコマンド作成
 			MAP_makeSkewCmdList();
-
+			LED4 = LED4_ALL_OFF;
+			}
 			break;
 		
-		case MODE_2://超信地探索(往復)
+		case MODE_2://スラローム往復　既知区間あり　帰還なし
+			LED4 = LED4_ALL_ON;
+			MOT_setTrgtSpeed(SEARCH_SPEED);
+			MOT_setSuraStaSpeed( (FLOAT)SEARCH_SPEED );							// スラローム開始速度設定
+			PARAM_setSpeedType( PARAM_ST,   PARAM_SLOW );							// [直進] 速度普通
+			PARAM_setSpeedType( PARAM_TRUN, PARAM_SLOW );							// [旋回] 速度普通
+			PARAM_setSpeedType( PARAM_SLA,  PARAM_SLOW );							// [スラ] 速度普通
+			LED4 = LED4_ALL_OFF;
+			TIME_wait(100);
+//			MAP_Goalsize(Goalsize);
+			MAP_Goalsize(1);
+			MAP_setPos( 0, 0, NORTH );							// スタート位置
+
+//			log_flag_on();
+
+			MAP_searchGoalKnown( GOAL_MAP_X, GOAL_MAP_Y, SEARCH, SEARCH_SURA );			// ゴール設定
+
+//			log_flag_off();
+
+//			POS_stop();			// debug
+			if (( SW_ON == SW_INC_PIN )||(SYS_isOutOfCtrl() == TRUE)){}
+			else{
+			map_write();
+			}
+			/* 帰りのスラローム探索 */
+//			TIME_wait(1000);
+			LED4 = LED4_ALL_OFF;
+
+//			log_flag_on();
+			MAP_Goalsize(1);
+			MAP_searchGoalKnown( 0, 0, SEARCH, SEARCH_SURA );
+
+//			log_flag_off();
+
+//			TIME_wait(1000);
+			if (( SW_ON == SW_INC_PIN )||(SYS_isOutOfCtrl() == TRUE)){}
+			else{
+			map_write();
+//			PARAM_setCntType( TRUE );								// 最短走行
+			MAP_setPos( 0, 0, NORTH );								// スタート位置
+			MAP_makeContourMap( GOAL_MAP_X, GOAL_MAP_Y, BEST_WAY );					// 等高線マップを作る
+			MAP_makeCmdList( 0, 0, NORTH, GOAL_MAP_X, GOAL_MAP_Y, &en_endDir );		// ドライブコマンド作成
+			MAP_makeSuraCmdList();													// スラロームコマンド作成
+			MAP_makeSkewCmdList();
+			LED4 = LED4_ALL_OFF;
+			}
+			break;
+		
+		case MODE_3://スラローム片道
 			LED4 = LED4_ALL_ON;
 			MOT_setTrgtSpeed(SEARCH_SPEED);
 			MOT_setSuraStaSpeed( (FLOAT)SEARCH_SPEED );							// スラローム開始速度設定
@@ -488,56 +557,15 @@ PRIVATE void MODE_exe1( void )
 			PARAM_setSpeedType( PARAM_SLA,  PARAM_SLOW );							// [スラ] 速度普通
 			LED4 = LED4_ALL_OFF;
 			Failsafe_flag_off();
-			
+			MAP_Goalsize(1);
 			/* 迷路探索 */
 			MAP_setPos( 0, 0, NORTH );							// スタート位置
 
-			log_flag_on();
+//			log_flag_on();
 
-			MAP_searchGoal( GOAL_MAP_X, GOAL_MAP_Y, SEARCH, SEARCH_TURN );			// ゴール設定
+			MAP_searchGoal( GOAL_MAP_X, GOAL_MAP_Y, SEARCH, SEARCH_SURA );			// ゴール設定
 
-			log_flag_off();
-
-			if (( SW_ON == SW_INC_PIN )||(SYS_isOutOfCtrl() == TRUE)){}
-			else{
-			map_write();
-			}
-			/* 帰りの超信地探索 */
-			TIME_wait(1000);
-			LED4 = LED4_ALL_OFF;
-
-			MAP_searchGoal( 0, 0, SEARCH, SEARCH_TURN );
-
-			TIME_wait(1000);
-			if (( SW_ON == SW_INC_PIN )||(SYS_isOutOfCtrl() == TRUE)){}
-			else{
-			map_write();
-			MAP_setPos( 0, 0, NORTH );								// スタート位置
-			MAP_makeContourMap( GOAL_MAP_X, GOAL_MAP_Y, BEST_WAY );					// 等高線マップを作る
-			MAP_makeCmdList( 0, 0, NORTH, GOAL_MAP_X, GOAL_MAP_Y, &en_endDir );		// ドライブコマンド作成
-			MAP_makeSuraCmdList();													// スラロームコマンド作成
-			MAP_makeSkewCmdList();
-			}
-			break;
-		
-		case MODE_3://超信地探索(片道)
-			LED4 = LED4_ALL_ON;
-			MOT_setTrgtSpeed(SEARCH_SPEED);
-			MOT_setSuraStaSpeed( (FLOAT)SEARCH_SPEED );							// スラローム開始速度設定
-			PARAM_setSpeedType( PARAM_ST,   PARAM_SLOW );							// [直進] 速度普通
-			PARAM_setSpeedType( PARAM_TRUN, PARAM_SLOW );							// [旋回] 速度普通
-			PARAM_setSpeedType( PARAM_SLA,  PARAM_SLOW );							// [スラ] 速度普通
-			LED4 = LED4_ALL_OFF;
-			Failsafe_flag_off();
-			
-			/* 迷路探索 */
-			MAP_setPos( 0, 0, NORTH );							// スタート位置
-
-			log_flag_on();
-
-			MAP_searchGoal( GOAL_MAP_X, GOAL_MAP_Y, SEARCH, SEARCH_TURN );			// ゴール設定
-
-			log_flag_off();
+//			log_flag_off();
 
 			if (( SW_ON == SW_INC_PIN )||(SYS_isOutOfCtrl() == TRUE)){}
 			else{
@@ -1033,7 +1061,23 @@ PRIVATE void MODE_exe( void )
 
 		case MODE_1:
 			LED4 = LED4_ALL_ON;
-		
+			en_Mode = MODE_0;	//注意：MODE_incを利用するため最初にen_Modeを初期化　最後にen_Modeを戻す操作が必要
+			TIME_wait(100);
+			LED4 = LED4_ALL_OFF;
+			while(1){
+				if ( SW_ON == SW_INC_PIN ){
+					MODE_inc();								// モードを1つ進める
+					TIME_wait(SW_CHATTERING_WAIT);			// SWが離されるまで待つ
+					printf("mode selecting_1\r\n");
+				}
+				else if (( SW_ON == SW_EXE_PIN )||(TRUE == MODE_CheckExe())){
+					MODE_exe1();								// モード実行
+					TIME_wait(SW_CHATTERING_WAIT);			// SWが離されるまで待つ
+					if (en_Mode == MODE_15)break;
+				}
+
+			}
+			en_Mode = MODE_1;
 			break;
 			
 		case MODE_2:
@@ -1126,11 +1170,11 @@ PRIVATE void MODE_exe( void )
 			MAP_Goalsize(1);
 			MAP_setPos( 0, 0, NORTH );							// スタート位置
 
-			log_flag_on();
+//			log_flag_on();
 
 			MAP_searchGoalKnown( GOAL_MAP_X, GOAL_MAP_Y, SEARCH, SEARCH_SURA );			// ゴール設定
 
-			log_flag_off();
+//			log_flag_off();
 
 //			POS_stop();			// debug
 			if (( SW_ON == SW_INC_PIN )||(SYS_isOutOfCtrl() == TRUE)){}
@@ -1178,11 +1222,10 @@ PRIVATE void MODE_exe( void )
 
 		case MODE_6:
 			LED4 = LED4_ALL_ON;
-			
 			TIME_wait(1000);
-			MOT_setTrgtSpeed(SEARCH_SPEED*6);
+			MOT_setTrgtSpeed(SEARCH_SPEED);
 			MOT_setSuraStaSpeed( SEARCH_SPEED );							// スラローム開始速度設定
-			PARAM_setSpeedType( PARAM_ST,   PARAM_FAST );							// [直進] 速度普通
+			PARAM_setSpeedType( PARAM_ST,   PARAM_NORMAL );							// [直進] 速度普通
 			PARAM_setSpeedType( PARAM_TRUN, PARAM_NORMAL );							// [旋回] 速度普通
 			PARAM_setSpeedType( PARAM_SLA,  PARAM_NORMAL );							// [スラ] 速度普通
 			
@@ -1198,7 +1241,7 @@ PRIVATE void MODE_exe( void )
 		case MODE_7:
 			LED4 = LED4_ALL_ON;
 			TIME_wait(1000);
-
+			map_copy();
 			MOT_setTrgtSpeed(SEARCH_SPEED*8);
 			MOT_setSuraStaSpeed( (FLOAT)SEARCH_SPEED );							// スラローム開始速度設定
 			PARAM_setSpeedType( PARAM_ST,   PARAM_VERY_FAST );							// [直進] 速度普通
@@ -1233,6 +1276,7 @@ PRIVATE void MODE_exe( void )
 		case MODE_8:
 			LED4 = LED4_ALL_ON;
 			TIME_wait(1000);
+			map_copy();
 			MOT_setTrgtSpeed(SEARCH_SPEED*12);
 			MOT_setSuraStaSpeed( (FLOAT)700 );							// スラローム開始速度設定
 			PARAM_setSpeedType( PARAM_ST,   PARAM_VERY_FAST );							// [直進] 速度普通
@@ -1254,11 +1298,11 @@ PRIVATE void MODE_exe( void )
 			MAP_makeSuraCmdList();													// スラロームコマンド作成
 			MAP_makeSkewCmdList();													// 斜めコマンド作成
 			
-			log_flag_on();
+//			log_flag_on();
 
 			MAP_drive( MAP_DRIVE_SKEW );
 			
-			log_flag_off();
+//			log_flag_off();
 
 			TIME_wait(500);
 			MOT_turn(MOT_R180);
@@ -1274,6 +1318,7 @@ PRIVATE void MODE_exe( void )
 		case MODE_9:
 			LED4 = LED4_ALL_ON;
 			TIME_wait(1000);
+			map_copy();
 			MOT_setTrgtSpeed(SEARCH_SPEED*6);
 			MOT_setSuraStaSpeed( (FLOAT)SEARCH_SPEED );							// スラローム開始速度設定
 			PARAM_setSpeedType( PARAM_ST,   PARAM_NORMAL );							// [直進] 速度普通
@@ -1297,6 +1342,7 @@ PRIVATE void MODE_exe( void )
 		case MODE_10:
 			LED4 = LED4_ALL_ON;
 			TIME_wait(1000);
+			map_copy();
 			MOT_setTrgtSpeed(SEARCH_SPEED*8);
 			MOT_setSuraStaSpeed( (FLOAT)SEARCH_SPEED );							// スラローム開始速度設定
 			PARAM_setSpeedType( PARAM_ST,   PARAM_FAST );							// [直進] 速度普通
@@ -1320,6 +1366,7 @@ PRIVATE void MODE_exe( void )
 		case MODE_11:
 			LED4 = LED4_ALL_ON;
 			TIME_wait(1000);
+			map_copy();
 			MOT_setTrgtSpeed(SEARCH_SPEED*10);
 			MOT_setSuraStaSpeed( (FLOAT)SEARCH_SPEED );							// スラローム開始速度設定
 			PARAM_setSpeedType( PARAM_ST,   PARAM_VERY_FAST );							// [直進] 速度普通
@@ -1342,9 +1389,10 @@ PRIVATE void MODE_exe( void )
 		case MODE_12:
 			LED4 = LED4_ALL_ON;
 			TIME_wait(1000);
-			MOT_setTrgtSpeed(SEARCH_SPEED*10);
+			map_copy();
+			MOT_setTrgtSpeed(SEARCH_SPEED*8);
 			MOT_setSuraStaSpeed( (FLOAT)600);							// スラローム開始速度設定
-			PARAM_setSpeedType( PARAM_ST,   PARAM_VERY_FAST );							// [直進] 速度普通
+			PARAM_setSpeedType( PARAM_ST,   PARAM_FAST );							// [直進] 速度普通
 			PARAM_setSpeedType( PARAM_TRUN, PARAM_NORMAL );							// [旋回] 速度普通
 			PARAM_setSpeedType( PARAM_SLA,  PARAM_FAST );							// [スラ] 速度普通
 			LED4 = LED4_ALL_OFF;
@@ -1378,35 +1426,35 @@ PRIVATE void MODE_exe( void )
 		case MODE_13:
 			LED4 = LED4_ALL_ON;
 			TIME_wait(1000);
-			MOT_setTrgtSpeed(SEARCH_SPEED);
-			MOT_setSuraStaSpeed( (FLOAT)SEARCH_SPEED );							// スラローム開始速度設定
-			PARAM_setSpeedType( PARAM_ST,   PARAM_SLOW );							// [直進] 速度普通
-			PARAM_setSpeedType( PARAM_TRUN, PARAM_SLOW );							// [旋回] 速度普通
-			PARAM_setSpeedType( PARAM_SLA,  PARAM_SLOW );							// [スラ] 速度普通
+			map_copy();
+			MOT_setTrgtSpeed(SEARCH_SPEED*10);
+			MOT_setSuraStaSpeed( (FLOAT)600 );							// スラローム開始速度設定
+			PARAM_setSpeedType( PARAM_ST,   PARAM_VERY_FAST );							// [直進] 速度普通
+			PARAM_setSpeedType( PARAM_TRUN, PARAM_NORMAL );							// [旋回] 速度普通
+			PARAM_setSpeedType( PARAM_SLA,  PARAM_FAST );							// [スラ] 速度普通
 			LED4 = LED4_ALL_OFF;
-			
-			/* 迷路探索 */
-//			POS_clr();			// debug
-//			POS_sta();			// debug
-			MAP_setPos( 0, 0, NORTH );							// スタート位置
-			MAP_searchGoal( GOAL_MAP_X, GOAL_MAP_Y, SEARCH, SEARCH_TURN );			// ゴール設定
-//			POS_stop();			// debug
-			
-			/* 帰りのスラローム探索 */
-			TIME_wait(1000);
-			LED4 = LED4_ALL_OFF;
-			MAP_searchGoal( 0, 0, SEARCH, SEARCH_TURN );
-			TIME_wait(1000);
-			if (( SW_ON == SW_INC_PIN )||(SYS_isOutOfCtrl() == TRUE)){}
-			else{
-			map_write();
-//			PARAM_setCntType( TRUE );								// 最短走行
-			MAP_setPos( 0, 0, NORTH );								// スタート位置
+			PARAM_makeSra( (FLOAT)600, 150.0f, 5000.0f, SLA_45 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ200 2000	T	200 2000
+			PARAM_makeSra( (FLOAT)600, 150.0f, 6000.0f, SLA_90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 3500		200 4000
+			PARAM_makeSra( (FLOAT)600, 200.0f, 7000.0f, SLA_135 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 4500		300 4000
+			PARAM_makeSra( (FLOAT)600, 300.0f, 8000.0f, SLA_N90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ500 5000		500 5000
+			Failsafe_flag_off();
+			MAP_setPos( 0, 0, NORTH );												// スタート位置
 			MAP_makeContourMap( GOAL_MAP_X, GOAL_MAP_Y, BEST_WAY );					// 等高線マップを作る
 			MAP_makeCmdList( 0, 0, NORTH, GOAL_MAP_X, GOAL_MAP_Y, &en_endDir );		// ドライブコマンド作成
 			MAP_makeSuraCmdList();													// スラロームコマンド作成
-			MAP_makeSkewCmdList();
-			}
+			MAP_makeSkewCmdList();													// 斜めコマンド作成
+			log_flag_on();
+			MAP_drive( MAP_DRIVE_SKEW );
+			log_flag_off();
+			TIME_wait(500);
+			MOT_turn(MOT_R180);
+			MAP_actGoalLED();
+
+			PARAM_makeSra( (FLOAT)SEARCH_SPEED, 100.0f, 2500.0f, SLA_45 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ200 2000	T	200 2000
+			PARAM_makeSra( (FLOAT)SEARCH_SPEED, 100.0f, 4000.0f, SLA_90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 3500		200 4000
+			PARAM_makeSra( (FLOAT)SEARCH_SPEED, 150.0f, 6000.0f, SLA_135 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ300 4500		300 4000
+			PARAM_makeSra( (FLOAT)SEARCH_SPEED, 200.0f, 7000.0f, SLA_N90 );		// 進入速度[mm/s]、角加速度[rad/s^2]、横G[mm/s^2]、スラロームタイプ500 5000		500 5000
+
 			break;
 			
 		case MODE_14:
