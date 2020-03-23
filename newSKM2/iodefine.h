@@ -82,7 +82,7 @@
 #pragma unpack
 
 #ifdef _VSCODE //追記部分
-#define _evenaccess
+#define __evenaccess
 #endif
 
 struct st_ad {
