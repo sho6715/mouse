@@ -28,6 +28,7 @@
 #define		BAT_GOOD			(2135)			// 残量減ってきた（黄色）、1セル3.7V以上： 2135 = ( 3700mV * 2セル ) / 4.3(分圧) / 3300 * 4096 - 1
 #define		BAT_LOW				(1961)			// 残量やばい！！（赤色）、1セル3.4V以上： 1961 = ( 3400mV * 2セル ) / 4.3(分圧) / 3300 * 4096 - 1
 #define		GYRO_REF_NUM		(200)		//ジャイロのリファレンス値をサンプリングする数
+#define		ACCEL_REF_NUM		(50)		//加速度のリファレンス値をサンプリングする数
 #define		ENC_RESET_VAL		(32768)			// エンコーダの中間値
 #define		ENC_R_TSTR			(TPUA.TSTR.BIT.CST1)	// 右エンコーダパルスカウント開始
 #define		ENC_L_TSTR			(TPUA.TSTR.BIT.CST2)	// 左エンコーダパルスカウント開始
@@ -54,7 +55,7 @@
 
 /* 調整パラメータ */
 #define VCC_MAX						( 8.4f )									// バッテリ最大電圧[V]、4.2[V]×2[セル]
-#define TIRE_R						( 22.2f )									// タイヤ直径 [mm]
+#define TIRE_R						( 22.1f )									// タイヤ直径 [mm]
 #define GEAR_RATIO					( 36 / 8 )									// ギア比(スパー/ピニオン)
 #define ROTATE_PULSE					( 2048 )									// 1周のタイヤパルス数
 #define DIST_1STEP					( PI * TIRE_R / GEAR_RATIO / ROTATE_PULSE )				// 1パルスで進む距離 [mm]
@@ -191,9 +192,14 @@ PRIVATE USHORT	us_BatLvAve = 4095;							// バッテリ平均値（AD変換の最大値で初期
 
 /*ジャイロセンサ*/
 PRIVATE SHORT s_GyroVal; 					  				// ジャイロセンサの現在値
-PRIVATE SHORT s_GyroValBuf[8];								// ジャイロセンサのバッファ値
+//PRIVATE SHORT s_GyroValBuf[8];								// ジャイロセンサのバッファ値
 PUBLIC FLOAT  f_GyroNowAngle;		 						// ジャイロセンサの現在角度
 PRIVATE LONG  l_GyroRef; 									// ジャイロセンサの基準値
+
+/*角速度取得*/
+PRIVATE SHORT s_AccelVal; 					  				// 加速度の取得値
+PRIVATE FLOAT f_NowAccel;										// 加速度の現在地
+PRIVATE LONG  l_AccelRef; 									// 加速度の基準値
 
 /* 制御  */
 PRIVATE enCTRL_TYPE		en_Type;						// 制御方式
@@ -269,8 +275,8 @@ PRIVATE FLOAT	Log_12[log_num];
 PRIVATE	USHORT	log_count = 0;
 PUBLIC	BOOL	b_logflag = FALSE;
 
-PRIVATE FLOAT	templog1;
-PRIVATE FLOAT	templog2;
+PRIVATE FLOAT	templog1	= 0;
+PRIVATE FLOAT	templog2	= 0;
 
 //ログ用デューティー
 PRIVATE	FLOAT	f_Duty_R;
@@ -673,7 +679,7 @@ PUBLIC FLOAT GYRO_getSpeedErr( void )
 	FLOAT f_res;
 	
 	/* 角速度の偏差算出 */
-	if( ( l_err < -20 * 100 ) || ( 20 * 100 < l_err ) ){
+	if( ( l_err < -8 * 100 ) || ( 8 * 100 < l_err ) ){
 		f_res = (FLOAT)l_err /32.768 / 100;		//32.768 = 2^16(16bit)/2000(+-1000度) LSB/(°/s)
 													// 100倍の精度
 	}
@@ -751,12 +757,91 @@ PUBLIC void GYRO_Pol( void )
 		
 		f_ErrChkAngle += f_speed/1000;		// 角度設定   (0.001sec毎に加算するため)
 		
-		if( ( f_ErrChkAngle < -500 ) || ( 500 < f_ErrChkAngle )||(f_speed <-1000)||(1000<f_speed) ){
+		if( ( f_ErrChkAngle < -500 ) || ( 500 < f_ErrChkAngle )||(f_speed <-1500)||(1500<f_speed) ){
 			
 			Failsafe_flag();
 //			printf("fail\n\r");
 		}
 	}
+}
+
+// *************************************************************************
+//   機能		： 加速度のリファレンス値（基準の値）を設定する
+//   注意		： なし
+//   メモ		： なし
+//   引数		： なし
+//   返り値		： なし
+//   その他　　：　起動時に動作
+// **************************    履    歴    *******************************
+// 		v1.0		2019.10.14			sato			新規
+// *************************************************************************/
+PUBLIC void ACCEL_SetRef( void )
+{
+	USHORT i;
+	LONG ul_ref = 0;
+	
+	/* データサンプリング */
+	for( i=0; i<ACCEL_REF_NUM; i++){			// 100回サンプリングした平均値を基準の値とする。
+		ul_ref += (LONG)s_AccelVal;
+		TIME_wait(1);
+	}
+	
+	/* 基準値算出（平均値） */
+	l_AccelRef = ul_ref / ACCEL_REF_NUM ;		
+//	l_GyroRef = 0x1304*100;
+}
+
+// *************************************************************************
+//   機能		： 加速度の値を取得する
+//   注意		： なし
+//   メモ		： なし
+//   引数		： なし
+//   返り値		： なし
+//
+// **************************    履    歴    *******************************
+// 		v1.0		2019.10.13		sato			新規
+// *************************************************************************/
+PUBLIC FLOAT Accel_getSpeedErr( void )
+{
+	LONG  l_val = (LONG)s_AccelVal ;				// 100倍の精度にする
+	LONG  l_err = l_val - l_AccelRef ;
+	FLOAT f_res;
+
+	f_res= (FLOAT)l_err/2048*9800;
+	return f_res;
+}
+
+// *************************************************************************
+//   機能		： ジャイロセンサ用ポーリング関数
+//   注意		： なし
+//   メモ		： 割り込みから実行される
+//   引数		： なし
+//   返り値		： なし
+// **************************    履    歴    *******************************
+// 		v1.0		2013.11.26			外川			新規
+//		v2.0		2018.08.16			sato		SPIによるジャイロ取得設定
+// *************************************************************************/
+PUBLIC void ACCEL_Pol( void )
+{	
+	/* 加速度の値を取得する */
+	s_AccelVal = (SHORT)recv_spi_accel();
+	
+	/* 現在の加速度を更新する */
+	f_NowAccel = Accel_getSpeedErr();			// 角速度取得 (0.001sec毎の加速度)
+
+	/* エラーチェック */
+/*	if( bl_ErrChk == TRUE ){
+		
+		f_ErrChkAngle += f_speed/1000;		// 角度設定   (0.001sec毎に加算するため)
+		
+		if( ( f_ErrChkAngle < -500 ) || ( 500 < f_ErrChkAngle )||(f_speed <-1000)||(1000<f_speed) ){
+			
+			Failsafe_flag();
+//			printf("fail\n\r");
+		}
+
+	}
+*/
 }
 
 // *************************************************************************
@@ -842,6 +927,7 @@ PUBLIC USHORT recv_spi_who(void)
 //   返り値		： なし
 // **************************    履    歴    *******************************
 // 		v1.0		2018.08.05			sato		新規
+//		v1.1		2019.10.13			sato		acc追加
 // *************************************************************************/
 PUBLIC void recv_spi_init(void)
 {
@@ -850,6 +936,7 @@ PUBLIC void recv_spi_init(void)
 	USHORT register106 = (0x6A|0x00);
 	USHORT register112 = (0x70|0x00);
 	USHORT register27 = (0x1B|0x00);
+	USHORT register28 = (0x1C|0x00);
 	
 	PORTC.PODR.BIT.B4 = 0;
 	recv = recv_spi(register107);
@@ -872,6 +959,12 @@ PUBLIC void recv_spi_init(void)
 	PORTC.PODR.BIT.B4 = 0;
 	recv = recv_spi(register27);
 	recv = recv_spi(0x30);
+	PORTC.PODR.BIT.B4 = 1;
+	TIME_wait(1);
+
+	PORTC.PODR.BIT.B4 = 0;
+	recv = recv_spi(register28);
+	recv = recv_spi(0x18);
 	PORTC.PODR.BIT.B4 = 1;
 	TIME_wait(1);
 	
@@ -918,6 +1011,43 @@ PUBLIC USHORT recv_spi_gyro(void)
 	PORTC.PODR.BIT.B4 = 0;
 	TIME_waitFree(50);
 	recv2 = recv_spi(gyro_L);
+	recv2 = recv_spi(0x00);
+	PORTC.PODR.BIT.B4 = 1;
+	
+	RSPI0.SPSR.BYTE = 0xA0;
+	
+	recv = (recv1<<8)+(recv2&0xFF);
+	
+	return(recv);
+		
+}
+
+// *************************************************************************
+//   機能		： SPI_accelerometer_read
+//   注意		： なし
+//   メモ		： 初回実行
+//   引数		： なし
+//   返り値		： なし
+// **************************    履    歴    *******************************
+// 		v1.0		2019.10.13			sato		新規
+// *************************************************************************/
+PUBLIC USHORT recv_spi_accel(void)
+{
+	USHORT recv = 0;
+	USHORT recv1;
+	USHORT recv2;
+	USHORT accel_H = (0x3D|0x80);	//register71
+	USHORT accel_L = (0x3E|0x80);	//register72
+	
+	PORTC.PODR.BIT.B4 = 0;
+	TIME_waitFree(50);
+	recv1 = recv_spi(accel_H);
+	recv1 = recv_spi(0x00);
+	PORTC.PODR.BIT.B4 = 1;
+	
+	PORTC.PODR.BIT.B4 = 0;
+	TIME_waitFree(50);
+	recv2 = recv_spi(accel_L);
 	recv2 = recv_spi(0x00);
 	PORTC.PODR.BIT.B4 = 1;
 	
@@ -1508,7 +1638,7 @@ PUBLIC void CTRL_refTarget( void )
 			/* 反時計回り */
 			if( f_LastAngle > 0 ){ 
 				/* 反時計回り */
-				if( f_TrgtAngleS < f_LastAngleS-1 ){
+				if( f_TrgtAngleS < f_LastAngleS ){
 					f_TrgtAngleS = f_BaseAngleS + f_AccAngleS * f_Time;							// 目標角速度
 					f_TrgtAngle  = f_BaseAngle + ( f_BaseAngleS + f_TrgtAngleS ) * f_Time / 2;	// 目標角度
 				}
@@ -1518,7 +1648,7 @@ PUBLIC void CTRL_refTarget( void )
 			}
 			else{
 				/* 時計回り */
-				if( f_TrgtAngleS > f_LastAngleS+1 ){
+				if( f_TrgtAngleS > f_LastAngleS ){
 					f_TrgtAngleS = f_BaseAngleS + f_AccAngleS * f_Time;							// 目標角速度
 					f_TrgtAngle  = f_BaseAngle + ( f_BaseAngleS + f_TrgtAngleS ) * f_Time / 2;	// 目標角度
 //					printf("%5.2f %5.2f %5.4f %5.2f\n\r",f_TrgtAngleS,f_AccAngleS,f_Time,f_TrgtAngle);
@@ -1529,7 +1659,7 @@ PUBLIC void CTRL_refTarget( void )
 			}
 
 			/* 位置制御 */
-			if( f_LastDist > f_TrgtDist-1 ){													// 目標更新区間
+			if( f_LastDist > f_TrgtDist ){													// 目標更新区間
 				f_TrgtDist  = f_BaseDist + f_TrgtSpeed * f_Time;							// 目標位置
 			}
 			else{
@@ -1563,7 +1693,7 @@ PUBLIC void CTRL_refTarget( void )
 			}
 
 			/* 位置制御 */
-			if( f_LastDist > f_TrgtDist-1 ){													// 目標更新区間
+			if( f_LastDist > f_TrgtDist ){													// 目標更新区間
 				f_TrgtDist  = f_BaseDist + f_TrgtSpeed * f_Time;							// 目標位置
 			}
 			else{
@@ -1578,7 +1708,7 @@ PUBLIC void CTRL_refTarget( void )
 			/* 反時計回り */
 			if( f_LastAngle > 0 ){ 
 				/* 反時計回り */
-				if( f_TrgtAngleS > f_LastAngleS-1 ){
+				if( f_TrgtAngleS > f_LastAngleS ){
 					f_TrgtAngleS = f_BaseAngleS + f_AccAngleS * f_Time;							// 目標角速度
 					f_TrgtAngle  = f_BaseAngle + ( f_BaseAngleS + f_TrgtAngleS ) * f_Time / 2;	// 目標角度
 				}
@@ -1588,7 +1718,7 @@ PUBLIC void CTRL_refTarget( void )
 			}
 			else{
 				/* 時計回り */
-				if( f_TrgtAngleS < f_LastAngleS+1 ){
+				if( f_TrgtAngleS < f_LastAngleS ){
 					f_TrgtAngleS = f_BaseAngleS + f_AccAngleS * f_Time;							// 目標角速度
 					f_TrgtAngle  = f_BaseAngle + ( f_BaseAngleS + f_TrgtAngleS ) * f_Time / 2;	// 目標角度
 				}
@@ -1598,7 +1728,7 @@ PUBLIC void CTRL_refTarget( void )
 			}
 			
 			/* 速度制御 ＋ 位置制御 */
-			if( f_LastDist > f_TrgtDist-1 ){													// 目標更新区間
+			if( f_LastDist > f_TrgtDist ){													// 目標更新区間
 				f_TrgtDist  = f_BaseDist + f_TrgtSpeed * f_Time;							// 目標位置
 			}
 			else{
@@ -1900,7 +2030,7 @@ PUBLIC void CTRL_getAngleSpeedFB( FLOAT* p_err )
 		f_AngleSErrSum = -100;
 	}
 	
-//	templog2 = f_AngleSErrSum;
+	templog2 = f_AngleSErrSum;
 	*p_err = f_err * f_kp + f_AngleSErrSum + ( f_err - f_ErrAngleSBuf ) * f_kd;		// PID制御
 		
 	f_ErrAngleSBuf = f_err;		// 偏差をバッファリング	
@@ -1945,7 +2075,24 @@ PUBLIC void CTRL_getAngleFB( FLOAT* p_err )
 		( en_Type == CTRL_SKEW_ACC ) || ( en_Type == CTRL_SKEW_CONST ) || ( en_Type == CTRL_SKEW_DEC )
 	){
 		f_kp = PARAM_getGain( Chg_ParamID(en_Type) )->f_FB_angle_kp;
-		*p_err = f_err * f_kp;					// P制御量算出
+		f_ki = PARAM_getGain( Chg_ParamID(en_Type) )->f_FB_angle_ki;
+		
+		f_AngleErrSum += f_err*f_ki;	//I成分更新
+		if(f_AngleErrSum > 200){
+			f_AngleErrSum = 200;			//上限リミッター
+		}
+		else if(f_AngleErrSum <-200){
+			f_AngleErrSum = -200;
+		}
+		
+		//*p_err = f_err * FB_ANG_KP_GAIN;					// P制御量算出
+		*p_err = f_err * f_kp + f_AngleErrSum;					// PI制御量算出
+//		templog2 = f_AngleErrSum;
+
+		/* 累積偏差クリア */
+		if( FABS( f_TrgtAngle - f_NowAngle ) < 0.3 ){
+			f_AngleErrSum = 0;
+		}
 		
 	}
 	
@@ -1966,10 +2113,10 @@ PUBLIC void CTRL_getAngleFB( FLOAT* p_err )
 		
 		//*p_err = f_err * FB_ANG_KP_GAIN;					// P制御量算出
 		*p_err = f_err * f_kp + f_AngleErrSum;					// PI制御量算出
-		templog2 = f_AngleErrSum;
+//		templog2 = f_AngleErrSum;
 
 		/* 累積偏差クリア */
-		if( FABS( f_TrgtAngle - f_NowAngle ) < 0.1 ){
+		if( FABS( f_TrgtAngle - f_NowAngle ) < 0.3 ){
 			f_AngleErrSum = 0;
 		}
 	}
@@ -3539,25 +3686,28 @@ PUBLIC void MOT_goSla( enMOT_SURA_CMD en_type, stSLA* p_sla )
 	CTRL_setData( &st_data );							// データセット
 //	log_in(st_data.f_angle);
 	if( IS_R_SLA( en_type ) == TRUE ) {		// -方向
-		while( ( f_NowAngle > st_info.f_angle ) || ( f_NowDist < st_data.f_dist ) ){			// 指定角度＋距離到達待ち
+		while( ( f_NowAngle > st_info.f_angle + 0.2 ) || ( f_NowDist < st_data.f_dist ) ){			// 指定角度＋距離到達待ち
 			if( SYS_isOutOfCtrl() == TRUE ){
 				CTRL_stop(); 
 				DCM_brakeMot( DCM_R );		// ブレーキ
 				DCM_brakeMot( DCM_L );		// ブレーキ
 				break;
 			}				// 途中で制御不能になった
+//		LED4 = LED4_ALL_ON;
 		}
 	}
 	else{
-		while( ( f_NowAngle < st_info.f_angle) || ( f_NowDist < st_data.f_dist ) ){			// 指定角度＋距離到達待ち
+		while( ( f_NowAngle < st_info.f_angle - 0.2) || ( f_NowDist < st_data.f_dist ) ){			// 指定角度＋距離到達待ち
 			if( SYS_isOutOfCtrl() == TRUE ){
 				CTRL_stop(); 
 				DCM_brakeMot( DCM_R );		// ブレーキ
 				DCM_brakeMot( DCM_L );		// ブレーキ
 				break;
 			}				// 途中で制御不能になった
+//		LED4 = LED4_ALL_ON;
 		}
 	}
+//	LED4 = LED4_ALL_OFF;
 //	log_in(0);
 //	LED_on(LED1);
 	/* ------------------------ */
@@ -3932,7 +4082,7 @@ PUBLIC void log_flag_off(void)
 PUBLIC void log_read2(void)
 {
 	int i=0;
-	while(i<200){
+	while(i<log_num){
 		printf("%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f,%5.2f\n\r",
 		Log_1[i],Log_2[i],Log_3[i],Log_4[i],Log_5[i],Log_6[i],Log_7[i],Log_8[i],Log_9[i],Log_10[i],Log_11[i],Log_12[i]);
 		i++;

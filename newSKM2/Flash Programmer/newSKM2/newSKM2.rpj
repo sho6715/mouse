@@ -6,7 +6,7 @@
   <Device>RX630</Device>
   <OperationTab>
     <Endian>RFLG_ENDIAN_LITTLE</Endian>
-    <ProgramFile>D:\電気研究会\github\mouse\newSKM2\DefaultBuild\newSKM2.mot</ProgramFile>
+    <ProgramFile>C:\mouse\AEGIS\mouse\newSKM2\DefaultBuild\newSKM2.mot</ProgramFile>
   </OperationTab>
   <OperationSettingTab>
     <FillCode>False</FillCode>

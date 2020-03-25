@@ -23,13 +23,15 @@
 // 定義（define）
 //**************************************************
 /* 迷路サイズ */
-#define GOAL_MAP_X					( 7 )				// ゴールのX区画数（横方向） [区画]
-#define GOAL_MAP_Y					( 7 )				// ゴールのY区画数（縦方向） [区画]
+#define GOAL_MAP_X_def					( 7 )				// ゴールのX区画数（横方向） [区画]
+#define GOAL_MAP_Y_def					( 7 )				// ゴールのY区画数（縦方向） [区画]
 #define MAP_X_SIZE					( 16 )				// 迷路のX区画数（横方向） [区画]
 #define MAP_Y_SIZE					( 16 )				// 迷路のY区画数（縦方向） [区画]
 
 #define MAP_X_SIZE_REAL				( 16 )					// 迷路の実X区画数（横方向） [区画]
 #define MAP_Y_SIZE_REAL				( 16 )					// 迷路の実Y区画数（縦方向） [区画]
+
+#define Goalsize					(4)
 
 //**************************************************
 // 列挙体（enum）
@@ -52,6 +54,7 @@ typedef enum{
 	SEARCH_TURN =0,		// 超信地旋回探索
 	SEARCH_SURA,		// スラローム探索
 	SEARCH_SKEW,		// 斜め探索
+	SEARCH_RETURN,
 	SEARCH_MAX,
 }enSEARCH_MODE;
 
@@ -77,12 +80,16 @@ typedef enum{
 extern PUBLIC UCHAR		g_sysMap[MAP_Y_SIZE][MAP_X_SIZE];		///< 迷路情報
 extern PUBLIC USHORT		us_cmap[MAP_Y_SIZE][MAP_X_SIZE];		///< 等高線 データ
 
-
-
+extern PUBLIC UCHAR		GOAL_MAP_X;					//ゴール座標変更プログラム用ｘ
+extern PUBLIC UCHAR		GOAL_MAP_Y;					//ゴール座標変更プログラム用ｙ
+extern PUBLIC BOOL		search_flag;
 //**************************************************
 // プロトタイプ宣言（ファイル内で必要なものだけ記述）
 //**************************************************
 PUBLIC void MAP_init( void );
+PUBLIC void MAP_Goal_init( void );
+PUBLIC void MAP_Goal_change_x( void );
+PUBLIC void MAP_Goal_change_y( void );
 PUBLIC void MAP_showLog( void );
 PUBLIC void MAP_clearMap( void );
 PUBLIC void MAP_setPos( UCHAR uc_x, UCHAR uc_y, enMAP_HEAD_DIR en_dir );
@@ -92,6 +99,10 @@ PUBLIC void MAP_actGoalLED( void );
 
 PUBLIC void MAP_ClearMapData( void );
 
+PUBLIC void MAP_Goalsize(int size);
+
+//TKR
+PUBLIC void MAP_searchGoalKnown(UCHAR uc_trgX, UCHAR uc_trgY, enMAP_ACT_MODE en_type);
 
 
 #endif //_SEARCH_H

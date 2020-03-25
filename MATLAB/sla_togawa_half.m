@@ -2,9 +2,9 @@ close all
 
 DEG_TO_RAD = pi()/180;
 %à¯êî
-f_speed = 500;
+f_speed = 300;
 f_angAcc = 500.0;
-f_g =4000;
+f_g =2500;
 enSLA_TYPE = 'SLA_90';
 %äpìxÇ…âûÇ∂ÇƒïœçX
 f_start_x = 0;
@@ -25,31 +25,31 @@ f_y = 0;
 
 switch(enSLA_TYPE)
     case 'SLA_90'
-        f_start_x = 90;
+        f_start_x = 45;
         f_start_y = 0.0;
-        f_final_x = 180;
-        f_final_y = 90;
+        f_final_x = 90;
+        f_final_y = 45;
         f_final_ang = 90.0 * DEG_TO_RAD;
 
     case 'SLA_45'
-        f_start_x = 90;
+        f_start_x = 45;
         f_start_y = 0.0;
-        f_final_x = 180*0.75;
-        f_final_y = 180*0.75;
+        f_final_x = 90*0.75;
+        f_final_y = 90*0.75;
         f_final_ang = 45.0 * DEG_TO_RAD;
 
     case 'SLA_N90'
-			f_start_x   = 90 * 0.5 * 1.4142;
+			f_start_x   = 45 * 0.5 * 1.4142;
 			f_start_y   = 0.0;
-			f_final_x   = 90 * 1.4142;
-			f_final_y   = 90 * 0.5 * 1.4142;
+			f_final_x   = 45 * 1.4142;
+			f_final_y   = 45 * 0.5 * 1.4142;
 			f_final_ang = 90.0 * DEG_TO_RAD;
 			
 	case 'SLA_135'
-			f_start_x   = 90;
+			f_start_x   = 45;
 			f_start_y   = 0.0;
-			f_final_x   = 180 * 1.25;
-			f_final_y   = 180 * 0.25;
+			f_final_x   = 90 * 1.25;
+			f_final_y   = 90 * 0.25;
 			f_final_ang = 135.0 * DEG_TO_RAD;
 end
 
@@ -146,7 +146,7 @@ for i = 1:f_timeAcc*1000
 end
 plot([f_x f_final_x],[f_y f_final_y],'LineWidth',2);
 
-xlim([0 270])
-ylim([0 180])
+xlim([0 170])
+ylim([0 135])
 
         

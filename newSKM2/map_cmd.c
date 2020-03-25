@@ -93,7 +93,8 @@ PRIVATE USHORT us_LogIndex = 0;
 PRIVATE USHORT us_LogWallCut[30];
 PRIVATE USHORT us_LogIndexWallCut = 0;
 
-
+PUBLIC UCHAR	Return_X;
+PUBLIC UCHAR	Return_Y;
 
 //**************************************************
 // プロトタイプ宣言（ファイル内で必要なものだけ記述）
@@ -593,7 +594,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 	USHORT	c1, c2, c3, c4;				// 計算用
 	USHORT	x;
 	USHORT	ct_n=0, ct_st=0;
-	USHORT	flag = 0;					//	斜め走行用バッファ  0:複合コマンド　1:斜め  2:S135N → N135S  3:直進
+	USHORT	flag = 3;					//	斜め走行用バッファ  0:複合コマンド　1:斜め  2:S135N → N135S  3:直進
 	
 	/* 超地信旋回コマンドをコピー */
 	for( i=0; i<us_totalCmd; i++ )
@@ -614,22 +615,36 @@ PUBLIC void MAP_makeSkewCmdList( void )
 		//	直進 → 右45度 → 斜め
 		if( (c1<=GO32) && (c2==R90S) && (c3==L90S) )
 		{
-			if( c1-1 != 0 ) tcom[ ct_n++ ] = c1 - 1;		//	前の複合コマンドによって直線区間が消えない場合
-			tcom[ ct_n++ ] = RS45N;
-			ct_st ++;
+			if((ct_st == 0) && (c1-1 == 0)){
+				tcom[ ct_n ] = scom_temp[ct_st];
+				ct_st ++;
+				ct_n ++;
+			}
+			else{
+				if( c1-1 != 0 ) tcom[ ct_n++ ] = c1 - 1;		//	前の複合コマンドによって直線区間が消えない場合
+				tcom[ ct_n++ ] = RS45N;
+				ct_st ++;
 
-			x = (USHORT)(NGO1 - 1);		//	斜めモード
-			flag = 0;
+				x = (USHORT)(NGO1 - 1);		//	斜めモード
+				flag = 0;
+			}
 		}
 		//	直進 → 左45度 → 斜め
 		else if( (c1<=GO32) && (c2==L90S) && (c3==R90S) )
 		{
-			if( c1-1 != 0 ) tcom[ ct_n++ ] = c1 - 1;		//	前の複合コマンドによって直線区間が消えない場合
-			tcom[ ct_n++ ] = LS45N;
-			ct_st ++;
+			if((ct_st == 0) && (c1-1 == 0)){
+				tcom[ ct_n ] = scom_temp[ct_st];
+				ct_st ++;
+				ct_n ++;
+			}
+			else{
+				if( c1-1 != 0 ) tcom[ ct_n++ ] = c1 - 1;		//	前の複合コマンドによって直線区間が消えない場合
+				tcom[ ct_n++ ] = LS45N;
+				ct_st ++;
 
-			x = (USHORT)(NGO1 - 1);		//	斜めモード
-			flag = 0;
+				x = (USHORT)(NGO1 - 1);		//	斜めモード
+				flag = 0;
+			}
 		}
 
 		//	直進 → 右90度 → 直進
@@ -679,7 +694,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 			flag = 3;		//	直進
 		}
 		//	直進 → 左180度 → 直進
-		else if( (c1<=GO32) && (c2==L90S) && (c2==L90S) && (c4<=GO32) )
+		else if( (c1<=GO32) && (c2==L90S) && (c3==L90S) && (c4<=GO32) )
 		{
 			tcom[ ct_n++ ] = c1;
 			tcom[ ct_n++ ] = L90S;
@@ -689,7 +704,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 		}
 
 		//	斜め → 右45度 → 直進
-		else if( (c1==R90S) && (c2<=GO32) )
+		else if( (c1==R90S) && (c2<=GO32)  && (flag != 3 ) )
 		{
 			if( flag==1 ) tcom[ ct_n++ ] = x;
 			tcom[ ct_n++ ] = RN45S;
@@ -698,7 +713,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 			flag = 3;		//	直進
 		}
 		//	斜め → 左45度 → 直進
-		else if( (c1==L90S) && (c2<=GO32) )
+		else if( (c1==L90S) && (c2<=GO32)  && (flag != 3 ) )
 		{
 			if( flag==1 ) tcom[ ct_n++ ] = x;
 			tcom[ ct_n++ ] = LN45S;
@@ -707,7 +722,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 			flag = 3;		//	直進
 		}
 		//	斜め → 右90度 → 斜め
-		else if( (c1==L90S) && (c2==R90S) && (c3==R90S) && (c4==L90S) )
+		else if( (c1==L90S) && (c2==R90S) && (c3==R90S) && (c4==L90S)  && (flag != 3 ) )
 		{
 			if( flag==0 ) tcom[ ct_n++ ] = NGO1;		//	45NからRN90N
 			else if( flag==1 ) tcom[ ct_n++ ] = x+1;
@@ -719,7 +734,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 			flag = 1;
 		}
 		//	斜め → 左90度 → 斜め
-		else if( (c1==R90S) && (c2==L90S) && (c3==L90S) && (c4==R90S) )
+		else if( (c1==R90S) && (c2==L90S) && (c3==L90S) && (c4==R90S)  && (flag != 3 ) )
 		{
 			if( flag==0 ) tcom[ ct_n++ ] = NGO1;		//	45NからLN90N
 			else if( flag==1 ) tcom[ ct_n++ ] = x+1;
@@ -731,7 +746,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 			flag = 1;
 		}
 		//	斜め → 右135度 → 直進
-		else if( (c1==L90S) && (c2==R90S) && (c3==R90S) && (c4<=GO32) )
+		else if( (c1==L90S) && (c2==R90S) && (c3==R90S) && (c4<=GO32)  && (flag != 3 ) )
 		{
 			if( flag==0 ) tcom[ ct_n++ ] = NGO1;		//	45NからLN90N
 			else if( flag==1 ) tcom[ ct_n++ ] = x+1;
@@ -741,7 +756,7 @@ PUBLIC void MAP_makeSkewCmdList( void )
 			flag = 3;		//	直進
 		}
 		//	斜め → 左135度 → 直進
-		else if( (c1==R90S) && (c2==L90S) && (c3==L90S) && (c4<=GO32) )
+		else if( (c1==R90S) && (c2==L90S) && (c3==L90S) && (c4<=GO32)  && (flag != 3 ) )
 		{
 			if( flag==0 ) tcom[ ct_n++ ] = NGO1;		//	45NからLN90N
 			else if( flag==1 ) tcom[ ct_n++ ] = x+1;
@@ -751,14 +766,14 @@ PUBLIC void MAP_makeSkewCmdList( void )
 			flag = 3;		//	直進
 		}
 		//	斜め → 斜め
-		else if( (c1==R90S) && (c2==L90S) && ( (c3==R90S) || (c3==L90S) || ( c3<=GO32 ) ) )
+		else if( (c1==R90S) && (c2==L90S) && ( (c3==R90S) || (c3==L90S) || ( c3<=GO32 ) ) && (flag != 3 ) )
 		{
 			x++;
 			ct_st ++;
 
 			flag = 1;		//	斜め走行バッファあり
 		}
-		else if( (c1==L90S) && (c2==R90S) && ( (c3==L90S) || (c3==R90S) || ( c3<=GO32 ) ) )
+		else if( (c1==L90S) && (c2==R90S) && ( (c3==L90S) || (c3==R90S) || ( c3<=GO32 ) ) && (flag != 3 ) )
 		{
 			//	コマンド出力
 			x++;
@@ -1048,3 +1063,99 @@ PUBLIC void MAP_drive( enMAP_DRIVE_TYPE en_driveType )
 
 }
 */
+
+// *************************************************************************
+//   機能		： 帰還探索専用コマンド走行モジュール
+//   注意		： なし
+//   メモ		： なし
+//   引数		： なし
+//   返り値		： なし
+// **************************    履    歴    *******************************
+// 		v1.0		2019.11.23			sato		新規
+// *************************************************************************/
+PUBLIC void MAP_searchCmdList(
+	UCHAR uc_staX,					///< [in] 開始X座標
+	UCHAR uc_staY,					///< [in] 開始Y座標
+	enMAP_HEAD_DIR en_staDir,		///< [in] 開始時の方向
+	UCHAR uc_endX,					///< [in] 終了X座標
+	UCHAR uc_endY,					///< [in] 終了Y座標
+	enMAP_HEAD_DIR* en_endDir		///< [out] 終了時の方向
+) {
+	UCHAR			uc_goStep;									// 前進のステップ数
+	USHORT			us_high;									// 等高線の高さ
+	USHORT			us_pt;										// コマンドポインタ
+	enMAP_HEAD_DIR	en_nowDir;									// 現在マウスの向いている絶対方向
+	enMAP_HEAD_DIR	en_tempDir;									// 相対方向
+//	USHORT			i;											// roop
+
+	/* 前進ステップ数を初期化する */
+	uc_goStep = 0;
+	us_pt = 0;
+//	printf("mx%d,my%d\n", uc_staX, uc_staY);
+	/* 迷路情報からコマンド作成 */
+	while (1) {
+		us_high = us_cmap[uc_staY][uc_staX] - 1;
+		if ((g_sysMap[uc_staY][uc_staX]&0xf0) != 0xf0){
+			Return_X = uc_staX;
+			Return_Y = uc_staY;
+			break;
+		}
+
+		if (en_staDir == NORTH) {
+			if (((g_sysMap[uc_staY][uc_staX] & 0x11) == 0x10) && (us_cmap[uc_staY + 1][uc_staX] == us_high)) en_nowDir = NORTH;
+			else if (((g_sysMap[uc_staY][uc_staX] & 0x22) == 0x20) && (us_cmap[uc_staY][uc_staX + 1] == us_high)) en_nowDir = EAST;
+			else if (((g_sysMap[uc_staY][uc_staX] & 0x88) == 0x80) && (us_cmap[uc_staY][uc_staX - 1] == us_high)) en_nowDir = WEST;
+			else if (((g_sysMap[uc_staY][uc_staX] & 0x44) == 0x40) && (us_cmap[uc_staY - 1][uc_staX] == us_high)) en_nowDir = SOUTH;
+			else   while (1);
+		}
+		else if (en_staDir == EAST) {
+			if (((g_sysMap[uc_staY][uc_staX] & 0x22) == 0x20) && (us_cmap[uc_staY][uc_staX + 1] == us_high)) en_nowDir = EAST;
+			else if (((g_sysMap[uc_staY][uc_staX] & 0x11) == 0x10) && (us_cmap[uc_staY + 1][uc_staX] == us_high)) en_nowDir = NORTH;
+			else if (((g_sysMap[uc_staY][uc_staX] & 0x44) == 0x40) && (us_cmap[uc_staY - 1][uc_staX] == us_high)) en_nowDir = SOUTH;
+			else if (((g_sysMap[uc_staY][uc_staX] & 0x88) == 0x80) && (us_cmap[uc_staY][uc_staX - 1] == us_high)) en_nowDir = WEST;
+			else   while (1);
+		}
+		else if (en_staDir == SOUTH) {
+			if (((g_sysMap[uc_staY][uc_staX] & 0x44) == 0x40) && (us_cmap[uc_staY - 1][uc_staX] == us_high)) en_nowDir = SOUTH;
+			else if (((g_sysMap[uc_staY][uc_staX] & 0x22) == 0x20) && (us_cmap[uc_staY][uc_staX + 1] == us_high)) en_nowDir = EAST;
+			else if (((g_sysMap[uc_staY][uc_staX] & 0x88) == 0x80) && (us_cmap[uc_staY][uc_staX - 1] == us_high)) en_nowDir = WEST;
+			else if (((g_sysMap[uc_staY][uc_staX] & 0x11) == 0x10) && (us_cmap[uc_staY + 1][uc_staX] == us_high)) en_nowDir = NORTH;
+			else   while (1);
+		}
+		else if (en_staDir == WEST) {
+			if (((g_sysMap[uc_staY][uc_staX] & 0x88) == 0x80) && (us_cmap[uc_staY][uc_staX - 1] == us_high)) en_nowDir = WEST;
+			else if (((g_sysMap[uc_staY][uc_staX] & 0x11) == 0x10) && (us_cmap[uc_staY + 1][uc_staX] == us_high)) en_nowDir = NORTH;
+			else if (((g_sysMap[uc_staY][uc_staX] & 0x44) == 0x40) && (us_cmap[uc_staY - 1][uc_staX] == us_high)) en_nowDir = SOUTH;
+			else if (((g_sysMap[uc_staY][uc_staX] & 0x22) == 0x20) && (us_cmap[uc_staY][uc_staX + 1] == us_high)) en_nowDir = EAST;
+			else   while (1);
+		}
+
+		en_tempDir = (enMAP_HEAD_DIR)((en_nowDir - en_staDir) & (enMAP_HEAD_DIR)3);		// 方向更新
+		en_staDir = en_nowDir;
+
+		if (en_nowDir == NORTH) uc_staY = uc_staY + 1;
+		else if (en_nowDir == EAST) uc_staX = uc_staX + 1;
+		else if (en_nowDir == SOUTH) uc_staY = uc_staY - 1;
+		else if (en_nowDir == WEST) uc_staX = uc_staX - 1;
+
+		en_staDir = en_nowDir;
+
+//		if ((uc_staX == uc_endX) && (uc_staY == uc_endY)) break;
+		if (us_cmap[uc_staY][uc_staX] == 0) {
+			Return_X = 0;
+			Return_Y = 0;
+			break;
+		}
+	}
+
+
+	/* 最終的に向いている方向 */
+	*en_endDir = en_staDir;
+
+#if 0
+	/* debug */
+	for (i = 0; i < us_totalCmd; i++) {
+		printf("dcom[%4d] = %02d  \n\r", i, dcom[i]);
+	}
+#endif
+}
